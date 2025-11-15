@@ -2,19 +2,20 @@ import styled from "styled-components";
 import { FlexCol } from "./styles/core";
 import { COLORS } from "./constants";
 import Nav from "./Components/Nav/Nav";
+import LandingPage from "./Components/LandingPage/LandingPage";
 
 function App() {
   return (
     <Container>
       <Nav />
-      <h2>Tech Offline And Survival Tools</h2>
+      <LandingPage />
     </Container>
   );
 }
 
 const Container = styled(FlexCol)`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   justify-content: flex-start;
   background-color: ${COLORS.BACKGROUND};
 `;

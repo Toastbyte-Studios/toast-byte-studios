@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { Container, Logo, Title } from "./styles";
 
 /**
@@ -6,7 +7,7 @@ import { Container, Logo, Title } from "./styles";
  *
  * @returns {JSX.Element} The rendered navigation bar component.
  */
-const Nav: React.FC = () => {
+const Nav: React.FC = (): JSX.Element => {
   return (
     <Container>
       <Logo
