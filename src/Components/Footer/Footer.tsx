@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { COLORS } from "../../constants";
+import { Container, Info, Link } from "./style";
 
 /**
  * Footer component that displays the current year and a copyright notice.
@@ -11,25 +10,10 @@ const Footer: React.FC = () => {
 
   return (
     <Container>
-      <p>©{currentYear} TOASTbyte Studios. All rights reserved.</p>
+      <Info>©{currentYear} TOASTbyte Studios. All rights reserved.</Info>
+      <Link href="mailto:info@toastbyte.studio">info@toastbyte.studio</Link>
     </Container>
   );
 };
-
-const Container = styled.footer`
-  height: 50px;
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 14px;
-  font-family: "Inter", Arial, sans-serif;
-  color: ${COLORS.PRIMARY_DARK};
-
-  background-color: ${COLORS.SECONDARY_ACCENT};
-`;
 
 export default Footer;
