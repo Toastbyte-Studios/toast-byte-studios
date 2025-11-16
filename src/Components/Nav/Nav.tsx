@@ -13,7 +13,6 @@ const Nav: React.FC = (): JSX.Element => {
       <Logo
         src="/assets/images/ToastHeadShotClear.webp"
         alt="TOASTbyte Studios Logo"
-        loading="lazy"
         width={60}
         height={60}
         decoding="async"
