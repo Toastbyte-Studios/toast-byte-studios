@@ -15,6 +15,7 @@ const Container = styled.nav`
   color: ${COLORS.PRIMARY_LIGHT};
 
   background-color: ${COLORS.TOAST_BROWN};
+  border-bottom: 2px solid ${COLORS.SECONDARY_ACCENT};
 `;
 
 const Title = styled.h1`

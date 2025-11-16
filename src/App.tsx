@@ -3,12 +3,14 @@ import { FlexCol } from "./styles/core";
 import { COLORS } from "./constants";
 import Nav from "./Components/Nav/Nav";
 import LandingPage from "./Components/LandingPage/LandingPage";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
     <Container>
       <Nav />
       <LandingPage />
+      <Footer />
     </Container>
   );
 }

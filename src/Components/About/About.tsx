@@ -1,16 +1,26 @@
-import styled from "styled-components";
-import { FlexCol } from "../../styles/core";
+import { Bold, Container } from "./styles";
 
+/**
+ * Renders the About section for TOASTbyte Studios.
+ *
+ * This component displays information about the studio's mission,
+ * inspiration, and its first app—an offline emergency and survival toolkit.
+ * It highlights the studio's offline-first philosophy and encourages users
+ * to check back for updates.
+ *
+ * @component
+ */
 const About: React.FC = () => {
   return (
     <Container>
       <h3>About TOASTbyte Studios</h3>
       <p>
-        Toastbyte Studios is a tiny creative studio inspired by a big idea:
-        technology should still work when nothing else does. Born in Las Vegas
-        and named after a very curious dog, Toastbyte focuses on building
-        practical, offline-first tools that help people stay prepared, informed,
-        and confident wherever they are.
+        Toastbyte Studios is a tiny creative studio inspired by a big
+        idea:&nbsp;
+        <Bold>technology should still work when nothing else does.</Bold> Born
+        in Las Vegas and named after a very curious dog, Toastbyte focuses on
+        building practical, offline-first tools that help people stay prepared,
+        informed, and confident wherever they are.
       </p>
       <p>
         Our first app is currently in development — an offline emergency and
@@ -18,23 +28,12 @@ const About: React.FC = () => {
         utilities you can rely on even without a signal.
       </p>
       <p>
-        We're building everything on a simple philosophy: Tech Offline And
-        Survival Tools — TOAST.
+        We're building everything on a simple philosophy:{" "}
+        <Bold>Tech Offline And Survival Tools — TOAST.</Bold>
       </p>
       <p>Check back soon for updates as the project continues to grow.</p>
     </Container>
   );
 };
-
-const Container = styled(FlexCol)`
-  height: 100%;
-  width: 100%;
-  justify-content: flex-start;
-
-  padding: 40px;
-  gap: 10px;
-
-  font-family: "Inter", Arial, sans-serif;
-`;
 
 export default About;
