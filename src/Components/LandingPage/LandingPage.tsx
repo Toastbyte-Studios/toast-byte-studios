@@ -26,6 +26,10 @@ const LandingPage: React.FC = (): JSX.Element => {
         loop
         muted
         playsInline
+        preload="auto"
+        width={200}
+        height={200}
+        poster="/assets/images/Logo.png"
       />
       <HorizontalRule />
       <About />

@@ -11,8 +11,12 @@ const Nav: React.FC = (): JSX.Element => {
   return (
     <Container>
       <Logo
-        src="/assets/images/ToastHeadShotClear.png"
+        src="/assets/images/ToastHeadShotClear.webp"
         alt="TOASTbyte Studios Logo"
+        loading="lazy"
+        width={60}
+        height={60}
+        decoding="async"
       />
       <Title>TOASTbyte Studios</Title>
     </Container>
