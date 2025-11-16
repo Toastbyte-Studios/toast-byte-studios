@@ -41,6 +41,7 @@ const ToastVideo = styled.video`
   width: 40%;
   max-width: 200px;
   border: 2px solid ${COLORS.PRIMARY_DARK};
+  background-color: white;
   border-radius: 50%;
 `;
 
