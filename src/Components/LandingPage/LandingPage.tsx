@@ -1,6 +1,12 @@
 import About from "../About/About";
 import type { JSX } from "react";
-import { Container, HorizontalRule, Title, ToastVideo } from "./styles";
+import {
+  Container,
+  HorizontalRule,
+  SubTitle,
+  Title,
+  ToastVideo,
+} from "./styles";
 
 /**
  * LandingPage component renders the main landing page for the application.
@@ -15,10 +21,10 @@ const LandingPage: React.FC = (): JSX.Element => {
   return (
     <Container>
       <Title>Tech Offline And Survival Tools</Title>
-      <h3>
+      <SubTitle>
         A small studio building tools that work even when the world
         doesn&apos;t.
-      </h3>
+      </SubTitle>
       <HorizontalRule />
       <ToastVideo
         src="/assets/videos/ToastbyteVideo.mp4"

@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Container, Logo, Title } from "./styles";
+import { BrandedLogo, Container, Logo, LogoBackground } from "./styles";
 
 /**
  * Nav is a functional React component that renders the main navigation bar.
@@ -17,7 +17,13 @@ const Nav: React.FC = (): JSX.Element => {
         height={60}
         decoding="async"
       />
-      <Title>TOASTbyte Studios</Title>
+      <LogoBackground>
+        <BrandedLogo
+          src="/assets/images/HeaderLogo.svg"
+          alt="TOASTbyte Studios Logo"
+          decoding="async"
+        />
+      </LogoBackground>
     </Container>
   );
 };

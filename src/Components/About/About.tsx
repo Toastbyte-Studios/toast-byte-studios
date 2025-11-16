@@ -15,10 +15,10 @@ const About: React.FC = () => {
     <Container>
       <h3>About TOASTbyte Studios</h3>
       <p>
-        Toastbyte Studios is a tiny creative studio inspired by a big
+        TOASTbyte Studios is a tiny creative studio inspired by a big
         idea:&nbsp;
         <Bold>technology should still work when nothing else does.</Bold> Born
-        in Las Vegas and named after a very curious dog, Toastbyte focuses on
+        in Las Vegas and named after a very curious dog, TOASTbyte focuses on
         building practical, offline-first tools that help people stay prepared,
         informed, and confident wherever they are.
       </p>

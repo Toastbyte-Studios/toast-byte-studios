@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../constants";
+import { FlexRow } from "../../styles/core";
 
 const Container = styled.nav`
   height: 60px;
@@ -18,12 +19,14 @@ const Container = styled.nav`
   border-bottom: 2px solid ${COLORS.SECONDARY_ACCENT};
 `;
 
-const Title = styled.h1`
-  margin-right: 10px;
-
-  font-size: 20px;
-  font-family: "Raleway", Arial, sans-serif;
-  color: ${COLORS.PRIMARY_DARK};
+const LogoBackground = styled(FlexRow)`
+  padding: 5px;
+  background-color: ${COLORS.SECONDARY_ACCENT};
+  border-radius: 8px;
+  margin-right: 20px;
+  width: 220px;
+  height: 50px;
+  border: 1px solid ${COLORS.PRIMARY_DARK};
 `;
 
 const Logo = styled.img`
@@ -33,4 +36,10 @@ const Logo = styled.img`
   padding: 0;
 `;
 
-export { Container, Title, Logo };
+const BrandedLogo = styled.img`
+  height: 40px;
+  width: auto;
+  padding: 0;
+`;
+
+export { Container, LogoBackground, Logo, BrandedLogo };

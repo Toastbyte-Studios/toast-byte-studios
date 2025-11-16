@@ -22,6 +22,15 @@ const Title = styled.h2`
   margin: 10px 0 0 0;
 `;
 
+const SubTitle = styled.h3`
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  padding: 10px;
+  margin: 0;
+`;
+
 const HorizontalRule = styled.hr`
   width: 90%;
   border: 1px solid ${COLORS.SECONDARY_ACCENT};
@@ -35,4 +44,4 @@ const ToastVideo = styled.video`
   border-radius: 50%;
 `;
 
-export { Container, Title, HorizontalRule, ToastVideo };
+export { Container, Title, SubTitle, HorizontalRule, ToastVideo };
