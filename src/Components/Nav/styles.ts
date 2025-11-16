@@ -12,7 +12,7 @@ const Container = styled.nav`
 
   font-size: 24px;
   font-weight: bold;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
 
   background-color: ${COLORS.TOAST_BROWN};
   border-bottom: 2px solid ${COLORS.SECONDARY_ACCENT};
@@ -23,7 +23,7 @@ const Title = styled.h1`
 
   font-size: 20px;
   font-family: "Raleway", Arial, sans-serif;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
 `;
 
 const Logo = styled.img`

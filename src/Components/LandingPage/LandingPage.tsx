@@ -15,6 +15,10 @@ const LandingPage: React.FC = (): JSX.Element => {
   return (
     <Container>
       <Title>Tech Offline And Survival Tools</Title>
+      <h3>
+        A small studio building tools that work even when the world
+        doesn&apos;t.
+      </h3>
       <HorizontalRule />
       <ToastVideo
         src="/assets/videos/ToastbyteVideo.mp4"

@@ -28,7 +28,7 @@ const About: React.FC = () => {
         utilities you can rely on even without a signal.
       </p>
       <p>
-        We're building everything on a simple philosophy:{" "}
+        We&apos;re building everything on a simple philosophy:{" "}
         <Bold>Tech Offline And Survival Tools — TOAST.</Bold>
       </p>
       <p>Check back soon for updates as the project continues to grow.</p>

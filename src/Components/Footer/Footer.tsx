@@ -27,7 +27,7 @@ const Container = styled.footer`
 
   font-size: 14px;
   font-family: "Inter", Arial, sans-serif;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
 
   background-color: ${COLORS.SECONDARY_ACCENT};
 `;
