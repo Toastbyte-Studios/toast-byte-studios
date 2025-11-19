@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
   return (
     <Container>
-      <Info>©{currentYear} TOASTbyte Studios. All rights reserved.</Info>
+      <Info>©{currentYear} Toastbyte Studios. All rights reserved.</Info>
       <Link href="mailto:info@toastbyte.studio">info@toastbyte.studio</Link>
     </Container>
   );
