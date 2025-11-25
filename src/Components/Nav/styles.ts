@@ -16,7 +16,7 @@ const Container = styled.nav`
   color: ${COLORS.PRIMARY_DARK};
 
   background-color: ${COLORS.TOAST_BROWN};
-  border-bottom: 2px ridge ${COLORS.SECONDARY_ACCENT};
+  border-bottom: 2px ridge ${COLORS.ACCENT};
 `;
 
 const LogoBackground = styled(FlexRow)`

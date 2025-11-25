@@ -15,6 +15,7 @@ const Container = styled.footer`
   color: ${COLORS.PRIMARY_DARK};
 
   background-color: ${COLORS.SECONDARY_ACCENT};
+  border-top: 2px ridge ${COLORS.PRIMARY_DARK};
 `;
 
 const Info = styled.p`
