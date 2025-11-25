@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Bold, Container, FadeInParagraph } from "./styles";
+import { AboutBackground, Bold, Container, FadeInParagraph } from "./styles";
 
 /**
  * Renders the About section for Toastbyte Studios.
@@ -34,7 +34,10 @@ const About: React.FC = () => {
 
   return (
     <Container>
-      <h3>About Toastbyte Studios</h3>
+      <AboutBackground>
+        <h3>About Toastbyte Studios</h3>
+      </AboutBackground>
+
       <FadeInParagraph
         ref={(el) => {
           paragraphsRef.current[0] = el;
