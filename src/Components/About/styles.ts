@@ -59,7 +59,7 @@ const AboutBackground = styled(FlexRow)`
   box-shadow: 0 4px 15px rgba(192, 154, 107, 0.3);
   color: ${COLORS.PRIMARY_DARK};
 
-  h3 {
+  h2 {
     margin: 0;
     font-size: 28px;
     font-weight: 700;
@@ -68,7 +68,7 @@ const AboutBackground = styled(FlexRow)`
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     padding: 10px 24px;
 
-    h3 {
+    h2 {
       font-size: 24px;
     }
   }
@@ -76,7 +76,7 @@ const AboutBackground = styled(FlexRow)`
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
     padding: 8px 20px;
 
-    h3 {
+    h2 {
       font-size: 20px;
     }
   }

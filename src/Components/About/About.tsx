@@ -35,7 +35,7 @@ const About: React.FC = () => {
   return (
     <Container>
       <AboutBackground>
-        <h3>About Toastbyte Studios</h3>
+        <h2>About Toastbyte Studios</h2>
       </AboutBackground>
 
       <FadeInParagraph

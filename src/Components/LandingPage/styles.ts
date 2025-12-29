@@ -47,9 +47,12 @@ const UnderDevelopmentBanner = styled.div`
   text-align: center;
   box-shadow: 0 4px 20px rgba(255, 139, 67, 0.3);
   margin-bottom: 20px;
-  animation: pulse 2s ease-in-out infinite;
   font-family: "Raleway", Arial, sans-serif;
   border: 2px solid rgba(255, 255, 255, 0.1);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: pulse 2s ease-in-out infinite;
+  }
 
   @keyframes pulse {
     0%, 100% {
@@ -97,7 +100,7 @@ const Title = styled.h1`
   }
 `;
 
-const SubTitle = styled.h2`
+const SubTitle = styled.p`
   font-size: 22px;
   font-weight: 400;
   text-align: center;
@@ -151,7 +154,10 @@ const VideoContainer = styled.div`
     background: radial-gradient(circle, rgba(192, 154, 107, 0.2) 0%, transparent 70%);
     border-radius: 50%;
     z-index: 0;
-    animation: glow 3s ease-in-out infinite;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: glow 3s ease-in-out infinite;
+    }
   }
 
   @keyframes glow {
