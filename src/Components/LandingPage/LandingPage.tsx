@@ -2,10 +2,13 @@ import About from "../About/About";
 import type { JSX } from "react";
 import {
   Container,
+  HeroSection,
+  UnderDevelopmentBanner,
   HorizontalRule,
   SubTitle,
   Title,
   ToastVideo,
+  VideoContainer,
 } from "./styles";
 
 /**
@@ -20,24 +23,31 @@ import {
 const LandingPage: React.FC = (): JSX.Element => {
   return (
     <Container>
-      <Title>Tech Offline And Survival Tools</Title>
-      <SubTitle>
-        A small studio building tools that work even when the world
-        doesn&apos;t.
-      </SubTitle>
-      <HorizontalRule />
-      <ToastVideo
-        src="/assets/videos/ToastbyteVideo.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        width={200}
-        height={200}
-        poster="/assets/images/Logo.png"
-      />
-      <HorizontalRule />
+      <HeroSection>
+        <UnderDevelopmentBanner>
+          🚧 Apps Currently Under Development 🚧
+        </UnderDevelopmentBanner>
+        <Title>Tech Offline And Survival Tools</Title>
+        <SubTitle>
+          A small studio building tools that work even when the world
+          doesn&apos;t.
+        </SubTitle>
+        <HorizontalRule />
+        <VideoContainer>
+          <ToastVideo
+            src="/assets/videos/ToastbyteVideo.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            width={200}
+            height={200}
+            poster="/assets/images/Logo.png"
+          />
+        </VideoContainer>
+        <HorizontalRule />
+      </HeroSection>
       <About />
     </Container>
   );

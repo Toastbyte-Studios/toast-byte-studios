@@ -1,35 +1,51 @@
 import styled from "styled-components";
-import { COLORS } from "../../constants";
+import { COLORS, BREAKPOINTS } from "../../constants";
 
 const Container = styled.footer`
-  height: 50px;
   width: 100%;
+  padding: 24px 40px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 
-  font-size: 10px;
+  font-size: 14px;
   font-family: "Inter", Arial, sans-serif;
-  color: ${COLORS.PRIMARY_DARK};
+  color: ${COLORS.PRIMARY_LIGHT};
 
-  background-color: ${COLORS.SECONDARY_ACCENT};
-  border-top: 2px ridge ${COLORS.PRIMARY_DARK};
+  background: rgba(15, 15, 16, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(192, 154, 107, 0.2);
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    padding: 20px 30px;
+    font-size: 13px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px 20px;
+    font-size: 12px;
+  }
 `;
 
 const Info = styled.p`
-  margin-left: 5px;
+  margin: 0;
+  opacity: 0.9;
 `;
 
 const Link = styled.a`
-  color: ${COLORS.PRIMARY_DARK};
+  color: ${COLORS.TOAST_BROWN};
   text-decoration: none;
-  margin-right: 5px;
-  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 
   &:hover {
-    text-decoration: underline;
+    color: ${COLORS.ACCENT};
+    text-shadow: 0 0 10px rgba(255, 139, 67, 0.3);
   }
 `;
 
