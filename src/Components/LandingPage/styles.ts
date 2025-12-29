@@ -148,7 +148,7 @@ const VideoContainer = styled.div`
     position: absolute;
     width: 260px;
     height: 260px;
-    background: radial-gradient(circle, ${COLORS.TOAST_BROWN}33 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(192, 154, 107, 0.2) 0%, transparent 70%);
     border-radius: 50%;
     z-index: 0;
     animation: glow 3s ease-in-out infinite;

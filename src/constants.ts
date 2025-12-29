@@ -25,12 +25,12 @@ const COLORS = {
 
 /**
  * Breakpoints for responsive design
+ * Use max-width media queries with these values
  */
 const BREAKPOINTS = {
   MOBILE: "599px",
   TABLET_PORTRAIT: "767px",
-  TABLET_LANDSCAPE: "1023px",
-  DESKTOP: "1024px",
+  TABLET_LANDSCAPE: "1024px",
 };
 
 export { COLORS, BREAKPOINTS };

@@ -99,5 +99,4 @@ const FadeInParagraph = styled.p`
   padding: 0;
 `;
 
-export { Container, Bold, AboutBackground };
-export { FadeInParagraph };
+export { Container, Bold, AboutBackground, FadeInParagraph };
