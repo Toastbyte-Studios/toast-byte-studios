@@ -7,14 +7,30 @@
  * @property ACCENT         - The accent color used for highlights and important elements.
  * @property SECONDARY_ACCENT  - The first secondary color for complementary UI elements.
  * @property BACKGROUND     - The background color.
+ * @property GRADIENT_START - Gradient start color for modern backgrounds.
+ * @property GRADIENT_END   - Gradient end color for modern backgrounds.
+ * @property CARD_BG        - Card background color with transparency.
  */
 const COLORS = {
   TOAST_BROWN: "#C09A6B",
-  PRIMARY_DARK: "#1F1F1F",
+  PRIMARY_DARK: "#0f0f10",
   PRIMARY_LIGHT: "#F2EDE4",
   ACCENT: "#FF8B43",
   SECONDARY_ACCENT: "#8DAA9D",
-  BACKGROUND: "#D9C8B0",
+  BACKGROUND: "#1a1a1d",
+  GRADIENT_START: "#1a1a1d",
+  GRADIENT_END: "#2d2d35",
+  CARD_BG: "rgba(192, 154, 107, 0.1)",
 };
 
-export { COLORS };
+/**
+ * Breakpoints for responsive design
+ * Use max-width media queries with these values
+ */
+const BREAKPOINTS = {
+  MOBILE: "599px",
+  TABLET_PORTRAIT: "767px",
+  TABLET_LANDSCAPE: "1024px",
+};
+
+export { COLORS, BREAKPOINTS };

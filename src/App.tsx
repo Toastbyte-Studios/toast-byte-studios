@@ -16,10 +16,11 @@ function App() {
 }
 
 const Container = styled(FlexCol)`
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   justify-content: flex-start;
-  background-color: ${COLORS.BACKGROUND};
+  background: linear-gradient(135deg, ${COLORS.GRADIENT_START} 0%, ${COLORS.GRADIENT_END} 100%);
+  color: ${COLORS.PRIMARY_LIGHT};
 `;
 
 export default App;
