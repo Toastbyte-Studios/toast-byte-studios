@@ -27,10 +27,10 @@ const LandingPage: React.FC = (): JSX.Element => {
         <UnderDevelopmentBanner>
           🚧 Apps Currently Under Development 🚧
         </UnderDevelopmentBanner>
-        <Title>Tech Offline And Survival Tools</Title>
+        <Title>Toastbyte Studios</Title>
         <SubTitle>
-          A small studio building tools that work even when the world
-          doesn&apos;t.
+          A small app studio based in Las Vegas, building practical tools that
+          make a real difference.
         </SubTitle>
         <HorizontalRule />
         <VideoContainer>
