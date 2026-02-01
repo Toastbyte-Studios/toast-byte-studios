@@ -37,14 +37,20 @@ const Container = styled.nav`
 
 const LogoBackground = styled(FlexRow)`
   padding: 8px 16px;
-  background: linear-gradient(135deg, ${COLORS.TOAST_BROWN} 0%, ${COLORS.SECONDARY_ACCENT} 100%);
+  background: linear-gradient(
+    135deg,
+    ${COLORS.TOAST_BROWN} 0%,
+    ${COLORS.SECONDARY_ACCENT} 100%
+  );
   border-radius: 12px;
   width: auto;
   min-width: 200px;
   height: 55px;
   border: 1px solid rgba(192, 154, 107, 0.3);
   box-shadow: 0 4px 15px rgba(192, 154, 107, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -68,13 +74,11 @@ const Logo = styled.img`
   height: 70px;
   width: auto;
   margin-left: 0;
-  padding: 0;
+  padding: 5px;
+  background: white;
+  border-radius: 50%;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   transition: transform 0.2s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     height: 60px;

@@ -24,7 +24,7 @@ const About: React.FC = () => {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     paragraphsRef.current.forEach((el) => {
       if (el) observer.observe(el);
@@ -43,36 +43,40 @@ const About: React.FC = () => {
           paragraphsRef.current[0] = el;
         }}
       >
-        Toastbyte Studios is a tiny creative studio inspired by a big
-        idea:&nbsp;
-        <Bold>technology should still work when nothing else does.</Bold> Born
-        in Las Vegas and named after a very curious dog, Toastbyte focuses on
-        building practical, offline-first tools that help people stay prepared,
-        informed, and confident wherever they are.
+        Toastbyte Studios is a small app studio based in Las Vegas, building
+        practical tools that make a real difference.&nbsp;
+        <Bold>
+          We believe technology should work for you — anytime, anywhere.
+        </Bold>
       </FadeInParagraph>
       <FadeInParagraph
         ref={(el) => {
           paragraphsRef.current[1] = el;
         }}
       >
-        Our first app is currently in development — an offline emergency and
-        survival toolkit packed with maps, guides, references, and helpful
-        utilities you can rely on even without a signal.
+        <Bold>TOAST (Tactical Operations and Survival Toolkit)</Bold> — Built on
+        a simple philosophy: technology should still work even when the world
+        doesn&apos;t. An offline-first emergency and survival toolkit packed
+        with maps, guides, references, and utilities you can rely on even
+        without a signal.
       </FadeInParagraph>
       <FadeInParagraph
         ref={(el) => {
           paragraphsRef.current[2] = el;
         }}
       >
-        We&apos;re building everything on a simple philosophy:{" "}
-        <Bold>Tech Offline And Survival Tools — TOAST.</Bold>
+        <Bold>Strike Coach</Bold> — A bowling score tracker with a built-in
+        bowling coach designed to analyze your game and help you improve. Track
+        your scores, identify patterns, and get personalized tips to take your
+        bowling to the next level.
       </FadeInParagraph>
       <FadeInParagraph
         ref={(el) => {
           paragraphsRef.current[3] = el;
         }}
       >
-        Check back soon for updates as the project continues to grow.
+        Both apps are currently in development. Check back soon for updates as
+        we continue to build!
       </FadeInParagraph>
     </Container>
   );
