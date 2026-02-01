@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { FlexCol } from "../../styles/core";
-import { COLORS, BREAKPOINTS } from "../../constants";
+import styled from 'styled-components';
+import { FlexCol } from '../../styles/core';
+import { COLORS, BREAKPOINTS } from '../../constants';
 
 const Container = styled(FlexCol)`
   flex: 1;
@@ -8,7 +8,7 @@ const Container = styled(FlexCol)`
   justify-content: flex-start;
   padding: 60px 40px;
 
-  font-family: "Inter", Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     padding: 40px 30px;
@@ -47,7 +47,7 @@ const UnderDevelopmentBanner = styled.div`
   text-align: center;
   box-shadow: 0 4px 20px rgba(255, 139, 67, 0.3);
   margin-bottom: 20px;
-  font-family: "Raleway", Arial, sans-serif;
+  font-family: 'Raleway', Arial, sans-serif;
   border: 2px solid rgba(255, 255, 255, 0.1);
 
   @media (prefers-reduced-motion: no-preference) {
@@ -55,7 +55,8 @@ const UnderDevelopmentBanner = styled.div`
   }
 
   @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
       transform: scale(1);
       box-shadow: 0 4px 20px rgba(255, 139, 67, 0.3);
     }
@@ -80,7 +81,7 @@ const Title = styled.h1`
   font-size: 48px;
   font-weight: 700;
   text-align: center;
-  font-family: "Raleway", Arial, sans-serif;
+  font-family: 'Raleway', Arial, sans-serif;
   color: ${COLORS.PRIMARY_LIGHT};
   margin: 20px 0 10px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -104,7 +105,7 @@ const SubTitle = styled.p`
   font-size: 22px;
   font-weight: 400;
   text-align: center;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   color: ${COLORS.TOAST_BROWN};
   padding: 10px 20px;
   margin: 0;
@@ -126,7 +127,12 @@ const HorizontalRule = styled.hr`
   max-width: 600px;
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, ${COLORS.TOAST_BROWN} 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    ${COLORS.TOAST_BROWN} 50%,
+    transparent 100%
+  );
   margin: 30px 0;
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
@@ -151,7 +157,11 @@ const VideoContainer = styled.div`
     position: absolute;
     width: 260px;
     height: 260px;
-    background: radial-gradient(circle, rgba(192, 154, 107, 0.2) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(192, 154, 107, 0.2) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     z-index: 0;
 
@@ -161,7 +171,8 @@ const VideoContainer = styled.div`
   }
 
   @keyframes glow {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.5;
       transform: scale(1);
     }
@@ -211,4 +222,13 @@ const ToastVideo = styled.video`
   }
 `;
 
-export { Container, HeroSection, UnderDevelopmentBanner, Title, SubTitle, HorizontalRule, VideoContainer, ToastVideo };
+export {
+  Container,
+  HeroSection,
+  UnderDevelopmentBanner,
+  Title,
+  SubTitle,
+  HorizontalRule,
+  VideoContainer,
+  ToastVideo,
+};

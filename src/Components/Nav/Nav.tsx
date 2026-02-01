@@ -1,5 +1,5 @@
-import type { JSX } from "react";
-import { BrandedLogo, Container, Logo, LogoBackground } from "./styles";
+import type { JSX } from 'react';
+import { BrandedLogo, Container, Logo, LogoBackground } from './styles';
 
 /**
  * Nav is a functional React component that renders the main navigation bar.

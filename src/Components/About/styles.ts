@@ -1,7 +1,7 @@
-import { css } from "styled-components";
-import styled from "styled-components";
-import { FlexCol, FlexRow } from "../../styles/core";
-import { COLORS, BREAKPOINTS } from "../../constants";
+import { css } from 'styled-components';
+import styled from 'styled-components';
+import { FlexCol, FlexRow } from '../../styles/core';
+import { COLORS, BREAKPOINTS } from '../../constants';
 
 const Container = styled(FlexCol)`
   width: 100%;
@@ -12,7 +12,7 @@ const Container = styled(FlexCol)`
   margin: 20px 0;
   gap: 24px;
 
-  font-family: "Inter", Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   background: rgba(192, 154, 107, 0.08);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(192, 154, 107, 0.2);
@@ -52,10 +52,14 @@ const Bold = styled.span`
 const AboutBackground = styled(FlexRow)`
   width: auto;
   padding: 12px 28px;
-  background: linear-gradient(135deg, ${COLORS.TOAST_BROWN} 0%, ${COLORS.SECONDARY_ACCENT} 100%);
+  background: linear-gradient(
+    135deg,
+    ${COLORS.TOAST_BROWN} 0%,
+    ${COLORS.SECONDARY_ACCENT} 100%
+  );
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   box-shadow: 0 4px 15px rgba(192, 154, 107, 0.3);
   color: ${COLORS.PRIMARY_DARK};
 
@@ -85,7 +89,8 @@ const AboutBackground = styled(FlexRow)`
 export const fadeInCss = css`
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   &.fade-in-visible {
     opacity: 1;

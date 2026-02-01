@@ -1,5 +1,5 @@
-import About from "../About/About";
-import type { JSX } from "react";
+import About from '../About/About';
+import type { JSX } from 'react';
 import {
   Container,
   HeroSection,
@@ -9,7 +9,7 @@ import {
   Title,
   ToastVideo,
   VideoContainer,
-} from "./styles";
+} from './styles';
 
 /**
  * LandingPage component renders the main landing page for the application.

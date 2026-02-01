@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { COLORS, BREAKPOINTS } from "../../constants";
-import { FlexRow } from "../../styles/core";
+import styled from 'styled-components';
+import { COLORS, BREAKPOINTS } from '../../constants';
+import { FlexRow } from '../../styles/core';
 
 const Container = styled.nav`
   height: 80px;

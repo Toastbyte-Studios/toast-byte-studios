@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { COLORS, BREAKPOINTS } from "../../constants";
+import styled from 'styled-components';
+import { COLORS, BREAKPOINTS } from '../../constants';
 
 const Container = styled.footer`
   width: 100%;
@@ -11,7 +11,7 @@ const Container = styled.footer`
   justify-content: space-around;
 
   font-size: 14px;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   color: ${COLORS.PRIMARY_LIGHT};
 
   background: rgba(15, 15, 16, 0.95);
@@ -41,7 +41,9 @@ const Link = styled.a`
   color: ${COLORS.TOAST_BROWN};
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
 
   &:hover {
     color: ${COLORS.ACCENT};

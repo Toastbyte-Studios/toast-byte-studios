@@ -1,4 +1,4 @@
-import { Container, Info, Link } from "./style";
+import { Container, Info, Link } from './style';
 
 /**
  * Footer component that displays the current year and a copyright notice.
