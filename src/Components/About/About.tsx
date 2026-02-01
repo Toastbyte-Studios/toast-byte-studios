@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { AboutBackground, Bold, Container, FadeInParagraph } from "./styles";
+import { useEffect, useRef } from 'react';
+import { AboutBackground, Bold, Container, FadeInParagraph } from './styles';
 
 /**
  * Renders the About section for Toastbyte Studios.
@@ -19,7 +19,7 @@ const About: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("fade-in-visible");
+            entry.target.classList.add('fade-in-visible');
             observer.unobserve(entry.target);
           }
         });

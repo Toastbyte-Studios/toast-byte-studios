@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { COLORS, BREAKPOINTS } from "../../constants";
-import { FlexRow } from "../../styles/core";
+import styled from 'styled-components';
+import { COLORS, BREAKPOINTS } from '../../constants';
+import { FlexRow } from '../../styles/core';
 
 const Container = styled.nav`
   height: 80px;
@@ -16,10 +16,10 @@ const Container = styled.nav`
   font-weight: bold;
   color: ${COLORS.PRIMARY_LIGHT};
 
-  background: rgba(15, 15, 16, 0.95);
+  background: rgba(44, 62, 80, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(192, 154, 107, 0.2);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(192, 154, 107, 0.25);
+  box-shadow: 0 2px 20px rgba(44, 62, 80, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;

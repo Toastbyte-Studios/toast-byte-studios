@@ -12,15 +12,15 @@
  * @property CARD_BG        - Card background color with transparency.
  */
 const COLORS = {
-  TOAST_BROWN: "#C09A6B",
-  PRIMARY_DARK: "#0f0f10",
-  PRIMARY_LIGHT: "#F2EDE4",
-  ACCENT: "#FF8B43",
-  SECONDARY_ACCENT: "#8DAA9D",
-  BACKGROUND: "#1a1a1d",
-  GRADIENT_START: "#1a1a1d",
-  GRADIENT_END: "#2d2d35",
-  CARD_BG: "rgba(192, 154, 107, 0.1)",
+  TOAST_BROWN: '#C09A6B',
+  PRIMARY_DARK: '#2C3E50',
+  PRIMARY_LIGHT: '#F5F1EB',
+  ACCENT: '#E67E4A',
+  SECONDARY_ACCENT: '#8DAA9D',
+  BACKGROUND: '#3D4F5F',
+  GRADIENT_START: '#34495E',
+  GRADIENT_END: '#4A6274',
+  CARD_BG: 'rgba(192, 154, 107, 0.12)',
 };
 
 /**
@@ -28,9 +28,9 @@ const COLORS = {
  * Use max-width media queries with these values
  */
 const BREAKPOINTS = {
-  MOBILE: "599px",
-  TABLET_PORTRAIT: "767px",
-  TABLET_LANDSCAPE: "1024px",
+  MOBILE: '599px',
+  TABLET_PORTRAIT: '767px',
+  TABLET_LANDSCAPE: '1024px',
 };
 
 export { COLORS, BREAKPOINTS };
