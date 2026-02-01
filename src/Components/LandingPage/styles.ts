@@ -38,17 +38,21 @@ const HeroSection = styled(FlexCol)`
 `;
 
 const UnderDevelopmentBanner = styled.div`
-  background: linear-gradient(135deg, ${COLORS.ACCENT} 0%, #ff6b1a 100%);
+  background: linear-gradient(
+    135deg,
+    ${COLORS.ACCENT} 0%,
+    ${COLORS.TOAST_BROWN} 100%
+  );
   color: ${COLORS.PRIMARY_LIGHT};
   padding: 16px 32px;
   border-radius: 12px;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(255, 139, 67, 0.3);
+  box-shadow: 0 4px 20px rgba(192, 154, 107, 0.35);
   margin-bottom: 20px;
   font-family: 'Raleway', Arial, sans-serif;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.15);
 
   @media (prefers-reduced-motion: no-preference) {
     animation: pulse 2s ease-in-out infinite;
@@ -58,11 +62,11 @@ const UnderDevelopmentBanner = styled.div`
     0%,
     100% {
       transform: scale(1);
-      box-shadow: 0 4px 20px rgba(255, 139, 67, 0.3);
+      box-shadow: 0 4px 20px rgba(192, 154, 107, 0.35);
     }
     50% {
       transform: scale(1.02);
-      box-shadow: 0 6px 30px rgba(255, 139, 67, 0.5);
+      box-shadow: 0 6px 30px rgba(192, 154, 107, 0.5);
     }
   }
 

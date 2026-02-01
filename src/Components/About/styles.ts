@@ -13,11 +13,11 @@ const Container = styled(FlexCol)`
   gap: 24px;
 
   font-family: 'Inter', Arial, sans-serif;
-  background: rgba(192, 154, 107, 0.08);
+  background: rgba(192, 154, 107, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(192, 154, 107, 0.2);
+  border: 1px solid rgba(192, 154, 107, 0.25);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.25);
   color: ${COLORS.PRIMARY_LIGHT};
   line-height: 1.8;
   font-size: 18px;

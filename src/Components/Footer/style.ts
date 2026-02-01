@@ -14,10 +14,10 @@ const Container = styled.footer`
   font-family: 'Inter', Arial, sans-serif;
   color: ${COLORS.PRIMARY_LIGHT};
 
-  background: rgba(15, 15, 16, 0.95);
+  background: rgba(44, 62, 80, 0.95);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(192, 154, 107, 0.2);
-  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(192, 154, 107, 0.25);
+  box-shadow: 0 -2px 20px rgba(44, 62, 80, 0.3);
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     padding: 20px 30px;
