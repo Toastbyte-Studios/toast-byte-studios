@@ -1,8 +1,8 @@
 import type { JSX } from 'react';
 import {
-  Container,
   PageContainer,
-  Header,
+  PageContent,
+  PageHeader,
   SectionTitle,
   Paragraph,
   ContactLink,
@@ -21,10 +21,10 @@ import {
 const PrivacyPolicy: React.FC = (): JSX.Element => {
   return (
     <PageContainer>
-      <Container>
-        <Header>
+      <PageContent>
+        <PageHeader>
           <h1>Privacy Policy</h1>
-        </Header>
+        </PageHeader>
         <LastUpdated>Last updated: February 2025</LastUpdated>
 
         <Paragraph>
@@ -138,7 +138,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
           </ContactLink>
           .
         </Paragraph>
-      </Container>
+      </PageContent>
     </PageContainer>
   );
 };

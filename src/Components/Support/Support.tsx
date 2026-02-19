@@ -1,8 +1,8 @@
 import type { JSX } from 'react';
 import {
-  Container,
   PageContainer,
-  Header,
+  PageContent,
+  PageHeader,
   SectionTitle,
   Question,
   Paragraph,
@@ -22,10 +22,10 @@ import {
 const Support: React.FC = (): JSX.Element => {
   return (
     <PageContainer>
-      <Container>
-        <Header>
+      <PageContent>
+        <PageHeader>
           <h1>Support</h1>
-        </Header>
+        </PageHeader>
 
         <Paragraph>
           Need help with TOAST? Check the FAQ below or reach out to us directly
@@ -100,7 +100,7 @@ const Support: React.FC = (): JSX.Element => {
           </ContactLink>{' '}
           with the subject line &quot;Feedback&quot;.
         </Paragraph>
-      </Container>
+      </PageContent>
     </PageContainer>
   );
 };
