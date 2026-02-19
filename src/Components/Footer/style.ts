@@ -51,4 +51,9 @@ const Link = styled.a`
   }
 `;
 
-export { Container, Link, Info };
+const NavLinks = styled.nav`
+  display: flex;
+  gap: 16px;
+`;
+
+export { Container, Link, Info, NavLinks };

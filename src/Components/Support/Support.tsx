@@ -1,0 +1,108 @@
+import type { JSX } from 'react';
+import {
+  PageContainer,
+  PageContent,
+  PageHeader,
+  SectionTitle,
+  Question,
+  Paragraph,
+  ContactLink,
+  Divider,
+} from './styles';
+
+/**
+ * Support component renders the TOAST app support and FAQ page.
+ *
+ * Provides a TOAST-specific FAQ section covering common questions, a contact email,
+ * and a link to submit feedback — as required for App Store submission.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered TOAST support/FAQ page.
+ */
+const Support: React.FC = (): JSX.Element => {
+  return (
+    <PageContainer>
+      <PageContent>
+        <PageHeader>
+          <h1>Support</h1>
+        </PageHeader>
+
+        <Paragraph>
+          Need help with TOAST? Check the FAQ below or reach out to us directly
+          — we&apos;re happy to help.
+        </Paragraph>
+
+        <SectionTitle>Frequently Asked Questions</SectionTitle>
+        <Divider />
+
+        <Question>Does TOAST work without an internet connection?</Question>
+        <Paragraph>
+          Yes. TOAST is designed to work fully offline. All core features —
+          maps, guides, references, and utilities — are available without any
+          network connection. No account or sign-in is required.
+        </Paragraph>
+
+        <Question>How do I unlock the Pro version?</Question>
+        <Paragraph>
+          The Pro unlock is a one-time in-app purchase available through the
+          Apple App Store or Google Play Store. Once purchased, Pro features are
+          unlocked permanently on your device. If you reinstall the app, tap
+          &quot;Restore Purchases&quot; to re-activate your Pro unlock at no
+          extra charge.
+        </Paragraph>
+
+        <Question>Which platforms is TOAST available on?</Question>
+        <Paragraph>
+          TOAST is currently in development for iOS (iPhone and iPad) and
+          Android. Check back at{' '}
+          <ContactLink href="https://toastbyte.studio">
+            toastbyte.studio
+          </ContactLink>{' '}
+          for release announcements.
+        </Paragraph>
+
+        <Question>How do I restore a previous purchase?</Question>
+        <Paragraph>
+          Open the app and navigate to the Pro unlock screen, then tap
+          &quot;Restore Purchases&quot;. Make sure you are signed in to the same
+          Apple ID or Google account used for the original purchase.
+        </Paragraph>
+
+        <Question>How do I delete my data?</Question>
+        <Paragraph>
+          All app data is stored locally on your device — we do not store your
+          data on any servers. To delete all app data, simply uninstall the app
+          from your device. See our{' '}
+          <ContactLink href="#privacy">Privacy Policy</ContactLink> for more
+          details.
+        </Paragraph>
+
+        <Divider />
+
+        <SectionTitle>Contact Us</SectionTitle>
+        <Paragraph>
+          Have a question not covered above, found a bug, or want to share
+          feedback? We&apos;d love to hear from you.
+        </Paragraph>
+        <Paragraph>
+          📧{' '}
+          <ContactLink href="mailto:info@toastbyte.studio">
+            info@toastbyte.studio
+          </ContactLink>
+        </Paragraph>
+
+        <SectionTitle>Share Feedback</SectionTitle>
+        <Paragraph>
+          Help us improve! Send your feature requests, bug reports, or general
+          thoughts to{' '}
+          <ContactLink href="mailto:info@toastbyte.studio?subject=Feedback">
+            info@toastbyte.studio
+          </ContactLink>{' '}
+          with the subject line &quot;Feedback&quot;.
+        </Paragraph>
+      </PageContent>
+    </PageContainer>
+  );
+};
+
+export default Support;
