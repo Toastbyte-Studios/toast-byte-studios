@@ -53,10 +53,10 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
           transmitted to our servers.
         </Paragraph>
         <Paragraph>
-          <strong>Device sensors:</strong> TOAST may access device sensors
-          (such as compass, barometer, or accelerometer) to power offline
-          navigation and utility features. Sensor data is processed locally and
-          is never stored or transmitted.
+          <strong>Device sensors:</strong> TOAST may access device sensors (such
+          as compass, barometer, or accelerometer) to power offline navigation
+          and utility features. Sensor data is processed locally and is never
+          stored or transmitted.
         </Paragraph>
         <Paragraph>
           <strong>Purchase information:</strong> If you purchase the Pro unlock,
@@ -65,15 +65,12 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
         </Paragraph>
 
         <SectionTitle>2. How We Use Your Information</SectionTitle>
-        <Paragraph>
-          We use the information described above solely to:
-        </Paragraph>
+        <Paragraph>We use the information described above solely to:</Paragraph>
         <Paragraph>
           • Provide and improve the functionality of TOAST
           <br />
           • Ensure compatibility across devices and operating system versions
-          <br />
-          • Respond to your support requests
+          <br />• Respond to your support requests
         </Paragraph>
         <Paragraph>
           We do not use your data for advertising, profiling, or any purpose
@@ -94,10 +91,10 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>4. Data Retention</SectionTitle>
         <Paragraph>
-          Because TOAST is designed to work offline and store data locally
-          on your device, we do not retain personal data on our servers.
-          Uninstalling TOAST from your device will remove all locally stored
-          app data.
+          Because TOAST is designed to work offline and store data locally on
+          your device, we do not retain personal data on our servers.
+          Uninstalling TOAST from your device will remove all locally stored app
+          data.
         </Paragraph>
 
         <SectionTitle>5. Your Rights and Data Deletion</SectionTitle>
@@ -134,8 +131,8 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>8. Contact Us</SectionTitle>
         <Paragraph>
-          If you have any questions about this Privacy Policy, please contact
-          us at{' '}
+          If you have any questions about this Privacy Policy, please contact us
+          at{' '}
           <ContactLink href="mailto:info@toastbyte.studio">
             info@toastbyte.studio
           </ContactLink>

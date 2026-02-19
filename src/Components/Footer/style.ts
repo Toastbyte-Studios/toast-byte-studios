@@ -53,12 +53,7 @@ const Link = styled.a`
 
 const NavLinks = styled.nav`
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    gap: 14px;
-  }
+  gap: 16px;
 `;
 
 export { Container, Link, Info, NavLinks };
