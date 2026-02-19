@@ -29,16 +29,16 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <Paragraph>
           Toastbyte Studios (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;)
-          operates the TOAST and Strike Coach mobile applications (the
-          &quot;Apps&quot;). This Privacy Policy explains what information we
-          collect, how we use it, and your rights regarding that information.
+          operates the TOAST mobile application (the &quot;App&quot;). This
+          Privacy Policy explains what information we collect, how we use it,
+          and your rights regarding that information.
         </Paragraph>
 
         <SectionTitle>1. Information We Collect</SectionTitle>
         <Paragraph>
           <strong>Information you provide:</strong> We do not require account
-          registration. Any data you enter into the Apps (such as bowling scores
-          or saved preferences) is stored locally on your device and is not
+          registration. Any data you enter into TOAST (such as saved preferences
+          or bookmarked guides) is stored locally on your device and is not
           transmitted to our servers.
         </Paragraph>
         <Paragraph>
@@ -69,7 +69,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
           We use the information described above solely to:
         </Paragraph>
         <Paragraph>
-          • Provide and improve the functionality of our Apps
+          • Provide and improve the functionality of TOAST
           <br />
           • Ensure compatibility across devices and operating system versions
           <br />
@@ -77,7 +77,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
         </Paragraph>
         <Paragraph>
           We do not use your data for advertising, profiling, or any purpose
-          beyond operating the Apps.
+          beyond operating TOAST.
         </Paragraph>
 
         <SectionTitle>3. Data Sharing with Third Parties</SectionTitle>
@@ -94,17 +94,17 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>4. Data Retention</SectionTitle>
         <Paragraph>
-          Because the Apps are designed to work offline and store data locally
+          Because TOAST is designed to work offline and store data locally
           on your device, we do not retain personal data on our servers.
-          Uninstalling the App from your device will remove all locally stored
+          Uninstalling TOAST from your device will remove all locally stored
           app data.
         </Paragraph>
 
         <SectionTitle>5. Your Rights and Data Deletion</SectionTitle>
         <Paragraph>
           Since we do not collect or store personal data on our servers, there
-          is no user account or server-side data to delete. All app data resides
-          on your device and can be removed by uninstalling the App.
+          is no user account or server-side data to delete. All TOAST data
+          resides on your device and can be removed by uninstalling TOAST.
         </Paragraph>
         <Paragraph>
           If you believe we hold any personal data about you, or to submit a
@@ -117,7 +117,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>6. Children&apos;s Privacy</SectionTitle>
         <Paragraph>
-          Our Apps are not directed at children under the age of 13. We do not
+          TOAST is not directed at children under the age of 13. We do not
           knowingly collect personal information from children. If you are a
           parent or guardian and believe your child has provided us with
           personal information, please contact us and we will promptly delete
@@ -128,7 +128,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
         <Paragraph>
           We may update this Privacy Policy from time to time. Changes will be
           posted on this page with an updated &quot;Last updated&quot; date.
-          Continued use of the Apps after changes are posted constitutes your
+          Continued use of TOAST after changes are posted constitutes your
           acceptance of the revised policy.
         </Paragraph>
 

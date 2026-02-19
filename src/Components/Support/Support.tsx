@@ -28,19 +28,18 @@ const Support: React.FC = (): JSX.Element => {
         </Header>
 
         <Paragraph>
-          Need help with TOAST or Strike Coach? Check the FAQ below or reach out
-          to us directly — we&apos;re happy to help.
+          Need help with TOAST? Check the FAQ below or reach out to us directly
+          — we&apos;re happy to help.
         </Paragraph>
 
         <SectionTitle>Frequently Asked Questions</SectionTitle>
         <Divider />
 
-        <Question>Does the app work without an internet connection?</Question>
+        <Question>Does TOAST work without an internet connection?</Question>
         <Paragraph>
-          Yes. Both TOAST and Strike Coach are designed to work fully offline.
-          All core features — maps, guides, references, score tracking, and
-          coaching tips — are available without any network connection. No
-          account or sign-in is required.
+          Yes. TOAST is designed to work fully offline. All core features —
+          maps, guides, references, and utilities — are available without any
+          network connection. No account or sign-in is required.
         </Paragraph>
 
         <Question>How do I unlock the Pro version?</Question>
@@ -52,10 +51,10 @@ const Support: React.FC = (): JSX.Element => {
           extra charge.
         </Paragraph>
 
-        <Question>Which platforms are the apps available on?</Question>
+        <Question>Which platforms is TOAST available on?</Question>
         <Paragraph>
-          TOAST and Strike Coach are currently in development. They are being
-          built for iOS (iPhone and iPad) and Android. Check back at{' '}
+          TOAST is currently in development for iOS (iPhone and iPad) and
+          Android. Check back at{' '}
           <ContactLink href="https://toastbyte.studio">
             toastbyte.studio
           </ContactLink>{' '}
