@@ -1,4 +1,5 @@
 import About from '../About/About';
+import FounderStory from '../FounderStory/FounderStory';
 import type { JSX } from 'react';
 import {
   Container,
@@ -49,6 +50,7 @@ const LandingPage: React.FC = (): JSX.Element => {
         <HorizontalRule />
       </HeroSection>
       <About />
+      <FounderStory />
     </Container>
   );
 };
