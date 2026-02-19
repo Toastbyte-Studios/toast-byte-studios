@@ -11,13 +11,13 @@ import {
 } from './styles';
 
 /**
- * Support component renders the support page for Toastbyte Studios.
+ * Support component renders the TOAST app support and FAQ page.
  *
- * Provides a FAQ section covering common questions, a contact email,
+ * Provides a TOAST-specific FAQ section covering common questions, a contact email,
  * and a link to submit feedback — as required for App Store submission.
  *
  * @component
- * @returns {JSX.Element} The rendered support page.
+ * @returns {JSX.Element} The rendered TOAST support/FAQ page.
  */
 const Support: React.FC = (): JSX.Element => {
   return (
