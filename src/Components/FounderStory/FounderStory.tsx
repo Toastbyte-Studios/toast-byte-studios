@@ -55,14 +55,14 @@ const FounderStory: React.FC = (): JSX.Element => {
         <ImageColumn>
           {hikingPhotoLoaded && (
             <HikingPhoto
-              src="/assets/images/JasonAndToastHiking.webp"
+              src="/assets/images/ToastMeReal.webp"
               alt="Jason and Toast at Red Rock Canyon, Las Vegas — backpack on, desert scrub and canyon walls in the background"
               onError={() => setHikingPhotoLoaded(false)}
             />
           )}
           <ToastCloseupWrapper>
             <ToastCloseupPhoto
-              src="/assets/images/ToastHeadShotClear.webp"
+              src="/assets/images/ToastReal.webp"
               alt="Toast the Jack Russell Terrier — the face that inspired the app icon"
             />
             <PhotoCaption>
@@ -87,11 +87,11 @@ const FounderStory: React.FC = (): JSX.Element => {
             }}
           >
             I&apos;m a developer based in Las Vegas. I hike and explore the
-            desert a lot — usually with Toast alongside me — and I kept running
+            desert a lot (usually with Toast alongside me) and I kept running
             into the same problem: I&apos;d have three or four different apps
             open trying to cover navigation, emergency reference, and basic
-            survival tools, none of them working well together, all of them
-            useless the moment I lost signal.
+            survival tools, none of them working well together, and all of them
+            useless the moment I lost signal (which is often in the desert).
           </FadeInParagraph>
 
           <FadeInParagraph
@@ -107,11 +107,11 @@ const FounderStory: React.FC = (): JSX.Element => {
               paragraphsRef.current[3] = el;
             }}
           >
-            <strong>TOAST — Tactical Operations and Survival Toolkit</strong>{' '}
-            — is named after her because she&apos;s the companion who&apos;s
-            always with me out there. The app is meant to be the same:
-            something you trust, something that&apos;s always ready, something
-            that doesn&apos;t let you down when things get serious.
+            <strong>TOAST — Tactical Operations and Survival Toolkit</strong> —
+            is named after her because she&apos;s the companion who&apos;s
+            always with me out there. The app is meant to be the same: something
+            you trust, something that&apos;s always ready, something that
+            doesn&apos;t let you down when things get serious.
           </FadeInParagraph>
 
           <FadeInParagraph
@@ -120,8 +120,8 @@ const FounderStory: React.FC = (): JSX.Element => {
             }}
           >
             It&apos;s been a solo project built in the margins of a full-time
-            job. I&apos;m a developer, not a prepper influencer. I just wanted
-            a tool that worked, and when I couldn&apos;t find it, I built it.
+            job. I&apos;m a developer, not an influencer. I just wanted a tool
+            that worked, and when I couldn&apos;t find it, I built it.
           </FadeInParagraph>
         </TextBlock>
       </ContentLayout>
