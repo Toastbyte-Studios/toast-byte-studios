@@ -1,0 +1,8 @@
+name = "toast-email-worker"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "toast-email-signups"
+database_id = "d4b1a917-af5a-4b8e-9016-5b6a76facaf1"

@@ -465,6 +465,13 @@ const EmailSuccessMessage = styled.p`
   font-weight: 600;
 `;
 
+const EmailErrorMessage = styled.p`
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #e05c5c;
+  font-family: 'Inter', Arial, sans-serif;
+`;
+
 export {
   Container,
   HeroSection,
@@ -487,4 +494,5 @@ export {
   EmailInput,
   EmailSubmitButton,
   EmailSuccessMessage,
+  EmailErrorMessage,
 };

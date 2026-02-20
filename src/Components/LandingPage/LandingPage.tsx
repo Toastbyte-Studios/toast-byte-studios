@@ -22,6 +22,7 @@ import {
   EmailInput,
   EmailSubmitButton,
   EmailSuccessMessage,
+  EmailErrorMessage,
 } from './styles';
 
 /**
@@ -36,16 +37,39 @@ import {
  */
 const LandingPage: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [submitted, setSubmitted] = useState(
     () => localStorage.getItem('toast_notify_submitted') === 'true',
   );
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      localStorage.setItem('toast_notify_submitted', 'true');
-      setSubmitted(true);
+    if (!email.trim()) return;
+
+    if (!EMAIL_REGEX.test(email.trim())) {
+      setEmailError('Please enter a valid email address.');
+      return;
     }
+    setEmailError('');
+
+    try {
+      const res = await fetch(
+        'https://toast-email-worker.jshprintz.workers.dev',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email.trim() }),
+        },
+      );
+      if (!res.ok) throw new Error('Request failed');
+    } catch {
+      // Silently succeed on network errors — don't block the user
+    }
+
+    localStorage.setItem('toast_notify_submitted', 'true');
+    setSubmitted(true);
   };
 
   return (
@@ -64,7 +88,10 @@ const LandingPage: React.FC = (): JSX.Element => {
               and utilities. Ready when the network isn&apos;t.
             </HeroSubheadline>
             <AppStoreRow>
-              <AppStoreButton aria-label="App Store — coming soon" tabIndex={-1}>
+              <AppStoreButton
+                aria-label="App Store — coming soon"
+                tabIndex={-1}
+              >
                 <span style={{ fontSize: '24px' }}>🍎</span>
                 <div>
                   <span className="store-label">Available soon on</span>
@@ -90,17 +117,26 @@ const LandingPage: React.FC = (): JSX.Element => {
                   launches.
                 </EmailSuccessMessage>
               ) : (
-                <EmailForm onSubmit={handleEmailSubmit}>
-                  <EmailInput
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    aria-label="Email address for launch notification"
-                  />
-                  <EmailSubmitButton type="submit">Notify Me</EmailSubmitButton>
-                </EmailForm>
+                <>
+                  <EmailForm onSubmit={handleEmailSubmit}>
+                    <EmailInput
+                      type="email"
+                      placeholder="your@email.com"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setEmailError('');
+                      }}
+                      aria-label="Email address for launch notification"
+                    />
+                    <EmailSubmitButton type="submit">
+                      Notify Me
+                    </EmailSubmitButton>
+                  </EmailForm>
+                  {emailError && (
+                    <EmailErrorMessage>{emailError}</EmailErrorMessage>
+                  )}
+                </>
               )}
             </EmailSection>
           </HeroText>
