@@ -1,54 +1,126 @@
+import { useState } from 'react';
 import About from '../About/About';
 import FounderStory from '../FounderStory/FounderStory';
+import FeaturesSection from '../FeaturesSection/FeaturesSection';
 import type { JSX } from 'react';
 import {
   Container,
   HeroSection,
-  UnderDevelopmentBanner,
   HorizontalRule,
-  SubTitle,
-  Title,
-  ToastVideo,
   VideoContainer,
+  ToastVideo,
+  HeroContent,
+  HeroText,
+  ComingSoonBadge,
+  HeroHeadline,
+  HeroSubheadline,
+  AppStoreRow,
+  AppStoreButton,
+  EmailSection,
+  EmailLabel,
+  EmailForm,
+  EmailInput,
+  EmailSubmitButton,
+  EmailSuccessMessage,
 } from './styles';
 
 /**
- * LandingPage component renders the main landing page for the application.
+ * LandingPage component renders the product-first landing page for TOAST.
  *
- * It displays the title, a promotional video, and an about section, all wrapped within a container.
- * The video is set to autoplay, loop, and remain muted for a seamless user experience.
+ * Leads with the TOAST app hero section — headline, mascot, coming-soon
+ * CTAs, and email capture — followed by feature highlights, the founder
+ * story, and studio information.
  *
  * @component
  * @returns {JSX.Element} The rendered landing page content.
  */
 const LandingPage: React.FC = (): JSX.Element => {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(
+    () => localStorage.getItem('toast_notify_submitted') === 'true',
+  );
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      localStorage.setItem('toast_notify_submitted', 'true');
+      setSubmitted(true);
+    }
+  };
+
   return (
     <Container>
       <HeroSection>
-        <UnderDevelopmentBanner>
-          🚧 Apps Currently Under Development 🚧
-        </UnderDevelopmentBanner>
-        <Title>Toastbyte Studios</Title>
-        <SubTitle>
-          A small app studio based in Las Vegas, building practical tools that
-          make a real difference.
-        </SubTitle>
-        <HorizontalRule />
-        <VideoContainer>
-          <ToastVideo
-            src="/assets/videos/ToastbyteVideo.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            width={200}
-            height={200}
-            poster="/assets/images/Logo.png"
-          />
-        </VideoContainer>
+        <HeroContent>
+          <HeroText>
+            <ComingSoonBadge>Coming Soon</ComingSoonBadge>
+            <HeroHeadline>
+              Meet <span>Toast.</span> Your pocket companion for when things get
+              serious.
+            </HeroHeadline>
+            <HeroSubheadline>
+              TOAST — Tactical Operations and Survival Toolkit — is an
+              offline-first emergency app packed with maps, guides, references,
+              and utilities. Ready when the network isn&apos;t.
+            </HeroSubheadline>
+            <AppStoreRow>
+              <AppStoreButton aria-label="App Store — coming soon" tabIndex={-1}>
+                <span style={{ fontSize: '24px' }}>🍎</span>
+                <div>
+                  <span className="store-label">Available soon on</span>
+                  <span className="store-name">App Store</span>
+                </div>
+              </AppStoreButton>
+              <AppStoreButton
+                aria-label="Google Play — coming soon"
+                tabIndex={-1}
+              >
+                <span style={{ fontSize: '24px' }}>▶️</span>
+                <div>
+                  <span className="store-label">Available soon on</span>
+                  <span className="store-name">Google Play</span>
+                </div>
+              </AppStoreButton>
+            </AppStoreRow>
+            <EmailSection>
+              <EmailLabel>Get notified when we launch</EmailLabel>
+              {submitted ? (
+                <EmailSuccessMessage>
+                  ✓ You&apos;re on the list! We&apos;ll let you know when TOAST
+                  launches.
+                </EmailSuccessMessage>
+              ) : (
+                <EmailForm onSubmit={handleEmailSubmit}>
+                  <EmailInput
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    aria-label="Email address for launch notification"
+                  />
+                  <EmailSubmitButton type="submit">Notify Me</EmailSubmitButton>
+                </EmailForm>
+              )}
+            </EmailSection>
+          </HeroText>
+          <VideoContainer>
+            <ToastVideo
+              src="/assets/videos/ToastbyteVideo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              width={200}
+              height={200}
+              poster="/assets/images/Logo.png"
+            />
+          </VideoContainer>
+        </HeroContent>
         <HorizontalRule />
       </HeroSection>
+      <FeaturesSection />
       <About />
       <FounderStory />
     </Container>

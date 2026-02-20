@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexCol } from '../../styles/core';
+import { FlexCol, FlexRow } from '../../styles/core';
 import { COLORS, BREAKPOINTS } from '../../constants';
 
 const Container = styled(FlexCol)`
@@ -226,6 +226,245 @@ const ToastVideo = styled.video`
   }
 `;
 
+const HeroContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  width: 100%;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    flex-direction: column;
+    gap: 36px;
+  }
+`;
+
+const HeroText = styled(FlexCol)`
+  flex: 1;
+  align-items: flex-start;
+  max-width: 560px;
+  gap: 20px;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    align-items: center;
+    max-width: 100%;
+  }
+`;
+
+const ComingSoonBadge = styled.span`
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    ${COLORS.ACCENT} 0%,
+    ${COLORS.TOAST_BROWN} 100%
+  );
+  color: ${COLORS.PRIMARY_LIGHT};
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(230, 126, 74, 0.4);
+`;
+
+const HeroHeadline = styled.h1`
+  font-size: 44px;
+  font-weight: 800;
+  font-family: 'Raleway', Arial, sans-serif;
+  color: ${COLORS.PRIMARY_LIGHT};
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+
+  span {
+    color: ${COLORS.TOAST_BROWN};
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_LANDSCAPE}) {
+    font-size: 36px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 26px;
+  }
+`;
+
+const HeroSubheadline = styled.p`
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Inter', Arial, sans-serif;
+  color: ${COLORS.TOAST_BROWN};
+  margin: 0;
+  line-height: 1.7;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 15px;
+  }
+`;
+
+const AppStoreRow = styled(FlexRow)`
+  justify-content: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    justify-content: center;
+  }
+`;
+
+const AppStoreButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid rgba(192, 154, 107, 0.5);
+  border-radius: 10px;
+  background: rgba(192, 154, 107, 0.1);
+  color: ${COLORS.PRIMARY_LIGHT};
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: default;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+
+  span.store-label {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.8;
+    display: block;
+    line-height: 1;
+  }
+
+  span.store-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+`;
+
+const EmailSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    max-width: 100%;
+    align-items: center;
+  }
+`;
+
+const EmailLabel = styled.p`
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', Arial, sans-serif;
+  color: ${COLORS.PRIMARY_LIGHT};
+  opacity: 0.9;
+`;
+
+const EmailForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(192, 154, 107, 0.4);
+  background: rgba(0, 0, 0, 0.2);
+
+  &:focus-within {
+    border-color: ${COLORS.TOAST_BROWN};
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: visible;
+    border: none;
+    gap: 8px;
+  }
+`;
+
+const EmailInput = styled.input`
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  color: ${COLORS.PRIMARY_LIGHT};
+
+  &::placeholder {
+    color: rgba(245, 241, 235, 0.45);
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    border: 2px solid rgba(192, 154, 107, 0.4);
+    border-radius: 10px;
+    padding: 12px 16px;
+
+    &:focus {
+      border-color: ${COLORS.TOAST_BROWN};
+    }
+  }
+`;
+
+const EmailSubmitButton = styled.button`
+  padding: 12px 20px;
+  background: linear-gradient(
+    135deg,
+    ${COLORS.ACCENT} 0%,
+    ${COLORS.TOAST_BROWN} 100%
+  );
+  border: none;
+  color: ${COLORS.PRIMARY_LIGHT};
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    border-radius: 10px;
+    padding: 12px 20px;
+  }
+`;
+
+const EmailSuccessMessage = styled.p`
+  margin: 0;
+  font-size: 14px;
+  color: ${COLORS.TOAST_BROWN};
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+`;
+
 export {
   Container,
   HeroSection,
@@ -235,4 +474,17 @@ export {
   HorizontalRule,
   VideoContainer,
   ToastVideo,
+  HeroContent,
+  HeroText,
+  ComingSoonBadge,
+  HeroHeadline,
+  HeroSubheadline,
+  AppStoreRow,
+  AppStoreButton,
+  EmailSection,
+  EmailLabel,
+  EmailForm,
+  EmailInput,
+  EmailSubmitButton,
+  EmailSuccessMessage,
 };
