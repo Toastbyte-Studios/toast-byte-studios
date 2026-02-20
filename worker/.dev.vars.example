@@ -5,7 +5,8 @@
 # For production, set secrets with:
 #   wrangler secret put SECRET_NAME
 # (values are stored encrypted in Cloudflare, never in this repo)
-#
-# Add secrets here as you need them, e.g.:
-# RESEND_API_KEY=re_...
-# STRIPE_SECRET_KEY=sk_...
+
+# Cloudflare Turnstile secret key
+# Get yours at: https://dash.cloudflare.com/ > Turnstile
+# The value below is Cloudflare's test secret (always passes, for local dev only).
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA

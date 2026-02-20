@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import About from '../About/About';
 import FounderStory from '../FounderStory/FounderStory';
 import FeaturesSection from '../FeaturesSection/FeaturesSection';
@@ -52,6 +52,45 @@ const LandingPage: React.FC = (): JSX.Element => {
     import.meta.env.VITE_EMAIL_WORKER_URL ??
     'https://toast-email-worker.jshprintz.workers.dev';
 
+  const TURNSTILE_SITE_KEY =
+    import.meta.env.VITE_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA';
+
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (submitted) return;
+    const container = turnstileContainerRef.current;
+    if (!container) return;
+
+    let widgetId: string | undefined;
+    let interval: ReturnType<typeof setInterval> | undefined;
+
+    const tryRender = () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const t = (window as any).turnstile;
+      if (!t) return;
+      clearInterval(interval);
+      widgetId = t.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token: string) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(null),
+        'error-callback': () => setTurnstileToken(null),
+      }) as string;
+    };
+
+    tryRender();
+    if (widgetId === undefined) {
+      interval = setInterval(tryRender, 100);
+    }
+
+    return () => {
+      clearInterval(interval);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (widgetId !== undefined) (window as any).turnstile?.remove(widgetId);
+    };
+  }, [submitted, TURNSTILE_SITE_KEY]);
+
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
@@ -69,7 +108,7 @@ const LandingPage: React.FC = (): JSX.Element => {
       const res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), turnstileToken }),
       });
       if (!res.ok) throw new Error('Request failed');
       try {
@@ -155,10 +194,14 @@ const LandingPage: React.FC = (): JSX.Element => {
                       }}
                       aria-label="Email address for launch notification"
                     />
-                    <EmailSubmitButton type="submit">
+                    <EmailSubmitButton
+                      type="submit"
+                      disabled={!turnstileToken}
+                    >
                       Notify Me
                     </EmailSubmitButton>
                   </EmailForm>
+                  <div ref={turnstileContainerRef} style={{ margin: '8px 0' }} />
                   {emailError && (
                     <EmailErrorMessage>{emailError}</EmailErrorMessage>
                   )}

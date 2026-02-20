@@ -1,5 +1,6 @@
 interface Env {
   DB: D1Database;
+  TURNSTILE_SECRET_KEY: string;
 }
 
 const ALLOWED_ORIGINS = [
@@ -32,12 +33,44 @@ export default {
     }
 
     let email: string;
+    let turnstileToken: string | undefined;
     try {
-      const body = await request.json<{ email?: string }>();
+      const body = await request.json<{
+        email?: string;
+        turnstileToken?: string;
+      }>();
       email = (body.email ?? '').trim().toLowerCase();
+      turnstileToken = body.turnstileToken;
     } catch {
       return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
         status: 400,
+        headers: { ...headers, 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (!turnstileToken) {
+      return new Response(JSON.stringify({ error: 'Verification required' }), {
+        status: 400,
+        headers: { ...headers, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const verifyRes = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: env.TURNSTILE_SECRET_KEY,
+          response: turnstileToken,
+          remoteip: request.headers.get('CF-Connecting-IP') ?? '',
+        }),
+      },
+    );
+    const verifyData = (await verifyRes.json()) as { success: boolean };
+    if (!verifyData.success) {
+      return new Response(JSON.stringify({ error: 'Verification failed' }), {
+        status: 403,
         headers: { ...headers, 'Content-Type': 'application/json' },
       });
     }
