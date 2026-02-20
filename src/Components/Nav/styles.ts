@@ -70,6 +70,13 @@ const LogoBackground = styled(FlexRow)`
   }
 `;
 
+const NavLink = styled.a`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+`;
+
 const Logo = styled.img`
   height: 70px;
   width: auto;
@@ -104,4 +111,4 @@ const BrandedLogo = styled.img`
   }
 `;
 
-export { Container, LogoBackground, Logo, BrandedLogo };
+export { Container, LogoBackground, Logo, BrandedLogo, NavLink };
