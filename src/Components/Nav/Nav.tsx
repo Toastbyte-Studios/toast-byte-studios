@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { BrandedLogo, Container, Logo, LogoBackground } from './styles';
+import { BrandedLogo, Container, Logo, LogoBackground, NavLink } from './styles';
 
 /**
  * Nav is a functional React component that renders the main navigation bar.
@@ -10,20 +10,24 @@ import { BrandedLogo, Container, Logo, LogoBackground } from './styles';
 const Nav: React.FC = (): JSX.Element => {
   return (
     <Container>
-      <Logo
-        src="/assets/images/ToastHeadShotClear.webp"
-        alt="Toastbyte Studios Logo"
-        width={60}
-        height={60}
-        decoding="async"
-      />
-      <LogoBackground>
-        <BrandedLogo
-          src="/assets/images/HeaderLogo.svg"
+      <NavLink href="#" aria-label="Navigate to homepage">
+        <Logo
+          src="/assets/images/ToastHeadShotClear.webp"
           alt="Toastbyte Studios Logo"
+          width={60}
+          height={60}
           decoding="async"
         />
-      </LogoBackground>
+      </NavLink>
+      <NavLink href="#" aria-label="Navigate to homepage">
+        <LogoBackground>
+          <BrandedLogo
+            src="/assets/images/HeaderLogo.svg"
+            alt="Toastbyte Studios Logo"
+            decoding="async"
+          />
+        </LogoBackground>
+      </NavLink>
     </Container>
   );
 };

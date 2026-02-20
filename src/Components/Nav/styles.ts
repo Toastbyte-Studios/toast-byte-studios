@@ -70,6 +70,20 @@ const LogoBackground = styled(FlexRow)`
   }
 `;
 
+const NavLink = styled.a`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus,
+  &:focus-visible {
+    outline: 3px solid ${COLORS.SECONDARY_ACCENT};
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+`;
+
 const Logo = styled.img`
   height: 70px;
   width: auto;
@@ -104,4 +118,4 @@ const BrandedLogo = styled.img`
   }
 `;
 
-export { Container, LogoBackground, Logo, BrandedLogo };
+export { Container, LogoBackground, Logo, BrandedLogo, NavLink };
