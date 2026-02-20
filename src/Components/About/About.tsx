@@ -60,7 +60,7 @@ const About: React.FC = () => {
         with maps, guides, references, and utilities you can rely on even
         without a signal.
       </FadeInParagraph>
-      <FadeInParagraph
+      {/* <FadeInParagraph
         ref={(el) => {
           paragraphsRef.current[2] = el;
         }}
@@ -69,14 +69,14 @@ const About: React.FC = () => {
         bowling coach designed to analyze your game and help you improve. Track
         your scores, identify patterns, and get personalized tips to take your
         bowling to the next level.
-      </FadeInParagraph>
+      </FadeInParagraph> */}
       <FadeInParagraph
         ref={(el) => {
           paragraphsRef.current[3] = el;
         }}
       >
-        Both apps are currently in development. Check back soon for updates as
-        we continue to build!
+        TOAST is currently in development. Check back soon for updates as we
+        continue to build!
       </FadeInParagraph>
     </Container>
   );
