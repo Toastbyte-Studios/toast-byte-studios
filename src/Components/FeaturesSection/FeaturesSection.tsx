@@ -82,7 +82,10 @@ const FeaturesSection: React.FC = (): JSX.Element => {
         <h2>What&apos;s Inside TOAST</h2>
       </SectionHeader>
       <OfflineTag>
-        📶 All five modules work fully offline — no signal, no problem.
+        <span role="img" aria-hidden="true">
+          📶
+        </span>{' '}
+        All five modules work fully offline — no signal, no problem.
       </OfflineTag>
       <Grid>
         {MODULES.map((mod, i) => (
@@ -92,7 +95,11 @@ const FeaturesSection: React.FC = (): JSX.Element => {
               cardsRef.current[i] = el;
             }}
           >
-            <CardIcon>{mod.icon}</CardIcon>
+            <CardIcon>
+              <span role="img" aria-hidden="true">
+                {mod.icon}
+              </span>
+            </CardIcon>
             <CardName>{mod.name}</CardName>
             <CardDescription>{mod.description}</CardDescription>
           </Card>

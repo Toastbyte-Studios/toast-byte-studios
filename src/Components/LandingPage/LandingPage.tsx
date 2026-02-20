@@ -48,9 +48,16 @@ const LandingPage: React.FC = (): JSX.Element => {
 
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const WORKER_URL =
-    import.meta.env.VITE_EMAIL_WORKER_URL ??
-    'https://toast-email-worker.jshprintz.workers.dev';
+  const WORKER_URL = import.meta.env.VITE_EMAIL_WORKER_URL as string | undefined;
+
+  if (import.meta.env.DEV && !WORKER_URL) {
+    console.warn(
+      '[LandingPage] VITE_EMAIL_WORKER_URL is not set. Copy .env.example to .env.local and fill in the value.',
+    );
+  }
+
+  const resolvedWorkerURL =
+    WORKER_URL ?? 'https://toast-email-worker.jshprintz.workers.dev';
 
   const TURNSTILE_SITE_KEY =
     import.meta.env.VITE_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA';
@@ -67,8 +74,7 @@ const LandingPage: React.FC = (): JSX.Element => {
     let interval: ReturnType<typeof setInterval> | undefined;
 
     const tryRender = () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const t = (window as any).turnstile;
+      const t = window.turnstile;
       if (!t) return;
       clearInterval(interval);
       widgetId = t.render(container, {
@@ -76,7 +82,7 @@ const LandingPage: React.FC = (): JSX.Element => {
         callback: (token: string) => setTurnstileToken(token),
         'expired-callback': () => setTurnstileToken(null),
         'error-callback': () => setTurnstileToken(null),
-      }) as string;
+      });
     };
 
     tryRender();
@@ -86,8 +92,7 @@ const LandingPage: React.FC = (): JSX.Element => {
 
     return () => {
       clearInterval(interval);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if (widgetId !== undefined) (window as any).turnstile?.remove(widgetId);
+      if (widgetId !== undefined) window.turnstile?.remove(widgetId);
     };
   }, [submitted, TURNSTILE_SITE_KEY]);
 
@@ -105,7 +110,7 @@ const LandingPage: React.FC = (): JSX.Element => {
     setEmailError('');
 
     try {
-      const res = await fetch(WORKER_URL, {
+      const res = await fetch(resolvedWorkerURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), turnstileToken }),

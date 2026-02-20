@@ -1,5 +1,6 @@
 #!/bin/bash
-# Local reference — not committed (matched by *.local in .gitignore)
+# Reference script for managing the D1 email signups database.
+# For local-only overrides, copy to a file ending in `.local` (e.g. commands.sh.local, matched by *.local in .gitignore).
 
 # List all email signups newest first
 npx wrangler d1 execute toast-email-signups --remote --command "SELECT * FROM email_signups ORDER BY rowid DESC"
