@@ -75,6 +75,13 @@ const NavLink = styled.a`
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+
+  &:focus,
+  &:focus-visible {
+    outline: 3px solid ${COLORS.SECONDARY_ACCENT};
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 `;
 
 const Logo = styled.img`
