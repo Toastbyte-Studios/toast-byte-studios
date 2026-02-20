@@ -38,15 +38,26 @@ import {
 const LandingPage: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [submitted, setSubmitted] = useState(
-    () => localStorage.getItem('toast_notify_submitted') === 'true',
-  );
+  const [submitted, setSubmitted] = useState(() => {
+    try {
+      return localStorage.getItem('toast_notify_submitted') === 'true';
+    } catch {
+      return false;
+    }
+  });
 
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  const WORKER_URL =
+    import.meta.env.VITE_EMAIL_WORKER_URL ??
+    'https://toast-email-worker.jshprintz.workers.dev';
+
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim()) {
+      setEmailError('Please enter your email address.');
+      return;
+    }
 
     if (!EMAIL_REGEX.test(email.trim())) {
       setEmailError('Please enter a valid email address.');
@@ -55,21 +66,24 @@ const LandingPage: React.FC = (): JSX.Element => {
     setEmailError('');
 
     try {
-      const res = await fetch(
-        'https://toast-email-worker.jshprintz.workers.dev',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email.trim() }),
-        },
-      );
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
       if (!res.ok) throw new Error('Request failed');
-    } catch {
-      // Silently succeed on network errors — don't block the user
+      try {
+        localStorage.setItem('toast_notify_submitted', 'true');
+      } catch {
+        // localStorage unavailable — proceed without persisting
+      }
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Failed to submit email:', error);
+      setEmailError(
+        'Could not reach our server — please check your connection and try again.',
+      );
     }
-
-    localStorage.setItem('toast_notify_submitted', 'true');
-    setSubmitted(true);
   };
 
   return (
@@ -92,7 +106,13 @@ const LandingPage: React.FC = (): JSX.Element => {
                 aria-label="App Store — coming soon"
                 tabIndex={-1}
               >
-                <span style={{ fontSize: '24px' }}>🍎</span>
+                <span
+                  style={{ fontSize: '24px' }}
+                  role="img"
+                  aria-hidden="true"
+                >
+                  🍎
+                </span>
                 <div>
                   <span className="store-label">Available soon on</span>
                   <span className="store-name">App Store</span>
@@ -102,7 +122,13 @@ const LandingPage: React.FC = (): JSX.Element => {
                 aria-label="Google Play — coming soon"
                 tabIndex={-1}
               >
-                <span style={{ fontSize: '24px' }}>▶️</span>
+                <span
+                  style={{ fontSize: '24px' }}
+                  role="img"
+                  aria-hidden="true"
+                >
+                  ▶️
+                </span>
                 <div>
                   <span className="store-label">Available soon on</span>
                   <span className="store-name">Google Play</span>

@@ -42,7 +42,7 @@ export default {
       });
     }
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
         status: 400,
         headers: { ...headers, 'Content-Type': 'application/json' },
@@ -59,10 +59,17 @@ export default {
         err instanceof Error &&
         err.message.includes('UNIQUE constraint failed')
       ) {
-        return new Response(JSON.stringify({ ok: true }), {
-          status: 200,
-          headers: { ...headers, 'Content-Type': 'application/json' },
-        });
+        return new Response(
+          JSON.stringify({
+            ok: true,
+            duplicate: true,
+            message: 'Email already registered',
+          }),
+          {
+            status: 200,
+            headers: { ...headers, 'Content-Type': 'application/json' },
+          },
+        );
       }
       console.error(err);
       return new Response(JSON.stringify({ error: 'Server error' }), {

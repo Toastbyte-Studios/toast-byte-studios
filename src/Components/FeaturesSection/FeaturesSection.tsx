@@ -54,10 +54,12 @@ const MODULES = [
  * @returns {JSX.Element} The rendered features grid section.
  */
 const FeaturesSection: React.FC = (): JSX.Element => {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>(
+    Array(MODULES.length).fill(null),
+  );
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -66,7 +68,7 @@ const FeaturesSection: React.FC = (): JSX.Element => {
           }
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.2 },
     );
     cardsRef.current.forEach((el) => {
       if (el) observer.observe(el);
