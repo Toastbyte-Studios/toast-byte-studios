@@ -1,0 +1,11 @@
+# Wrangler local development secrets
+# Copy this file to .dev.vars and fill in real values.
+# .dev.vars is gitignored — never commit real values.
+#
+# For production, set secrets with:
+#   wrangler secret put SECRET_NAME
+# (values are stored encrypted in Cloudflare, never in this repo)
+#
+# Add secrets here as you need them, e.g.:
+# RESEND_API_KEY=re_...
+# STRIPE_SECRET_KEY=sk_...
