@@ -1,0 +1,31 @@
+# Toastbyte Studios
+
+> A small app studio based in Las Vegas, NV, building practical tools for outdoor enthusiasts, hikers, and the preparedness community.
+
+## TOAST App
+
+TOAST (Tactical Operations and Survival Toolkit) is an offline-first emergency preparedness and survival app for iOS and Android. It is built for hikers, preppers, and anyone who wants practical tools that work without a network connection.
+
+### Features
+- **Core Module**: Unit converter, weather tools, voice log
+- **Navigation Module**: Offline maps, trail tracking, distance/duration logging
+- **Communications Module**: Ham radio repeater directory (powered by RepeaterBook), emergency contacts
+- **Reference Module**: Survival guides, first aid references, emergency procedures
+- **Prepper Module**: Pantry expiration tracker, emergency supply checklists, BOB (bug-out bag) planner
+
+### Pricing
+- Free tier available
+- One-time Pro unlock: $4.99 (Founding price), $7.99–$9.99 regular
+
+### Status
+Coming soon — available on iOS App Store and Google Play. Join the waitlist at https://toastbyte.studio/
+
+## About the Developer
+
+Jason Shprintz is a solo developer and ham radio operator (KK7WGB) based in Las Vegas, NV. TOAST is named after his Jack Russell Terrier, Toast.
+
+## Links
+
+- Website: https://toastbyte.studio/
+- Support: https://toastbyte.studio/#support
+- Privacy Policy: https://toastbyte.studio/#privacy
