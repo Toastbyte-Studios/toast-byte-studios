@@ -29,7 +29,8 @@ function App() {
       support: 'Support | Toastbyte Studios',
     };
     document.title =
-      titles[route] ?? 'TOAST — Tactical Operations and Survival Toolkit | Toastbyte Studios';
+      titles[route] ??
+      'TOAST — Tactical Operations and Survival Toolkit | Toastbyte Studios';
   }, [route]);
 
   const renderPage = () => {

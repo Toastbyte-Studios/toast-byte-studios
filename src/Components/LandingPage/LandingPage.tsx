@@ -48,7 +48,9 @@ const LandingPage: React.FC = (): JSX.Element => {
 
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const WORKER_URL = import.meta.env.VITE_EMAIL_WORKER_URL as string | undefined;
+  const WORKER_URL = import.meta.env.VITE_EMAIL_WORKER_URL as
+    | string
+    | undefined;
 
   if (import.meta.env.DEV && !WORKER_URL) {
     console.warn(
@@ -199,14 +201,14 @@ const LandingPage: React.FC = (): JSX.Element => {
                       }}
                       aria-label="Email address for launch notification"
                     />
-                    <EmailSubmitButton
-                      type="submit"
-                      disabled={!turnstileToken}
-                    >
+                    <EmailSubmitButton type="submit" disabled={!turnstileToken}>
                       Notify Me
                     </EmailSubmitButton>
                   </EmailForm>
-                  <div ref={turnstileContainerRef} style={{ margin: '8px 0' }} />
+                  <div
+                    ref={turnstileContainerRef}
+                    style={{ margin: '8px 0' }}
+                  />
                   {emailError && (
                     <EmailErrorMessage>{emailError}</EmailErrorMessage>
                   )}
