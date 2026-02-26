@@ -48,13 +48,15 @@ const LandingPage: React.FC = (): JSX.Element => {
 
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const WORKER_URL = import.meta.env.VITE_EMAIL_WORKER_URL as string | undefined;
+  const WORKER_URL = import.meta.env.VITE_EMAIL_WORKER_URL as
+    | string
+    | undefined;
 
-  if (import.meta.env.DEV && !WORKER_URL) {
-    console.warn(
-      '[LandingPage] VITE_EMAIL_WORKER_URL is not set. Copy .env.example to .env.local and fill in the value.',
-    );
-  }
+  // if (import.meta.env.DEV && !WORKER_URL) {
+  //   console.warn(
+  //     '[LandingPage] VITE_EMAIL_WORKER_URL is not set. Copy .env.example to .env.local and fill in the value.',
+  //   );
+  // }
 
   const resolvedWorkerURL =
     WORKER_URL ?? 'https://toast-email-worker.jshprintz.workers.dev';
@@ -199,14 +201,14 @@ const LandingPage: React.FC = (): JSX.Element => {
                       }}
                       aria-label="Email address for launch notification"
                     />
-                    <EmailSubmitButton
-                      type="submit"
-                      disabled={!turnstileToken}
-                    >
+                    <EmailSubmitButton type="submit" disabled={!turnstileToken}>
                       Notify Me
                     </EmailSubmitButton>
                   </EmailForm>
-                  <div ref={turnstileContainerRef} style={{ margin: '8px 0' }} />
+                  <div
+                    ref={turnstileContainerRef}
+                    style={{ margin: '8px 0' }}
+                  />
                   {emailError && (
                     <EmailErrorMessage>{emailError}</EmailErrorMessage>
                   )}
