@@ -52,11 +52,11 @@ const LandingPage: React.FC = (): JSX.Element => {
     | string
     | undefined;
 
-  if (import.meta.env.DEV && !WORKER_URL) {
-    console.warn(
-      '[LandingPage] VITE_EMAIL_WORKER_URL is not set. Copy .env.example to .env.local and fill in the value.',
-    );
-  }
+  // if (import.meta.env.DEV && !WORKER_URL) {
+  //   console.warn(
+  //     '[LandingPage] VITE_EMAIL_WORKER_URL is not set. Copy .env.example to .env.local and fill in the value.',
+  //   );
+  // }
 
   const resolvedWorkerURL =
     WORKER_URL ?? 'https://toast-email-worker.jshprintz.workers.dev';
