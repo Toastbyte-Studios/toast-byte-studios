@@ -1,4 +1,11 @@
-import { Container, Info, Link, NavLinks, SocialLinks, SocialIconLink } from './style';
+import {
+  Container,
+  Info,
+  Link,
+  NavLinks,
+  SocialLinks,
+  SocialIconLink,
+} from './style';
 
 /**
  * Footer component that displays the current year, a copyright notice,
