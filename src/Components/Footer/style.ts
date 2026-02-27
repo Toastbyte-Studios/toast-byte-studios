@@ -80,6 +80,16 @@ const SocialIconLink = styled.a`
     color: ${COLORS.ACCENT};
     filter: drop-shadow(0 0 6px rgba(255, 139, 67, 0.4));
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${COLORS.ACCENT};
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 `;
 
 export { Container, Link, Info, NavLinks, SocialLinks, SocialIconLink };
