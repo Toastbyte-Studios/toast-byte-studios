@@ -1,13 +1,19 @@
 import { useEffect, useRef } from 'react';
-import { AboutBackground, Bold, Container, FadeInParagraph } from './styles';
+import {
+  AboutBackground,
+  Bold,
+  Container,
+  FadeInParagraph,
+  InlineLink,
+} from './styles';
 
 /**
  * Renders the About section for Toastbyte Studios.
  *
  * This component displays information about the studio's mission,
  * inspiration, and its first app—an offline emergency and survival toolkit.
- * It highlights the studio's offline-first philosophy and encourages users
- * to check back for updates.
+ * It highlights the studio's offline-first philosophy and invites visitors
+ * to join the waitlist for early access.
  *
  * @component
  */
@@ -75,8 +81,17 @@ const About: React.FC = () => {
           paragraphsRef.current[3] = el;
         }}
       >
-        TOAST is currently in development. Check back soon for updates as we
-        continue to build!
+        We&apos;re deep in development and targeting a summer launch. Follow
+        along at{' '}
+        <InlineLink
+          href="https://x.com/ToastByteStudio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @ToastByteStudio
+        </InlineLink>{' '}
+        or drop your email above — founding users get early access and a
+        locked-in price.
       </FadeInParagraph>
     </Container>
   );
