@@ -56,4 +56,30 @@ const NavLinks = styled.nav`
   gap: 16px;
 `;
 
-export { Container, Link, Info, NavLinks };
+const SocialLinks = styled.div`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+`;
+
+const SocialIconLink = styled.a`
+  display: flex;
+  align-items: center;
+  color: ${COLORS.TOAST_BROWN};
+  transition:
+    color 0.2s ease,
+    filter 0.2s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  &:hover {
+    color: ${COLORS.ACCENT};
+    filter: drop-shadow(0 0 6px rgba(255, 139, 67, 0.4));
+  }
+`;
+
+export { Container, Link, Info, NavLinks, SocialLinks, SocialIconLink };
