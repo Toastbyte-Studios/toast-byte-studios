@@ -134,11 +134,21 @@ const Card = styled.div`
 `;
 
 const CardIcon = styled.span`
-  font-size: 32px;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: ${COLORS.TOAST_BROWN};
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    font-size: 28px;
+    width: 28px;
+    height: 28px;
   }
 `;
 
