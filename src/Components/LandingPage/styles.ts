@@ -24,15 +24,15 @@ const HeroSection = styled(FlexCol)`
   max-width: 1200px;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     gap: 15px;
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     gap: 10px;
   }
 `;
@@ -137,14 +137,14 @@ const HorizontalRule = styled.hr`
     ${COLORS.TOAST_BROWN} 50%,
     transparent 100%
   );
-  margin: 30px 0;
+  margin: 16px 0;
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    margin: 20px 0;
+    margin: 12px 0;
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    margin: 15px 0;
+    margin: 10px 0;
     width: 90%;
   }
 `;
