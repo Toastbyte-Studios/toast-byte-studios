@@ -90,6 +90,16 @@ const SocialIconLink = styled.a`
     outline-offset: 3px;
     border-radius: 4px;
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${COLORS.ACCENT};
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 `;
 
 export { Container, Link, Info, NavLinks, SocialLinks, SocialIconLink };
