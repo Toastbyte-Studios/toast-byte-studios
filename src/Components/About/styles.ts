@@ -49,6 +49,27 @@ const Bold = styled.span`
   color: ${COLORS.TOAST_BROWN};
 `;
 
+const InlineLink = styled.a`
+  font-weight: 700;
+  color: ${COLORS.TOAST_BROWN};
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${COLORS.ACCENT};
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${COLORS.ACCENT};
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+`;
+
 const AboutBackground = styled(FlexRow)`
   width: auto;
   padding: 12px 28px;
@@ -104,4 +125,4 @@ const FadeInParagraph = styled.p`
   padding: 0;
 `;
 
-export { Container, Bold, AboutBackground, FadeInParagraph };
+export { Container, Bold, AboutBackground, FadeInParagraph, InlineLink };

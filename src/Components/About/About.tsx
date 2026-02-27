@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { AboutBackground, Bold, Container, FadeInParagraph } from './styles';
+import { AboutBackground, Bold, Container, FadeInParagraph, InlineLink } from './styles';
 
 /**
  * Renders the About section for Toastbyte Studios.
@@ -75,18 +75,16 @@ const About: React.FC = () => {
           paragraphsRef.current[3] = el;
         }}
       >
-        We&apos;re deep in development and targeting a summer 2025 launch.
+        We&apos;re deep in development and targeting a summer launch.
         Follow along at{' '}
-        <Bold>
-          <a
-            href="https://x.com/ToastByteStudio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @ToastByteStudio
-          </a>
-        </Bold>{' '}
-        or drop your email below — founding users get early access and a
+        <InlineLink
+          href="https://x.com/ToastByteStudio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @ToastByteStudio
+        </InlineLink>{' '}
+        or drop your email above — founding users get early access and a
         locked-in price.
       </FadeInParagraph>
     </Container>
