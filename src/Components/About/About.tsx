@@ -79,11 +79,11 @@ const About: React.FC = () => {
         Follow along at{' '}
         <Bold>
           <a
-            href="https://x.com/toastbytestudio"
+            href="https://x.com/ToastByteStudio"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @toastbytestudio
+            @ToastByteStudio
           </a>
         </Bold>{' '}
         or drop your email below — founding users get early access and a
