@@ -81,6 +81,7 @@ const LandingPage: React.FC = (): JSX.Element => {
       clearInterval(interval);
       widgetId = t.render(container, {
         sitekey: TURNSTILE_SITE_KEY,
+        theme: 'dark',
         callback: (token: string) => setTurnstileToken(token),
         'expired-callback': () => setTurnstileToken(null),
         'error-callback': () => setTurnstileToken(null),
