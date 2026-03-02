@@ -103,19 +103,63 @@ const Logo = styled.img`
   }
 `;
 
-const BrandedLogo = styled.img`
-  height: 45px;
-  width: auto;
-  padding: 0;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+const WordmarkLogo = styled.img`
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+  padding: 2px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+  flex-shrink: 0;
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    height: 40px;
+    height: 34px;
+    width: 34px;
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    height: 35px;
+    height: 30px;
+    width: 30px;
   }
 `;
 
-export { Container, LogoBackground, Logo, BrandedLogo, NavLink };
+const WordmarkText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: ${COLORS.PRIMARY_LIGHT};
+  text-transform: uppercase;
+  margin-left: 8px;
+
+  em {
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: lowercase;
+    color: ${COLORS.TOAST_BROWN};
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    font-size: 12px;
+
+    em {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 11px;
+
+    em {
+      font-size: 9px;
+    }
+  }
+`;
+
+export { Container, LogoBackground, Logo, WordmarkLogo, WordmarkText, NavLink };
