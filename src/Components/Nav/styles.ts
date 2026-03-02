@@ -174,4 +174,13 @@ const BrandSub = styled.span`
   }
 `;
 
-export { Container, LogoBackground, Logo, WordmarkDog, WordmarkText, BrandName, BrandSub, NavLink };
+export {
+  Container,
+  LogoBackground,
+  Logo,
+  WordmarkDog,
+  WordmarkText,
+  BrandName,
+  BrandSub,
+  NavLink,
+};
