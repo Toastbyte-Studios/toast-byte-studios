@@ -103,19 +103,75 @@ const Logo = styled.img`
   }
 `;
 
-const BrandedLogo = styled.img`
-  height: 45px;
-  width: auto;
-  padding: 0;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+const WordmarkDog = styled.img`
+  height: 38px;
+  width: 38px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: white;
+  padding: 3px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.25));
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    height: 40px;
+    height: 34px;
+    width: 34px;
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    height: 35px;
+    height: 30px;
+    width: 30px;
   }
 `;
 
-export { Container, LogoBackground, Logo, BrandedLogo, NavLink };
+const WordmarkText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 10px;
+  line-height: 1;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    margin-left: 7px;
+  }
+`;
+
+const BrandName = styled.span`
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: ${COLORS.PRIMARY_LIGHT};
+  text-transform: uppercase;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    font-size: 13px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 11px;
+  }
+`;
+
+const BrandSub = styled.span`
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: ${COLORS.PRIMARY_LIGHT};
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 3px;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    font-size: 8px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+`;
+
+export { Container, LogoBackground, Logo, WordmarkDog, WordmarkText, BrandName, BrandSub, NavLink };

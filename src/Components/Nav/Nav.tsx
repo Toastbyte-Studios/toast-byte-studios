@@ -1,10 +1,13 @@
 import type { JSX } from 'react';
 import {
-  BrandedLogo,
+  BrandName,
+  BrandSub,
   Container,
   Logo,
   LogoBackground,
   NavLink,
+  WordmarkDog,
+  WordmarkText,
 } from './styles';
 
 /**
@@ -27,11 +30,15 @@ const Nav: React.FC = (): JSX.Element => {
       </NavLink>
       <NavLink href="#" aria-label="Navigate to homepage">
         <LogoBackground>
-          <BrandedLogo
-            src="/assets/images/HeaderLogo.svg"
-            alt="Toastbyte Studios Logo"
+          <WordmarkDog
+            src="/assets/images/ToastHeadShotClear.webp"
+            alt="Toast the dog"
             decoding="async"
           />
+          <WordmarkText>
+            <BrandName>TOASTbyte</BrandName>
+            <BrandSub>Studios</BrandSub>
+          </WordmarkText>
         </LogoBackground>
       </NavLink>
     </Container>
