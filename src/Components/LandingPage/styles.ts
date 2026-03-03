@@ -328,13 +328,22 @@ const AppStoreButton = styled.a<{ $store?: 'apple' | 'google' }>`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  cursor: default;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
+  cursor: not-allowed;
+  opacity: 0.45;
+  pointer-events: none;
 
   img {
     display: block;
   }
+`;
+
+const AppStoreComingSoonLabel = styled.p`
+  margin: 0;
+  font-size: 12px;
+  font-family: 'Inter', Arial, sans-serif;
+  color: ${COLORS.PRIMARY_DARK};
+  opacity: 0.6;
+  font-style: italic;
 `;
 
 const EmailSection = styled.div`
@@ -469,6 +478,7 @@ export {
   HeroSubheadline,
   AppStoreRow,
   AppStoreButton,
+  AppStoreComingSoonLabel,
   EmailSection,
   EmailLabel,
   EmailForm,
