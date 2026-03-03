@@ -58,11 +58,12 @@ const Container = styled(FlexCol)`
   width: 100%;
   justify-content: flex-start;
   background: linear-gradient(
-    135deg,
+    160deg,
     ${COLORS.GRADIENT_START} 0%,
     ${COLORS.GRADIENT_END} 100%
   );
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
+  user-select: none;
 `;
 
 export default App;

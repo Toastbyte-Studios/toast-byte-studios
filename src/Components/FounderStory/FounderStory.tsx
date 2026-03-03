@@ -8,9 +8,6 @@ import {
   FadeInParagraph,
   ImageColumn,
   HikingPhoto,
-  ToastCloseupWrapper,
-  ToastCloseupPhoto,
-  PhotoCaption,
 } from './styles';
 
 /**
@@ -60,15 +57,6 @@ const FounderStory: React.FC = (): JSX.Element => {
               onError={() => setHikingPhotoLoaded(false)}
             />
           )}
-          <ToastCloseupWrapper>
-            <ToastCloseupPhoto
-              src="/assets/images/ToastReal.webp"
-              alt="Toast the Jack Russell Terrier — the face that inspired the app icon"
-            />
-            <PhotoCaption>
-              This face. This is where the app icon came from.
-            </PhotoCaption>
-          </ToastCloseupWrapper>
         </ImageColumn>
 
         <TextBlock>
@@ -91,7 +79,7 @@ const FounderStory: React.FC = (): JSX.Element => {
             into the same problem: I&apos;d have three or four different apps
             open trying to cover navigation, emergency reference, and basic
             survival tools, none of them working well together, and all of them
-            useless the moment I lost signal (which is often in the desert).
+            useless the moment I lost signal.
           </FadeInParagraph>
 
           <FadeInParagraph

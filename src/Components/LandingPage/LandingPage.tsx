@@ -7,8 +7,8 @@ import {
   Container,
   HeroSection,
   HorizontalRule,
-  VideoContainer,
-  ToastVideo,
+  LogoContainer,
+  LogoImage,
   HeroContent,
   HeroText,
   ComingSoonBadge,
@@ -81,7 +81,7 @@ const LandingPage: React.FC = (): JSX.Element => {
       clearInterval(interval);
       widgetId = t.render(container, {
         sitekey: TURNSTILE_SITE_KEY,
-        theme: 'dark',
+        theme: 'light',
         callback: (token: string) => setTurnstileToken(token),
         'expired-callback': () => setTurnstileToken(null),
         'error-callback': () => setTurnstileToken(null),
@@ -151,35 +151,27 @@ const LandingPage: React.FC = (): JSX.Element => {
             <AppStoreRow>
               <AppStoreButton
                 aria-label="App Store — coming soon"
+                aria-disabled="true"
                 tabIndex={-1}
+                $store="apple"
               >
-                <span
-                  style={{ fontSize: '24px' }}
-                  role="img"
-                  aria-hidden="true"
-                >
-                  🍎
-                </span>
-                <div>
-                  <span className="store-label">Available soon on</span>
-                  <span className="store-name">App Store</span>
-                </div>
+                <img
+                  src="/assets/images/AppleStore.svg"
+                  alt="Download on the App Store"
+                  height={130}
+                />
               </AppStoreButton>
               <AppStoreButton
                 aria-label="Google Play — coming soon"
+                aria-disabled="true"
                 tabIndex={-1}
+                $store="google"
               >
-                <span
-                  style={{ fontSize: '24px' }}
-                  role="img"
-                  aria-hidden="true"
-                >
-                  ▶️
-                </span>
-                <div>
-                  <span className="store-label">Available soon on</span>
-                  <span className="store-name">Google Play</span>
-                </div>
+                <img
+                  src="/assets/images/GooglePlayStore.svg"
+                  alt="Get it on Google Play"
+                  height={40}
+                />
               </AppStoreButton>
             </AppStoreRow>
             <EmailSection>
@@ -217,19 +209,14 @@ const LandingPage: React.FC = (): JSX.Element => {
               )}
             </EmailSection>
           </HeroText>
-          <VideoContainer>
-            <ToastVideo
-              src="/assets/videos/ToastbyteVideo.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              width={200}
-              height={200}
-              poster="/assets/images/Logo.png"
+          <LogoContainer>
+            <LogoImage
+              src="/assets/images/NewLogo.webp"
+              alt="TOAST app logo"
+              width={240}
+              height={240}
             />
-          </VideoContainer>
+          </LogoContainer>
         </HeroContent>
         <HorizontalRule />
       </HeroSection>
