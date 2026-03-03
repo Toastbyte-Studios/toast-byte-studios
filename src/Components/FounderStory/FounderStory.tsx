@@ -91,7 +91,7 @@ const FounderStory: React.FC = (): JSX.Element => {
             into the same problem: I&apos;d have three or four different apps
             open trying to cover navigation, emergency reference, and basic
             survival tools, none of them working well together, and all of them
-            useless the moment I lost signal (which is often in the desert).
+            useless the moment I lost signal.
           </FadeInParagraph>
 
           <FadeInParagraph

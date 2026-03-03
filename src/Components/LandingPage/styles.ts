@@ -148,7 +148,7 @@ const HorizontalRule = styled.hr`
   }
 `;
 
-const VideoContainer = styled.div`
+const LogoContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -165,7 +165,7 @@ const VideoContainer = styled.div`
       rgba(196, 98, 45, 0.15) 0%,
       transparent 70%
     );
-    border-radius: 50%;
+    border-radius: 10%;
     z-index: 0;
 
     @media (prefers-reduced-motion: no-preference) {
@@ -195,16 +195,17 @@ const VideoContainer = styled.div`
   }
 `;
 
-const ToastVideo = styled.video`
+const LogoImage = styled.img`
   width: 240px;
   height: 240px;
   max-width: 240px;
   border: 3px solid ${COLORS.TOAST_BROWN};
   background-color: ${COLORS.PRIMARY_LIGHT};
-  border-radius: 50%;
+  border-radius: 10%;
   box-shadow: 0 8px 30px rgba(196, 98, 45, 0.3);
   position: relative;
   z-index: 1;
+  object-fit: cover;
   transition: transform 0.3s ease;
 
   &:hover {
@@ -479,8 +480,8 @@ export {
   Title,
   SubTitle,
   HorizontalRule,
-  VideoContainer,
-  ToastVideo,
+  LogoContainer,
+  LogoImage,
   HeroContent,
   HeroText,
   ComingSoonBadge,

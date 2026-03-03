@@ -1,5 +1,13 @@
 import type { JSX } from 'react';
-import { Container, Logo, LogoWrapper, BrandText, BrandName, BrandSub, NavLink } from './styles';
+import {
+  Container,
+  Logo,
+  LogoWrapper,
+  BrandText,
+  BrandName,
+  BrandSub,
+  NavLink,
+} from './styles';
 
 /**
  * Nav is a functional React component that renders the main navigation bar.

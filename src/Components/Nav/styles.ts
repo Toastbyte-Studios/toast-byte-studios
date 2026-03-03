@@ -16,7 +16,7 @@ const Container = styled.nav`
   font-weight: bold;
   color: ${COLORS.PRIMARY_DARK};
 
-  background: rgba(245, 240, 232, 0.97);
+  background: rgba(237, 229, 212, 0.97);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(196, 98, 45, 0.2);
   box-shadow: 0 2px 12px rgba(61, 35, 20, 0.08);
@@ -116,5 +116,12 @@ const BrandSub = styled.span`
   }
 `;
 
-export { Container, LogoWrapper, Logo, BrandText, BrandName, BrandSub, NavLink };
-
+export {
+  Container,
+  LogoWrapper,
+  Logo,
+  BrandText,
+  BrandName,
+  BrandSub,
+  NavLink,
+};
