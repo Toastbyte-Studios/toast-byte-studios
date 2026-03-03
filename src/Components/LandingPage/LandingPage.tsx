@@ -15,6 +15,7 @@ import {
   HeroHeadline,
   HeroSubheadline,
   AppStoreRow,
+  AppStoreButton,
   EmailSection,
   EmailLabel,
   EmailForm,
@@ -148,20 +149,40 @@ const LandingPage: React.FC = (): JSX.Element => {
               and utilities. Ready when the network isn&apos;t.
             </HeroSubheadline>
             <AppStoreRow>
-              <a href="#" aria-label="App Store — coming soon" tabIndex={-1}>
-                <img
-                  src="https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white"
-                  alt="App Store"
-                  height={28}
-                />
-              </a>
-              <a href="#" aria-label="Google Play — coming soon" tabIndex={-1}>
-                <img
-                  src="https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white"
-                  alt="Google Play"
-                  height={28}
-                />
-              </a>
+              <AppStoreButton
+                aria-label="App Store — coming soon"
+                aria-disabled="true"
+                tabIndex={-1}
+              >
+                <span
+                  style={{ fontSize: '24px' }}
+                  role="img"
+                  aria-hidden="true"
+                >
+                  🍎
+                </span>
+                <div>
+                  <span className="store-label">Available soon on</span>
+                  <span className="store-name">App Store</span>
+                </div>
+              </AppStoreButton>
+              <AppStoreButton
+                aria-label="Google Play — coming soon"
+                aria-disabled="true"
+                tabIndex={-1}
+              >
+                <span
+                  style={{ fontSize: '24px' }}
+                  role="img"
+                  aria-hidden="true"
+                >
+                  ▶️
+                </span>
+                <div>
+                  <span className="store-label">Available soon on</span>
+                  <span className="store-name">Google Play</span>
+                </div>
+              </AppStoreButton>
             </AppStoreRow>
             <EmailSection>
               <EmailLabel>Get notified when we launch</EmailLabel>
