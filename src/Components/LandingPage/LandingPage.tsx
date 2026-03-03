@@ -211,7 +211,7 @@ const LandingPage: React.FC = (): JSX.Element => {
           </HeroText>
           <LogoContainer>
             <LogoImage
-              src="/assets/images/NewLogo.webp"
+              src="/assets/images/ToastByteStudios.webp"
               alt="TOAST app logo"
               width={240}
               height={240}
