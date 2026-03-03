@@ -40,8 +40,8 @@ const HeroSection = styled(FlexCol)`
 const UnderDevelopmentBanner = styled.div`
   background: linear-gradient(
     135deg,
-    ${COLORS.ACCENT} 0%,
-    ${COLORS.TOAST_BROWN} 100%
+    ${COLORS.TOAST_BROWN} 0%,
+    ${COLORS.ACCENT} 100%
   );
   color: ${COLORS.PRIMARY_LIGHT};
   padding: 16px 32px;
@@ -49,10 +49,10 @@ const UnderDevelopmentBanner = styled.div`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(192, 154, 107, 0.35);
+  box-shadow: 0 4px 20px rgba(196, 98, 45, 0.3);
   margin-bottom: 20px;
   font-family: 'Raleway', Arial, sans-serif;
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 
   @media (prefers-reduced-motion: no-preference) {
     animation: pulse 2s ease-in-out infinite;
@@ -62,11 +62,11 @@ const UnderDevelopmentBanner = styled.div`
     0%,
     100% {
       transform: scale(1);
-      box-shadow: 0 4px 20px rgba(192, 154, 107, 0.35);
+      box-shadow: 0 4px 20px rgba(196, 98, 45, 0.3);
     }
     50% {
       transform: scale(1.02);
-      box-shadow: 0 6px 30px rgba(192, 154, 107, 0.5);
+      box-shadow: 0 6px 30px rgba(196, 98, 45, 0.45);
     }
   }
 
@@ -86,9 +86,8 @@ const Title = styled.h1`
   font-weight: 700;
   text-align: center;
   font-family: 'Raleway', Arial, sans-serif;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
   margin: 20px 0 10px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: -0.5px;
 
   @media (max-width: ${BREAKPOINTS.TABLET_LANDSCAPE}) {
@@ -163,7 +162,7 @@ const VideoContainer = styled.div`
     height: 260px;
     background: radial-gradient(
       circle,
-      rgba(192, 154, 107, 0.2) 0%,
+      rgba(196, 98, 45, 0.15) 0%,
       transparent 70%
     );
     border-radius: 50%;
@@ -201,9 +200,9 @@ const ToastVideo = styled.video`
   height: 240px;
   max-width: 240px;
   border: 3px solid ${COLORS.TOAST_BROWN};
-  background-color: white;
+  background-color: ${COLORS.PRIMARY_LIGHT};
   border-radius: 50%;
-  box-shadow: 0 8px 30px rgba(192, 154, 107, 0.4);
+  box-shadow: 0 8px 30px rgba(196, 98, 45, 0.3);
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease;
@@ -256,8 +255,8 @@ const ComingSoonBadge = styled.span`
   display: inline-block;
   background: linear-gradient(
     135deg,
-    ${COLORS.ACCENT} 0%,
-    ${COLORS.TOAST_BROWN} 100%
+    ${COLORS.TOAST_BROWN} 0%,
+    ${COLORS.ACCENT} 100%
   );
   color: ${COLORS.PRIMARY_LIGHT};
   font-size: 12px;
@@ -266,17 +265,16 @@ const ComingSoonBadge = styled.span`
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 20px;
-  box-shadow: 0 2px 10px rgba(230, 126, 74, 0.4);
+  box-shadow: 0 2px 10px rgba(196, 98, 45, 0.35);
 `;
 
 const HeroHeadline = styled.h1`
   font-size: 44px;
   font-weight: 800;
   font-family: 'Raleway', Arial, sans-serif;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
   margin: 0;
   line-height: 1.15;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 
   span {
     color: ${COLORS.TOAST_BROWN};
@@ -300,9 +298,10 @@ const HeroSubheadline = styled.p`
   font-size: 18px;
   font-weight: 400;
   font-family: 'Inter', Arial, sans-serif;
-  color: ${COLORS.TOAST_BROWN};
+  color: ${COLORS.PRIMARY_DARK};
   margin: 0;
   line-height: 1.7;
+  opacity: 0.8; /* secondary text — slightly muted relative to headline */
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     font-size: 16px;
@@ -329,10 +328,10 @@ const AppStoreButton = styled.a`
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  border: 2px solid rgba(192, 154, 107, 0.5);
+  border: 2px solid rgba(196, 98, 45, 0.4);
   border-radius: 10px;
-  background: rgba(192, 154, 107, 0.1);
-  color: ${COLORS.PRIMARY_LIGHT};
+  background: rgba(196, 98, 45, 0.08);
+  color: ${COLORS.PRIMARY_DARK};
   font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -375,8 +374,8 @@ const EmailLabel = styled.p`
   font-size: 14px;
   font-weight: 600;
   font-family: 'Inter', Arial, sans-serif;
-  color: ${COLORS.PRIMARY_LIGHT};
-  opacity: 0.9;
+  color: ${COLORS.PRIMARY_DARK};
+  opacity: 0.85;
 `;
 
 const EmailForm = styled.form`
@@ -386,8 +385,8 @@ const EmailForm = styled.form`
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid rgba(192, 154, 107, 0.4);
-  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(196, 98, 45, 0.35);
+  background: rgba(255, 255, 255, 0.7);
 
   &:focus-within {
     border-color: ${COLORS.TOAST_BROWN};
@@ -410,16 +409,17 @@ const EmailInput = styled.input`
   outline: none;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
 
   &::placeholder {
-    color: rgba(245, 241, 235, 0.45);
+    color: rgba(61, 35, 20, 0.4);
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    border: 2px solid rgba(192, 154, 107, 0.4);
+    border: 2px solid rgba(196, 98, 45, 0.35);
     border-radius: 10px;
     padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.7);
 
     &:focus {
       border-color: ${COLORS.TOAST_BROWN};

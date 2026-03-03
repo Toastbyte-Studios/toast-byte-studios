@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="ToastByte Studios">
+  <rect width="220" height="48" fill="none"/>
+  <text
+    x="110" y="30"
+    text-anchor="middle"
+    font-family="Raleway, 'Arial Black', Arial, sans-serif"
+    font-size="26"
+    font-weight="800"
+    fill="#3D2314"
+    letter-spacing="-0.5"
+  >TOASTBYTE</text>
+  <text
+    x="110" y="44"
+    text-anchor="middle"
+    font-family="Raleway, Arial, sans-serif"
+    font-size="12"
+    font-weight="600"
+    fill="#C4622D"
+    letter-spacing="4"
+  >STUDIOS</text>
+</svg>

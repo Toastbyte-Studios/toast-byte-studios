@@ -10,16 +10,16 @@ const Container = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   font-size: 24px;
   font-weight: bold;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
 
-  background: rgba(44, 62, 80, 0.95);
+  background: rgba(245, 240, 232, 0.97);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(192, 154, 107, 0.25);
-  box-shadow: 0 2px 20px rgba(44, 62, 80, 0.3);
+  border-bottom: 1px solid rgba(196, 98, 45, 0.2);
+  box-shadow: 0 2px 12px rgba(61, 35, 20, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -35,39 +35,10 @@ const Container = styled.nav`
   }
 `;
 
-const LogoBackground = styled(FlexRow)`
-  padding: 8px 16px;
-  background: linear-gradient(
-    135deg,
-    ${COLORS.TOAST_BROWN} 0%,
-    ${COLORS.SECONDARY_ACCENT} 100%
-  );
-  border-radius: 12px;
+const LogoWrapper = styled(FlexRow)`
+  gap: 12px;
   width: auto;
-  min-width: 200px;
-  height: 55px;
-  border: 1px solid rgba(192, 154, 107, 0.3);
-  box-shadow: 0 4px 15px rgba(192, 154, 107, 0.2);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(192, 154, 107, 0.3);
-  }
-
-  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    min-width: 180px;
-    height: 50px;
-    padding: 6px 12px;
-  }
-
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    min-width: 150px;
-    height: 45px;
-    padding: 5px 10px;
-  }
+  align-items: center;
 `;
 
 const NavLink = styled.a`
@@ -78,44 +49,72 @@ const NavLink = styled.a`
 
   &:focus,
   &:focus-visible {
-    outline: 3px solid ${COLORS.SECONDARY_ACCENT};
+    outline: 3px solid ${COLORS.TOAST_BROWN};
     outline-offset: 3px;
     border-radius: 4px;
   }
 `;
 
 const Logo = styled.img`
-  height: 70px;
-  width: auto;
-  margin-left: 0;
-  padding: 5px;
-  background: white;
+  height: 52px;
+  width: 52px;
   border-radius: 50%;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  border: 2px solid rgba(196, 98, 45, 0.3);
+  box-shadow: 0 2px 8px rgba(61, 35, 20, 0.12);
   transition: transform 0.2s ease;
+  object-fit: cover;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    height: 60px;
+    height: 46px;
+    width: 46px;
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    height: 50px;
-  }
-`;
-
-const BrandedLogo = styled.img`
-  height: 45px;
-  width: auto;
-  padding: 0;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
-
-  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     height: 40px;
-  }
-
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    height: 35px;
+    width: 40px;
   }
 `;
 
-export { Container, LogoBackground, Logo, BrandedLogo, NavLink };
+const BrandText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;
+
+const BrandName = styled.span`
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: ${COLORS.PRIMARY_DARK};
+  letter-spacing: -0.5px;
+  line-height: 1;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    font-size: 18px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 16px;
+  }
+`;
+
+const BrandSub = styled.span`
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: ${COLORS.TOAST_BROWN};
+  letter-spacing: 3px;
+  line-height: 1;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+`;
+
+export { Container, LogoWrapper, Logo, BrandText, BrandName, BrandSub, NavLink };
+

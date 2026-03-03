@@ -1,26 +1,26 @@
 /**
  * An object containing the main color palette used throughout the application.
  *
- * @property TOAST_BROWN    - The primary brown color for toast branding.
- * @property PRIMARY_DARK   - The main dark color for backgrounds or text.
- * @property PRIMARY_LIGHT  - The main light color for backgrounds or highlights.
- * @property ACCENT         - The accent color used for highlights and important elements.
- * @property SECONDARY_ACCENT  - The first secondary color for complementary UI elements.
- * @property BACKGROUND     - The background color.
- * @property GRADIENT_START - Gradient start color for modern backgrounds.
- * @property GRADIENT_END   - Gradient end color for modern backgrounds.
- * @property CARD_BG        - Card background color with transparency.
+ * @property TOAST_BROWN    - The primary warm orange-brown accent color.
+ * @property PRIMARY_DARK   - The main dark espresso brown for text and headings.
+ * @property PRIMARY_LIGHT  - The cream off-white for backgrounds and light surfaces.
+ * @property ACCENT         - The lighter warm orange for gradients and hover states.
+ * @property SECONDARY_ACCENT  - Mid-tone warm brown for complementary UI elements.
+ * @property BACKGROUND     - The cream page background color.
+ * @property GRADIENT_START - Gradient start color for subtle warm backgrounds.
+ * @property GRADIENT_END   - Gradient end color for warm backgrounds.
+ * @property CARD_BG        - Card background color with warm transparency.
  */
 const COLORS = {
-  TOAST_BROWN: '#C09A6B',
-  PRIMARY_DARK: '#2C3E50',
-  PRIMARY_LIGHT: '#F5F1EB',
-  ACCENT: '#E67E4A',
-  SECONDARY_ACCENT: '#8DAA9D',
-  BACKGROUND: '#3D4F5F',
-  GRADIENT_START: '#34495E',
-  GRADIENT_END: '#4A6274',
-  CARD_BG: 'rgba(192, 154, 107, 0.12)',
+  TOAST_BROWN: '#C4622D',
+  PRIMARY_DARK: '#3D2314',
+  PRIMARY_LIGHT: '#F5F0E8',
+  ACCENT: '#D97748',
+  SECONDARY_ACCENT: '#8B5E3C',
+  BACKGROUND: '#F5F0E8',
+  GRADIENT_START: '#EDE5D4',
+  GRADIENT_END: '#F5F0E8',
+  CARD_BG: 'rgba(196, 98, 45, 0.07)',
 };
 
 /**

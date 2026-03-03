@@ -12,12 +12,12 @@ const Container = styled.footer`
 
   font-size: 14px;
   font-family: 'Inter', Arial, sans-serif;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
 
-  background: rgba(44, 62, 80, 0.95);
+  background: rgba(237, 229, 212, 0.97);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(192, 154, 107, 0.25);
-  box-shadow: 0 -2px 20px rgba(44, 62, 80, 0.3);
+  border-top: 1px solid rgba(196, 98, 45, 0.2);
+  box-shadow: 0 -2px 12px rgba(61, 35, 20, 0.06);
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     padding: 20px 30px;

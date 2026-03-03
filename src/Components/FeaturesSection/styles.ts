@@ -13,12 +13,12 @@ const Container = styled(FlexCol)`
   gap: 36px;
 
   font-family: 'Inter', Arial, sans-serif;
-  background: rgba(192, 154, 107, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(192, 154, 107, 0.25);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 98, 45, 0.15);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.25);
-  color: ${COLORS.PRIMARY_LIGHT};
+  box-shadow: 0 8px 32px rgba(61, 35, 20, 0.08);
+  color: ${COLORS.PRIMARY_DARK};
 
   @media (max-width: ${BREAKPOINTS.TABLET_LANDSCAPE}) {
     padding: 50px 40px;
@@ -45,13 +45,13 @@ const SectionHeader = styled(FlexRow)`
   background: linear-gradient(
     135deg,
     ${COLORS.TOAST_BROWN} 0%,
-    ${COLORS.SECONDARY_ACCENT} 100%
+    ${COLORS.ACCENT} 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   font-family: 'Raleway', sans-serif;
-  box-shadow: 0 4px 15px rgba(192, 154, 107, 0.3);
-  color: ${COLORS.PRIMARY_DARK};
+  box-shadow: 0 4px 15px rgba(196, 98, 45, 0.25);
+  color: ${COLORS.PRIMARY_LIGHT};
 
   h2 {
     margin: 0;
@@ -113,8 +113,8 @@ const Card = styled.div`
   align-items: flex-start;
   gap: 10px;
   padding: 24px 20px;
-  background: rgba(192, 154, 107, 0.08);
-  border: 1px solid rgba(192, 154, 107, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(196, 98, 45, 0.15);
   border-radius: 14px;
   transition:
     transform 0.25s ease,
@@ -123,8 +123,8 @@ const Card = styled.div`
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(192, 154, 107, 0.25);
-    border-color: rgba(192, 154, 107, 0.45);
+    box-shadow: 0 8px 24px rgba(196, 98, 45, 0.18);
+    border-color: rgba(196, 98, 45, 0.35);
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
@@ -168,9 +168,9 @@ const CardName = styled.h3`
 const CardDescription = styled.p`
   margin: 0;
   font-size: 14px;
-  color: ${COLORS.PRIMARY_LIGHT};
+  color: ${COLORS.PRIMARY_DARK};
   line-height: 1.6;
-  opacity: 0.88;
+  opacity: 0.8; /* secondary text — slightly muted relative to card title */
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
     font-size: 13px;

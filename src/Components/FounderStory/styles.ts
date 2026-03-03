@@ -13,12 +13,12 @@ const Container = styled(FlexCol)`
   gap: 32px;
 
   font-family: 'Inter', Arial, sans-serif;
-  background: rgba(192, 154, 107, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(192, 154, 107, 0.25);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 98, 45, 0.15);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.25);
-  color: ${COLORS.PRIMARY_LIGHT};
+  box-shadow: 0 8px 32px rgba(61, 35, 20, 0.08);
+  color: ${COLORS.PRIMARY_DARK};
   line-height: 1.8;
   font-size: 18px;
 
@@ -50,13 +50,13 @@ const SectionHeader = styled(FlexRow)`
   background: linear-gradient(
     135deg,
     ${COLORS.TOAST_BROWN} 0%,
-    ${COLORS.SECONDARY_ACCENT} 100%
+    ${COLORS.ACCENT} 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   font-family: 'Raleway', sans-serif;
-  box-shadow: 0 4px 15px rgba(192, 154, 107, 0.3);
-  color: ${COLORS.PRIMARY_DARK};
+  box-shadow: 0 4px 15px rgba(196, 98, 45, 0.25);
+  color: ${COLORS.PRIMARY_LIGHT};
 
   h2 {
     margin: 0;
@@ -140,7 +140,7 @@ const HikingPhoto = styled.img`
   object-fit: cover;
   border-radius: 16px;
   border: 3px solid ${COLORS.TOAST_BROWN};
-  box-shadow: 0 8px 28px rgba(192, 154, 107, 0.35);
+  box-shadow: 0 8px 28px rgba(196, 98, 45, 0.25);
   transition: transform 0.3s ease;
 
   &:hover {
@@ -172,7 +172,7 @@ const ToastCloseupPhoto = styled.img`
   object-position: center top;
   border-radius: 50%;
   border: 3px solid ${COLORS.TOAST_BROWN};
-  box-shadow: 0 6px 20px rgba(192, 154, 107, 0.4);
+  box-shadow: 0 6px 20px rgba(196, 98, 45, 0.3);
   transition: transform 0.3s ease;
 
   &:hover {
