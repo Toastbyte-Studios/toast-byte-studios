@@ -63,6 +63,7 @@ const Container = styled(FlexCol)`
     ${COLORS.GRADIENT_END} 100%
   );
   color: ${COLORS.PRIMARY_DARK};
+  user-select: none;
 `;
 
 export default App;

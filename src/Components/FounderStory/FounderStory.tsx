@@ -8,9 +8,6 @@ import {
   FadeInParagraph,
   ImageColumn,
   HikingPhoto,
-  ToastCloseupWrapper,
-  ToastCloseupPhoto,
-  PhotoCaption,
 } from './styles';
 
 /**
@@ -60,15 +57,6 @@ const FounderStory: React.FC = (): JSX.Element => {
               onError={() => setHikingPhotoLoaded(false)}
             />
           )}
-          <ToastCloseupWrapper>
-            <ToastCloseupPhoto
-              src="/assets/images/ToastReal.webp"
-              alt="Toast the Jack Russell Terrier — the face that inspired the app icon"
-            />
-            <PhotoCaption>
-              This face. This is where the app icon came from.
-            </PhotoCaption>
-          </ToastCloseupWrapper>
         </ImageColumn>
 
         <TextBlock>

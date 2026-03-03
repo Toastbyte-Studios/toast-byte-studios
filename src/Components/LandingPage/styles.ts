@@ -324,36 +324,16 @@ const AppStoreRow = styled(FlexRow)`
   }
 `;
 
-const AppStoreButton = styled.a`
+const AppStoreButton = styled.a<{ $store?: 'apple' | 'google' }>`
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border: 2px solid rgba(196, 98, 45, 0.4);
-  border-radius: 10px;
-  background: rgba(196, 98, 45, 0.08);
-  color: ${COLORS.PRIMARY_DARK};
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
   text-decoration: none;
   cursor: default;
-  opacity: 0.75;
+  opacity: 0.85;
   transition: opacity 0.2s ease;
 
-  span.store-label {
-    font-size: 11px;
-    font-weight: 400;
-    opacity: 0.8;
+  img {
     display: block;
-    line-height: 1;
-  }
-
-  span.store-name {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.2;
   }
 `;
 

@@ -153,35 +153,25 @@ const LandingPage: React.FC = (): JSX.Element => {
                 aria-label="App Store — coming soon"
                 aria-disabled="true"
                 tabIndex={-1}
+                $store="apple"
               >
-                <span
-                  style={{ fontSize: '24px' }}
-                  role="img"
-                  aria-hidden="true"
-                >
-                  🍎
-                </span>
-                <div>
-                  <span className="store-label">Available soon on</span>
-                  <span className="store-name">App Store</span>
-                </div>
+                <img
+                  src="/assets/images/AppleStore.svg"
+                  alt="Download on the App Store"
+                  height={130}
+                />
               </AppStoreButton>
               <AppStoreButton
                 aria-label="Google Play — coming soon"
                 aria-disabled="true"
                 tabIndex={-1}
+                $store="google"
               >
-                <span
-                  style={{ fontSize: '24px' }}
-                  role="img"
-                  aria-hidden="true"
-                >
-                  ▶️
-                </span>
-                <div>
-                  <span className="store-label">Available soon on</span>
-                  <span className="store-name">Google Play</span>
-                </div>
+                <img
+                  src="/assets/images/GooglePlayStore.svg"
+                  alt="Get it on Google Play"
+                  height={40}
+                />
               </AppStoreButton>
             </AppStoreRow>
             <EmailSection>
