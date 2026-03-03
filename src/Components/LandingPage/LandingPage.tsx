@@ -212,7 +212,7 @@ const LandingPage: React.FC = (): JSX.Element => {
           <LogoContainer>
             <LogoImage
               src="/assets/images/ToastByteStudios.webp"
-              alt="TOAST app logo"
+              alt="Toastbyte Studios logo"
               width={240}
               height={240}
             />
