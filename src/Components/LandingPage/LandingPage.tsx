@@ -175,7 +175,9 @@ const LandingPage: React.FC = (): JSX.Element => {
                 />
               </AppStoreButton>
             </AppStoreRow>
-            <AppStoreComingSoonLabel>Available at launch</AppStoreComingSoonLabel>
+            <AppStoreComingSoonLabel>
+              Available at launch
+            </AppStoreComingSoonLabel>
             <EmailSection>
               <EmailLabel>Get notified when we launch</EmailLabel>
               {submitted ? (
