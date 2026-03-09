@@ -82,12 +82,24 @@ const MODULES: { icon: JSX.Element; name: string; description: string }[] = [
     description:
       'Preparedness checklists, gear inventory, and scenario-based planning to stay ready before an emergency hits.',
   },
+  {
+    icon: (
+      <svg {...SVG_PROPS}>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
+    name: 'Earth',
+    description:
+      'Sun and lunar cycles, barometric pressure, seasonal weather outlook, and celestial events — read the natural world around you.',
+  },
 ];
 
 /**
  * FeaturesSection renders a grid of TOAST app module cards.
  *
- * Highlights the five core modules with icon, name, and description,
+ * Highlights the six core modules with icon, name, and description,
  * emphasizing that all features are available offline.
  *
  * @component
@@ -125,7 +137,7 @@ const FeaturesSection: React.FC = (): JSX.Element => {
         <span role="img" aria-hidden="true">
           📶
         </span>{' '}
-        All five modules work fully offline — no signal, no problem.
+        All six modules work fully offline — no signal, no problem.
       </OfflineTag>
       <Grid>
         {MODULES.map((mod, i) => (
