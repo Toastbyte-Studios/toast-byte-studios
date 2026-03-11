@@ -4,7 +4,7 @@
 
 ## TOAST App
 
-TOAST (Tactical Operations and Survival Toolkit) is an offline-first emergency preparedness and survival app for iOS and Android. It is built for hikers, preppers, and anyone who wants practical tools that work without a network connection.
+TOAST (Trusted Outdoor and Survival Toolkit) is an offline-first emergency preparedness and survival app for iOS and Android. It is built for hikers, preppers, and anyone who wants practical tools that work without a network connection.
 
 ### Features
 - **Core Module**: Unit converter, weather tools, voice log
