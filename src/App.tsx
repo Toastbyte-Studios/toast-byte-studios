@@ -30,7 +30,7 @@ function App() {
     };
     document.title =
       titles[route] ??
-      'TOAST — Tactical Operations and Survival Toolkit | Toastbyte Studios';
+      'TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios';
   }, [route]);
 
   const renderPage = () => {

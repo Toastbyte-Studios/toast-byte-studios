@@ -60,8 +60,8 @@ const About: React.FC = () => {
           paragraphsRef.current[1] = el;
         }}
       >
-        <Bold>TOAST (Tactical Operations and Survival Toolkit)</Bold> — Built on
-        a simple philosophy: technology should still work even when the world
+        <Bold>TOAST (Trusted Outdoor and Survival Toolkit)</Bold> — Built on a
+        simple philosophy: technology should still work even when the world
         doesn&apos;t. An offline-first emergency and survival toolkit packed
         with maps, guides, references, and utilities you can rely on even
         without a signal.

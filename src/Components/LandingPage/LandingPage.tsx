@@ -145,9 +145,9 @@ const LandingPage: React.FC = (): JSX.Element => {
               serious.
             </HeroHeadline>
             <HeroSubheadline>
-              TOAST — Tactical Operations and Survival Toolkit — is an
-              offline-first emergency app packed with maps, guides, references,
-              and utilities. Ready when the network isn&apos;t.
+              TOAST — Trusted Outdoor and Survival Toolkit — is an offline-first
+              emergency app packed with maps, guides, references, and utilities.
+              Ready when the network isn&apos;t.
             </HeroSubheadline>
             <AppStoreRow>
               <AppStoreButton

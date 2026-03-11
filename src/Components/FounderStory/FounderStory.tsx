@@ -95,10 +95,10 @@ const FounderStory: React.FC = (): JSX.Element => {
               paragraphsRef.current[3] = el;
             }}
           >
-            <strong>TOAST — Tactical Operations and Survival Toolkit</strong> —
-            is named after her because she&apos;s the companion who&apos;s
-            always with me out there. The app is meant to be the same: something
-            you trust, something that&apos;s always ready, something that
+            <strong>TOAST — Trusted Outdoor and Survival Toolkit</strong> — is
+            named after her because she&apos;s the companion who&apos;s always
+            with me out there. The app is meant to be the same: something you
+            trust, something that&apos;s always ready, something that
             doesn&apos;t let you down when things get serious.
           </FadeInParagraph>
 
