@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/update-sitemap-lastmod.mjs",
     "generate:icons": "node scripts/generate-icons.mjs",
     "clean:appledouble": "find . -type f -name '._*' -delete",
     "cleanup": "npm run clean:appledouble && npm run format && npm run lint",

@@ -1,5 +1,7 @@
 # Toastbyte Studios
 
+Last updated: 2026-04-09
+
 > A small app studio based in Las Vegas, NV, building practical tools for outdoor enthusiasts, hikers, and the preparedness community.
 
 ## TOAST App
@@ -15,7 +17,7 @@ TOAST (Trusted Outdoor and Survival Toolkit) is an offline-first emergency prepa
 
 ### Pricing
 - Free tier available
-- One-time Pro unlock: $4.99 (Founding price), $7.99–$9.99 regular
+- Optional one-time Pro unlock (see website for current pricing)
 
 ### Status
 Coming soon — available on iOS App Store and Google Play. Join the waitlist at https://toastbyte.studio/

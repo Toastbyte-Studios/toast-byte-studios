@@ -1,75 +1,70 @@
-# React + TypeScript + Vite
+# Toastbyte Studios — Marketing Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The official marketing website for **TOAST (Trusted Outdoor and Survival Toolkit)**, an offline-first emergency preparedness app for hikers, preppers, and anyone who wants to be ready.
 
-Currently, two official plugins are available:
+Live at [toastbyte.studio](https://toastbyte.studio/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **React 19** with TypeScript
+- **Vite 7** for bundling and dev server
+- **Styled Components** for styling
+- **Cloudflare Workers** for backend (email contact form with Turnstile CAPTCHA)
+- **Cloudflare D1** for database (contact form submissions)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Project Structure
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```text
+src/
+  Components/
+    About/          — Studio & founder info section
+    FeaturesSection/ — TOAST module grid (Core, Navigation, Communications, Reference, Prepper, Earth)
+    Footer/         — Site footer
+    FounderStory/   — Founder background
+    LandingPage/    — Hero section
+    Nav/            — Navigation bar
+    PrivacyPolicy/  — Privacy policy page
+    Support/        — Support / contact form
+  constants.ts      — Shared colors and breakpoints
+  types/            — Shared TypeScript types
+worker/             — Cloudflare Worker for contact form API
+scripts/            — Build utilities (sitemap timestamps, icon generation)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm install
+npm run dev
 ```
+
+## Available Scripts
+
+| Script                   | Description                                          |
+| ------------------------ | ---------------------------------------------------- |
+| `npm run dev`            | Start local dev server                               |
+| `npm run build`          | Update sitemap, type-check, and build for production |
+| `npm run lint`           | Run ESLint                                           |
+| `npm run format`         | Run Prettier                                         |
+| `npm run cleanup`        | Remove Apple Double files, format, and lint          |
+| `npm run generate:icons` | Regenerate favicon/icon assets from source           |
+| `npm run preview`        | Preview the production build locally                 |
+
+## TOAST App Modules
+
+The site showcases six core modules, all of which work fully offline:
+
+- **Core** — Flashlight, compass, whistle timer, and survival calculations
+- **Navigation** — Offline maps, coordinate tools, and terrain reference
+- **Communications** — Emergency frequencies, signaling protocols, and contact tools
+- **Reference** — Survival guides, first aid procedures, and field references
+- **Prepper** — Checklists, gear inventory, and scenario-based planning
+- **Earth** — Sun/lunar cycles, barometric pressure, and celestial events
+
+## Deployment
+
+The site builds to `dist/` and is deployed to Cloudflare Pages. The Worker handles the contact form API and is deployed separately via Wrangler.
+
+---
+
+Built by [Jason Shprintz](https://github.com/jason-shprintz) · [Toastbyte Studios](https://toastbyte.studio/)
