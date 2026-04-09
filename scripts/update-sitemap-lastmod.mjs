@@ -17,7 +17,7 @@ const updated = content.replace(
   `<lastmod>${today}</lastmod>`,
 );
 
-if (updated === content) {
+if (!/<lastmod>[^<]*<\/lastmod>/.test(content)) {
   throw new Error(`No <lastmod> tags found in ${sitemapPath}; sitemap.xml was not updated.`);
 }
 
