@@ -20,30 +20,30 @@ function useHashRoute() {
   return route;
 }
 
+const ROUTE_META: Record<string, { title: string; description: string }> = {
+  privacy: {
+    title: 'Privacy Policy | Toastbyte Studios',
+    description:
+      'Privacy policy for TOAST — Trusted Outdoor and Survival Toolkit — by Toastbyte Studios.',
+  },
+  support: {
+    title: 'Support | Toastbyte Studios',
+    description:
+      'Get help with TOAST — Trusted Outdoor and Survival Toolkit. Contact support or browse FAQs.',
+  },
+};
+
+const DEFAULT_META = {
+  title: 'TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios',
+  description:
+    'TOAST is an offline-first emergency preparedness app with maps, guides, references, and utilities — built by Toastbyte Studios for hikers, preppers, and anyone who wants to be ready.',
+};
+
 function App() {
   const route = useHashRoute();
 
   useEffect(() => {
-    const meta: Record<string, { title: string; description: string }> = {
-      privacy: {
-        title: 'Privacy Policy | Toastbyte Studios',
-        description:
-          'Privacy policy for TOAST — Trusted Outdoor and Survival Toolkit — by Toastbyte Studios.',
-      },
-      support: {
-        title: 'Support | Toastbyte Studios',
-        description:
-          'Get help with TOAST — Trusted Outdoor and Survival Toolkit. Contact support or browse FAQs.',
-      },
-    };
-
-    const defaults = {
-      title: 'TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios',
-      description:
-        'TOAST is an offline-first emergency preparedness app with maps, guides, references, and utilities — built by Toastbyte Studios for hikers, preppers, and anyone who wants to be ready.',
-    };
-
-    const { title, description } = meta[route] ?? defaults;
+    const { title, description } = ROUTE_META[route] ?? DEFAULT_META;
 
     document.title = title;
     document

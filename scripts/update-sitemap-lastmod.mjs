@@ -17,5 +17,10 @@ const updated = content.replace(
   `<lastmod>${today}</lastmod>`,
 );
 
+if (updated === content) {
+  throw new Error(`No <lastmod> tags found in ${sitemapPath}; sitemap.xml was not updated.`);
+}
+
 fs.writeFileSync(sitemapPath, updated, 'utf-8');
+
 console.log(`sitemap.xml lastmod updated to ${today}`);
