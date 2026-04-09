@@ -5,9 +5,8 @@ import pngToIco from 'png-to-ico';
 
 // Candidate source images in order of preference (largest/cleanest first)
 const candidates = [
-  path.resolve('public/images/favicon.png'),
-  path.resolve('public/assets/images/ToastHeadShotClear.webp'),
-  path.resolve('assets/images/ToastHeadShotClear.webp'),
+  path.resolve('public/assets/images/ToastByteStudios.png'),
+  path.resolve('public/assets/images/ToastByteStudios.webp'),
 ];
 
 function findSource() {
