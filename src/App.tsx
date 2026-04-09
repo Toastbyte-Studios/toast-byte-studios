@@ -24,13 +24,43 @@ function App() {
   const route = useHashRoute();
 
   useEffect(() => {
-    const titles: Record<string, string> = {
-      privacy: 'Privacy Policy | Toastbyte Studios',
-      support: 'Support | Toastbyte Studios',
+    const meta: Record<string, { title: string; description: string }> = {
+      privacy: {
+        title: 'Privacy Policy | Toastbyte Studios',
+        description:
+          'Privacy policy for TOAST — Trusted Outdoor and Survival Toolkit — by Toastbyte Studios.',
+      },
+      support: {
+        title: 'Support | Toastbyte Studios',
+        description:
+          'Get help with TOAST — Trusted Outdoor and Survival Toolkit. Contact support or browse FAQs.',
+      },
     };
-    document.title =
-      titles[route] ??
-      'TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios';
+
+    const defaults = {
+      title: 'TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios',
+      description:
+        'TOAST is an offline-first emergency preparedness app with maps, guides, references, and utilities — built by Toastbyte Studios for hikers, preppers, and anyone who wants to be ready.',
+    };
+
+    const { title, description } = meta[route] ?? defaults;
+
+    document.title = title;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', description);
+    document
+      .querySelector('meta[property="og:title"]')
+      ?.setAttribute('content', title);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute('content', description);
+    document
+      .querySelector('meta[name="twitter:title"]')
+      ?.setAttribute('content', title);
+    document
+      .querySelector('meta[name="twitter:description"]')
+      ?.setAttribute('content', description);
   }, [route]);
 
   const renderPage = () => {
