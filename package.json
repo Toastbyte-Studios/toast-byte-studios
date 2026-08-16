@@ -1,7 +1,7 @@
 {
   "name": "toast-byte-studios",
   "private": true,
-  "version": "1.11.0",
+  "version": "1.11.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "postbuild": "node scripts/update-sitemap-lastmod.mjs",
     "generate:icons": "node scripts/generate-icons.mjs",
     "clean:appledouble": "find . -type f -name '._*' -delete",
-    "cleanup": "npm run clean:appledouble && npm run format && npm run lint",
+    "cleanup": "npm run format && npm run lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -36,7 +36,7 @@
     "globals": "^16.5.0",
     "png-to-ico": "^3.0.1",
     "prettier": "3.8.1",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.3",
     "vite": "^7.2.2"
