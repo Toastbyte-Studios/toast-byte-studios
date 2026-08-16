@@ -1,107 +1,70 @@
 import type { JSX } from 'react';
+import { CONTACTS } from '../../data/catalog';
 import {
-  PageContainer,
-  PageContent,
-  PageHeader,
-  SectionTitle,
-  Question,
-  Paragraph,
+  SectionLabel,
+  PageTitle,
+  BackLink,
+  Prose,
+} from '../../styles/primitives';
+import {
+  Main,
+  Lede,
+  Columns,
+  ContactRow,
+  ContactKey,
   ContactLink,
-  Divider,
 } from './styles';
 
 /**
- * Support component renders the TOAST app support and FAQ page.
- *
- * Provides a TOAST-specific FAQ section covering common questions, a contact email,
- * and a link to submit feedback — as required for App Store submission.
+ * Support renders the contact routes for the portfolio and guidance on what to
+ * include when getting in touch.
  *
  * @component
- * @returns {JSX.Element} The rendered TOAST support/FAQ page.
+ * @returns {JSX.Element} The rendered support view.
  */
 const Support: React.FC = (): JSX.Element => {
   return (
-    <PageContainer>
-      <PageContent>
-        <PageHeader>
-          <h1>Support</h1>
-        </PageHeader>
-
-        <Paragraph>
-          Need help with TOAST? Check the FAQ below or reach out to us directly
-          — we&apos;re happy to help.
-        </Paragraph>
-
-        <SectionTitle>Frequently Asked Questions</SectionTitle>
-        <Divider />
-
-        <Question>Does TOAST work without an internet connection?</Question>
-        <Paragraph>
-          Yes. TOAST is designed to work fully offline. All core features —
-          maps, guides, references, and utilities — are available without any
-          network connection. No account or sign-in is required.
-        </Paragraph>
-
-        <Question>How do I unlock the Pro version?</Question>
-        <Paragraph>
-          The Pro unlock is a one-time in-app purchase available through the
-          Apple App Store or Google Play Store. Once purchased, Pro features are
-          unlocked permanently on your device. If you reinstall the app, tap
-          &quot;Restore Purchases&quot; to re-activate your Pro unlock at no
-          extra charge.
-        </Paragraph>
-
-        <Question>Which platforms is TOAST available on?</Question>
-        <Paragraph>
-          TOAST is currently in development for iOS (iPhone and iPad) and
-          Android. Check back at{' '}
-          <ContactLink href="https://toastbyte.studio">
-            toastbyte.studio
-          </ContactLink>{' '}
-          for release announcements.
-        </Paragraph>
-
-        <Question>How do I restore a previous purchase?</Question>
-        <Paragraph>
-          Open the app and navigate to the Pro unlock screen, then tap
-          &quot;Restore Purchases&quot;. Make sure you are signed in to the same
-          Apple ID or Google account used for the original purchase.
-        </Paragraph>
-
-        <Question>How do I delete my data?</Question>
-        <Paragraph>
-          All app data is stored locally on your device — we do not store your
-          data on any servers. To delete all app data, simply uninstall the app
-          from your device. See our{' '}
-          <ContactLink href="#privacy">Privacy Policy</ContactLink> for more
-          details.
-        </Paragraph>
-
-        <Divider />
-
-        <SectionTitle>Contact Us</SectionTitle>
-        <Paragraph>
-          Have a question not covered above, found a bug, or want to share
-          feedback? We&apos;d love to hear from you.
-        </Paragraph>
-        <Paragraph>
-          📧{' '}
-          <ContactLink href="mailto:info@toastbyte.studio">
-            info@toastbyte.studio
-          </ContactLink>
-        </Paragraph>
-
-        <SectionTitle>Share Feedback</SectionTitle>
-        <Paragraph>
-          Help us improve! Send your feature requests, bug reports, or general
-          thoughts to{' '}
-          <ContactLink href="mailto:info@toastbyte.studio?subject=Feedback">
-            info@toastbyte.studio
-          </ContactLink>{' '}
-          with the subject line &quot;Feedback&quot;.
-        </Paragraph>
-      </PageContent>
-    </PageContainer>
+    <Main id="main">
+      <BackLink href="#/">← Toastbyte Studios</BackLink>
+      <PageTitle>Support</PageTitle>
+      <Lede>
+        Include the product name and what you were doing when it broke. You will
+        normally hear back within two business days.
+      </Lede>
+      <Columns>
+        <div>
+          <SectionLabel>Get in touch</SectionLabel>
+          {CONTACTS.map((contact) => (
+            <ContactRow key={contact.k}>
+              <ContactKey>{contact.k}</ContactKey>
+              <ContactLink
+                href={contact.href}
+                target={contact.href.startsWith('http') ? '_blank' : undefined}
+                rel={
+                  contact.href.startsWith('http')
+                    ? 'noopener noreferrer'
+                    : undefined
+                }
+              >
+                {contact.v}
+              </ContactLink>
+            </ContactRow>
+          ))}
+        </div>
+        <div>
+          <SectionLabel>Before you write</SectionLabel>
+          <Prose>
+            Bug reports go further with a version number and a screenshot.
+            Feature requests are welcome and answered honestly: most get a “not
+            soon”, and the ones that fit the roadmap get a date.
+          </Prose>
+          <Prose>
+            GitAll is open source, and issues filed on the repository are read
+            alongside email — the better place for anything reproducible.
+          </Prose>
+        </div>
+      </Columns>
+    </Main>
   );
 };
 

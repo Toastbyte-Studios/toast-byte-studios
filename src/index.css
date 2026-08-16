@@ -1,35 +1,4 @@
-@font-face {
-  font-family: 'Inter';
-  src: url('/assets/fonts/Inter-VariableFont_opsz,wght.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/assets/fonts/Inter-Italic-VariableFont_opsz,wght.woff2')
-    format('woff2');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Raleway';
-  src: url('/assets/fonts/Raleway-VariableFont_wght.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Raleway';
-  src: url('/assets/fonts/Raleway-Italic-VariableFont_wght.woff2')
-    format('woff2');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
+@import './styles/tokens.css';
 
 * {
   margin: 0;
@@ -38,8 +7,7 @@
 }
 
 :root {
-  font-family:
-    'Inter', 'Raleway', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
 
@@ -60,4 +28,37 @@ body,
   padding: 0;
   min-height: 100vh;
   width: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-accent-700);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-accent-600);
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }

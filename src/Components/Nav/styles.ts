@@ -1,127 +1,113 @@
 import styled from 'styled-components';
-import { COLORS, BREAKPOINTS } from '../../constants';
-import { FlexRow } from '../../styles/core';
+import { BREAKPOINTS } from '../../constants';
 
-const Container = styled.nav`
-  height: 80px;
-  width: 100%;
-  padding: 0 40px;
-
+const Header = styled.header`
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-
-  font-size: 24px;
-  font-weight: bold;
-  color: ${COLORS.PRIMARY_DARK};
-
-  background: rgba(237, 229, 212, 0.97);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(196, 98, 45, 0.2);
-  box-shadow: 0 2px 12px rgba(61, 35, 20, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-
-  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    height: 70px;
-    padding: 0 20px;
-  }
-
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    height: 60px;
-    padding: 0 15px;
-  }
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0 22px;
+  border-bottom: 1px solid var(--color-divider);
+  flex-wrap: wrap;
 `;
 
-const LogoWrapper = styled(FlexRow)`
+const Brand = styled.a`
+  display: flex;
+  align-items: center;
   gap: 12px;
-  width: auto;
-  align-items: center;
-`;
-
-const NavLink = styled.a`
-  display: flex;
-  align-items: center;
   text-decoration: none;
-  cursor: pointer;
-
-  &:focus,
-  &:focus-visible {
-    outline: 3px solid ${COLORS.TOAST_BROWN};
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-`;
-
-const Logo = styled.img`
-  height: 52px;
-  width: 52px;
-  border-radius: 50%;
-  border: 2px solid rgba(196, 98, 45, 0.3);
-  box-shadow: 0 2px 8px rgba(61, 35, 20, 0.12);
-  transition: transform 0.2s ease;
-  object-fit: cover;
+  color: var(--color-text);
 
   &:hover {
-    transform: scale(1.05);
-  }
-
-  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    height: 46px;
-    width: 46px;
-  }
-
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    height: 40px;
-    width: 40px;
+    color: var(--color-text);
+    text-decoration: none;
   }
 `;
 
-const BrandText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+const BrandMark = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  outline: 1px solid var(--color-divider);
 `;
 
 const BrandName = styled.span`
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: 20px;
-  font-weight: 800;
-  color: ${COLORS.PRIMARY_DARK};
-  letter-spacing: -0.5px;
-  line-height: 1;
+  letter-spacing: 0.02em;
+`;
 
-  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    font-size: 18px;
-  }
+const NavLinks = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    font-size: 16px;
+    gap: 14px;
+    font-size: 12px;
   }
 `;
 
-const BrandSub = styled.span`
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  color: ${COLORS.TOAST_BROWN};
-  letter-spacing: 3px;
-  line-height: 1;
+const NavLink = styled.a<{ $active?: boolean }>`
+  color: var(--color-text);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid
+    ${({ $active }) =>
+      $active
+        ? 'color-mix(in srgb, var(--color-accent) 70%, transparent)'
+        : 'transparent'};
 
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    font-size: 9px;
-    letter-spacing: 2px;
+  &:hover {
+    color: var(--color-accent-600);
+    text-decoration: none;
   }
+`;
+
+const ThemeToggle = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 11px;
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+  }
+`;
+
+const ThemeDot = styled.span<{ $filled: boolean }>`
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background: ${({ $filled }) => ($filled ? 'currentColor' : 'transparent')};
 `;
 
 export {
-  Container,
-  LogoWrapper,
-  Logo,
-  BrandText,
+  Header,
+  Brand,
+  BrandMark,
   BrandName,
-  BrandSub,
+  NavLinks,
   NavLink,
+  ThemeToggle,
+  ThemeDot,
 };

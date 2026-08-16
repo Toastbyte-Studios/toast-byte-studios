@@ -1,105 +1,67 @@
 import styled from 'styled-components';
-import { COLORS, BREAKPOINTS } from '../../constants';
+import { BREAKPOINTS } from '../../constants';
 
 const Container = styled.footer`
-  width: 100%;
-  padding: 24px 40px;
-
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
-
-  font-size: 14px;
-  font-family: 'Inter', Arial, sans-serif;
-  color: ${COLORS.PRIMARY_DARK};
-
-  background: rgba(237, 229, 212, 0.97);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(196, 98, 45, 0.2);
-  box-shadow: 0 -2px 12px rgba(61, 35, 20, 0.06);
+  margin-top: 88px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-divider);
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 58%, transparent);
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    padding: 20px 30px;
-    font-size: 13px;
-  }
-
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    flex-direction: column;
-    gap: 10px;
-    padding: 16px 20px;
-    font-size: 12px;
+    margin-top: 56px;
   }
 `;
 
-const Info = styled.p`
-  margin: 0;
-  opacity: 0.9;
+const Info = styled.span`
+  font-feature-settings: 'tnum';
+`;
+
+const Links = styled.span`
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    gap: 14px;
+  }
 `;
 
 const Link = styled.a`
-  color: ${COLORS.TOAST_BROWN};
+  color: color-mix(in srgb, var(--color-text) 58%, transparent);
   text-decoration: none;
-  font-weight: 500;
-  transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease;
 
   &:hover {
-    color: ${COLORS.ACCENT};
-    text-shadow: 0 0 10px rgba(255, 139, 67, 0.3);
+    color: var(--color-accent-600);
+    text-decoration: underline;
   }
 `;
 
-const NavLinks = styled.nav`
-  display: flex;
-  gap: 16px;
-`;
-
-const SocialLinks = styled.div`
+const SocialLinks = styled.span`
   display: flex;
   gap: 14px;
   align-items: center;
 `;
 
 const SocialIconLink = styled.a`
-  display: flex;
-  align-items: center;
-  color: ${COLORS.TOAST_BROWN};
-  transition:
-    color 0.2s ease,
-    filter 0.2s ease;
+  display: inline-flex;
+  color: color-mix(in srgb, var(--color-text) 58%, transparent);
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     fill: currentColor;
   }
 
   &:hover {
-    color: ${COLORS.ACCENT};
-    filter: drop-shadow(0 0 6px rgba(255, 139, 67, 0.4));
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid ${COLORS.ACCENT};
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid ${COLORS.ACCENT};
-    outline-offset: 3px;
-    border-radius: 4px;
+    color: var(--color-accent-600);
   }
 `;
 
-export { Container, Link, Info, NavLinks, SocialLinks, SocialIconLink };
+export { Container, Info, Links, Link, SocialLinks, SocialIconLink };
