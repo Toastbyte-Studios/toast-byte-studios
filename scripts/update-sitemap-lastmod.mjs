@@ -18,7 +18,9 @@ const updated = content.replace(
 );
 
 if (!/<lastmod>[^<]*<\/lastmod>/.test(content)) {
-  throw new Error(`No <lastmod> tags found in ${sitemapPath}; sitemap.xml was not updated.`);
+  throw new Error(
+    `No <lastmod> tags found in ${sitemapPath}; sitemap.xml was not updated.`,
+  );
 }
 
 fs.writeFileSync(sitemapPath, updated, 'utf-8');
