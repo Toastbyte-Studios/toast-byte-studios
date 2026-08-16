@@ -48,7 +48,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
     const root = document.documentElement;
     root.classList.toggle('tb-dark', theme === 'dark');
     root.style.colorScheme = theme;
-    document.body.style.background = theme === 'dark' ? '#17161a' : '#f3f2f2';
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
