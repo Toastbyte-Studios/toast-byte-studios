@@ -20,8 +20,7 @@ const Footer: React.FC = () => {
   return (
     <Container>
       <Info>
-        ©{currentYear} Toastbyte Studios. All rights reserved. · v
-        {__APP_VERSION__}
+        {`©${currentYear} Toastbyte Studios. All rights reserved. · v${__APP_VERSION__}`}
       </Info>
       <NavLinks>
         <Link href="#privacy">Privacy Policy</Link>
