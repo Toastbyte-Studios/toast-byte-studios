@@ -1,7 +1,7 @@
 {
   "name": "toast-byte-studios",
   "private": true,
-  "version": "1.10.0",
+  "version": "1.11.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,9 @@
     "clean:appledouble": "find . -type f -name '._*' -delete",
     "cleanup": "npm run clean:appledouble && npm run format && npm run lint",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview"
   },
   "dependencies": {
