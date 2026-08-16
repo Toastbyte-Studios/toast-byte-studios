@@ -63,7 +63,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
     });
   }, []);
 
-  return <ThemeContext value={{ theme, toggleTheme }}>{children}</ThemeContext>;
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export default ThemeProvider;
