@@ -145,7 +145,10 @@ const EmailCapture: React.FC = (): JSX.Element => {
               Notify Me
             </SubmitButton>
           </Form>
-          <TurnstileSlot ref={turnstileContainerRef} />
+          <TurnstileSlot
+            ref={turnstileContainerRef}
+            $hidden={!!turnstileToken}
+          />
           {emailError && <ErrorMessage role="alert">{emailError}</ErrorMessage>}
         </>
       )}

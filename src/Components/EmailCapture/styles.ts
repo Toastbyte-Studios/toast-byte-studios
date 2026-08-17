@@ -78,8 +78,9 @@ const SubmitButton = styled.button`
   }
 `;
 
-const TurnstileSlot = styled.div`
+const TurnstileSlot = styled.div<{ $hidden?: boolean }>`
   margin: 12px 0 0;
+  display: ${({ $hidden }) => ($hidden ? 'none' : 'block')};
 `;
 
 const SuccessMessage = styled.p`

@@ -14,7 +14,6 @@ const Lede = styled.p`
   line-height: 1.55;
   max-width: 54ch;
   margin: 0 0 44px;
-  text-wrap: pretty;
 `;
 
 const Columns = styled.div`
@@ -47,7 +46,9 @@ const PrincipleBody = styled.p`
 `;
 
 const MarkImage = styled.img`
-  width: 100%;
+  width: 50%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   border: 6px solid var(--color-surface);
   outline: 1px solid var(--color-divider);
 `;

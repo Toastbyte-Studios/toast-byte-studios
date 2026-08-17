@@ -1,4 +1,4 @@
-import type { Product, Release, Principle, Contact } from '../types/catalog';
+import type { Product, Principle, Contact } from '../types/catalog';
 
 /**
  * The studio product catalog.
@@ -166,45 +166,6 @@ const PRINCIPLES: Principle[] = [
   },
 ];
 
-/**
- * Changelog entries, newest first.
- *
- * PLACEHOLDER: only the GitAll rows correspond to confirmed releases. The
- * TOAST and Alley Admin entries came from the design comp — verify or remove.
- */
-const RELEASES: Release[] = [
-  {
-    date: '12 Aug 2026',
-    product: 'GitAll',
-    version: 'v1.37.1',
-    body: 'Bitbucket workspace lookups now handle renamed workspaces; embed snippet gained a compact variant.',
-  },
-  {
-    date: '28 Jul 2026',
-    product: 'Alley Admin',
-    version: 'Private alpha',
-    body: 'Scoring and standings pass end-to-end on real season data. Early access list opened.',
-  },
-  {
-    date: '09 Jul 2026',
-    product: 'GitAll',
-    version: 'v1.35.0',
-    body: 'Integrated view merges all four platforms into a single graph with per-platform tinting.',
-  },
-  {
-    date: '21 Jun 2026',
-    product: 'TOAST',
-    version: 'Internal build 24',
-    body: 'Offline map region downloads and the reference library are feature complete for the first beta.',
-  },
-  {
-    date: '02 Jun 2026',
-    product: 'GitAll',
-    version: 'v1.32.0',
-    body: 'Gitea/Forgejo support entered testing, starting with Codeberg.',
-  },
-];
-
 /** Contact routes shown on the support page. */
 const CONTACTS: Contact[] = [
   {
@@ -229,4 +190,4 @@ const CONTACTS: Contact[] = [
   },
 ];
 
-export { PRODUCTS, PRINCIPLES, RELEASES, CONTACTS };
+export { PRODUCTS, PRINCIPLES, CONTACTS };

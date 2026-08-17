@@ -43,14 +43,6 @@ interface Product {
   verified: boolean;
 }
 
-/** A dated entry on the changelog page. */
-interface Release {
-  date: string;
-  product: string;
-  version: string;
-  body: string;
-}
-
 /** A guiding principle shown on the studio page. */
 interface Principle {
   title: string;
@@ -64,11 +56,4 @@ interface Contact {
   href: string;
 }
 
-export type {
-  Product,
-  ProductFeature,
-  ProductFact,
-  Release,
-  Principle,
-  Contact,
-};
+export type { Product, ProductFeature, ProductFact, Principle, Contact };
