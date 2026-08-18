@@ -20,8 +20,8 @@ const PRODUCTS: Product[] = [
     repo: 'https://github.com/Toastbyte-Studios/git-all',
     blurb:
       'Every git contribution graph you have, merged into one heatmap. GitHub, GitLab, Bitbucket and Gitea/Forgejo — side by side or combined.',
-    meta: 'Free · no login · v1.37.1',
-    lede: 'Contribution history is scattered across four platforms and none of them will show you the others. GitAll merges them into a single heatmap — free, anonymous, no OAuth.',
+    meta: 'Free · no required login · v1.37.1',
+    lede: 'Contribution history is scattered across four platforms and none of them will show you the others. GitAll merges them into a single heatmap. See your contributions side by side, or combined into one graph of everything at once.',
     shot: 'screenshot: unified heatmap',
     features: [
       {
@@ -55,7 +55,6 @@ const PRODUCTS: Product[] = [
     verified: true,
   },
   {
-    // PLACEHOLDER COPY — confirm before launch.
     key: 'toast',
     name: 'TOAST',
     dot: '#C4622D',
@@ -149,12 +148,8 @@ const PRODUCTS: Product[] = [
 /** Studio principles shown on the studio page. */
 const PRINCIPLES: Principle[] = [
   {
-    title: 'Ship, then maintain',
-    body: 'A release is the start of the obligation, not the end of it. Every product here is still supported.',
-  },
-  {
-    title: 'Offline where it matters',
-    body: 'Software should not stop working because the network did. We design for the disconnected case first.',
+    title: 'Stay fluid',
+    body: 'Technology changes, we should too. We are not married to any platform, language or framework. We use the right tool for the job, and we change it when a better one comes along.',
   },
   {
     title: 'No account theatre',
@@ -163,6 +158,10 @@ const PRINCIPLES: Principle[] = [
   {
     title: 'Say the real timeline',
     body: 'Dates get published when we believe them. “Coming soon” means we are not ready to commit to one.',
+  },
+  {
+    title: 'Ship, then maintain',
+    body: 'A release is the start of the obligation, not the end of it. Every product here is still supported.',
   },
 ];
 
@@ -184,7 +183,7 @@ const CONTACTS: Contact[] = [
     href: 'https://github.com/Toastbyte-Studios/git-all/issues',
   },
   {
-    k: 'Organisation',
+    k: 'Organization',
     v: 'github.com/Toastbyte-Studios',
     href: 'https://github.com/Toastbyte-Studios',
   },
