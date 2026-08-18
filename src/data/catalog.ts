@@ -150,8 +150,11 @@ const RAW_PRODUCTS: Product[] = [
 
 const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => ({
   ...product,
-  meta: product.meta.replace('{status}', product.status),
-  facts: [{ k: 'Status', v: product.status }, ...product.facts],
+  meta: product.meta.replace(/\{status\}/g, () => product.status),
+  facts: [
+    { k: 'Status', v: product.status },
+    ...product.facts.filter((f) => f.k !== 'Status'),
+  ],
 }));
 
 /** Studio principles shown on the studio page. */
