@@ -7,8 +7,14 @@ import type { Product, Principle, Contact } from '../types/catalog';
  * confirmed accurate. TOAST and Alley Admin are placeholder copy carried over
  * from the design comp — the prose reads as real, so check every figure,
  * version string and status line before launch.
+ *
+ * Each product's `status` is the single source of truth for that product's
+ * state. It is set once per entry below and then threaded automatically into
+ * `facts` (as the "Status" row) and into `meta` (wherever a `{status}` token
+ * appears) — change `status` here and every place it is displayed updates
+ * with it.
  */
-const PRODUCTS: Product[] = [
+const RAW_PRODUCTS: Product[] = [
   {
     key: 'gitall',
     name: 'GitAll',
@@ -46,7 +52,6 @@ const PRODUCTS: Product[] = [
       },
     ],
     facts: [
-      { k: 'Status', v: 'Live' },
       { k: 'Version', v: '1.37.1' },
       { k: 'Price', v: 'Free' },
       { k: 'Platform', v: 'Web' },
@@ -58,14 +63,14 @@ const PRODUCTS: Product[] = [
     key: 'toast',
     name: 'TOAST',
     dot: '#C4622D',
-    status: 'Coming soon',
+    status: 'In Development',
     kind: 'Preparedness · iOS & Android',
     domain: 'toastbyte.studio',
     site: 'https://toastbyte.studio',
     repo: 'https://github.com/Toastbyte-Studios',
     blurb:
       'Trusted Outdoor and Survival Toolkit: an offline-first preparedness app with maps, guides, references and field utilities that keep working with no signal.',
-    meta: 'In development · offline-first',
+    meta: '{status} · offline-first',
     lede: 'An offline-first emergency preparedness toolkit for hikers, preppers and anyone who would rather be ready. Maps, guides, references and utilities that keep working when the network does not.',
     shot: 'screenshot: offline map view',
     features: [
@@ -91,7 +96,6 @@ const PRODUCTS: Product[] = [
       },
     ],
     facts: [
-      { k: 'Status', v: 'Coming soon' },
       { k: 'Platform', v: 'iOS · Android' },
       { k: 'Connectivity', v: 'Offline-first' },
       { k: 'Account', v: 'Not required' },
@@ -103,14 +107,14 @@ const PRODUCTS: Product[] = [
     key: 'alley',
     name: 'Alley Admin',
     dot: '#d97706',
-    status: 'In development',
+    status: 'In Development',
     kind: 'Operations · Web',
     domain: 'alleyadmin.app',
     site: 'https://alleyadmin.app',
     repo: 'https://github.com/Toastbyte-Studios/alley-admin',
     blurb:
       'An administration console for running a league: rosters, schedules, scoring and the paperwork around them, in one interface built for the person on the desk.',
-    meta: 'Coming soon · early access list open',
+    meta: '{status} · early access list open',
     lede: 'League administration without the spreadsheet sprawl. Rosters, schedules, scoring and reporting in one console, designed around the work of actually running a season.',
     shot: 'screenshot: season dashboard',
     features: [
@@ -136,7 +140,6 @@ const PRODUCTS: Product[] = [
       },
     ],
     facts: [
-      { k: 'Status', v: 'In development' },
       { k: 'Platform', v: 'Web' },
       { k: 'Access', v: 'Early access list' },
       { k: 'Launch', v: 'TBA' },
@@ -144,6 +147,15 @@ const PRODUCTS: Product[] = [
     verified: false,
   },
 ];
+
+const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => ({
+  ...product,
+  meta: product.meta.replace(/\{status\}/g, () => product.status),
+  facts: [
+    { k: 'Status', v: product.status },
+    ...product.facts.filter((f) => f.k !== 'Status'),
+  ],
+}));
 
 /** Studio principles shown on the studio page. */
 const PRINCIPLES: Principle[] = [
