@@ -1,94 +1,55 @@
 import styled from 'styled-components';
-import { FlexCol, FlexRow } from './core';
-import { COLORS, BREAKPOINTS } from '../constants';
+import { BREAKPOINTS } from '../constants';
 
 /**
- * Shared layout components for full-page content pages (e.g. Privacy Policy, Support).
+ * Shared layout for long-form legal and reference pages (e.g. Privacy Policy).
+ *
+ * These pages are prose rather than product surfaces, so they use a narrower
+ * measure than the rest of the site — but they read from the same design
+ * tokens, which is what keeps them legible in dark mode.
  */
 
-const PageContainer = styled(FlexCol)`
+const PageContainer = styled.div`
   width: 100%;
-  padding: 40px 20px;
-  justify-content: flex-start;
-  flex: 1;
-`;
-
-const PageContent = styled(FlexCol)`
-  width: 100%;
-  max-width: 1000px;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  padding: 60px 50px;
-  margin: 20px 0;
-  gap: 24px;
-
-  font-family: 'Inter', Arial, sans-serif;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(196, 98, 45, 0.15);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(61, 35, 20, 0.08);
-  color: ${COLORS.PRIMARY_DARK};
-  line-height: 1.8;
-  font-size: 18px;
-
-  @media (max-width: ${BREAKPOINTS.TABLET_LANDSCAPE}) {
-    padding: 50px 40px;
-    gap: 20px;
-    font-size: 17px;
-  }
-
-  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    padding: 40px 30px;
-    gap: 18px;
-    font-size: 16px;
-    border-radius: 16px;
-  }
+  padding: 72px 0 40px;
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    padding: 30px 20px;
-    margin: 10px 0;
-    gap: 15px;
-    font-size: 15px;
-    border-radius: 12px;
+    padding-top: 48px;
   }
 `;
 
-const PageHeader = styled(FlexRow)`
-  width: auto;
-  padding: 12px 28px;
-  background: linear-gradient(
-    135deg,
-    ${COLORS.TOAST_BROWN} 0%,
-    ${COLORS.ACCENT} 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  font-family: 'Raleway', sans-serif;
-  box-shadow: 0 4px 15px rgba(196, 98, 45, 0.25);
-  color: ${COLORS.PRIMARY_LIGHT};
-  align-self: flex-start;
+const PageContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 720px;
+  gap: 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-divider);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.7;
+`;
 
+const PageHeader = styled.div`
   h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 54px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 30px 0 18px;
   }
 
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
-    padding: 10px 24px;
-
     h1 {
-      font-size: 24px;
+      font-size: 40px;
     }
   }
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    padding: 8px 20px;
-
     h1 {
-      font-size: 20px;
+      font-size: 32px;
     }
   }
 `;
@@ -99,16 +60,13 @@ const Paragraph = styled.p`
 `;
 
 const ContactLink = styled.a`
-  color: ${COLORS.TOAST_BROWN};
+  color: var(--color-accent-700);
   text-decoration: none;
-  font-weight: 500;
-  transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-accent) 50%, transparent);
 
   &:hover {
-    color: ${COLORS.ACCENT};
-    text-shadow: 0 0 10px rgba(255, 139, 67, 0.3);
+    color: var(--color-accent-600);
   }
 `;
 

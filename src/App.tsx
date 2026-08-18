@@ -1,99 +1,117 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { FlexCol } from './styles/core';
-import { COLORS } from './constants';
+import { useEffect } from 'react';
+import type { JSX } from 'react';
+import { useHashRoute } from './routing/useHashRoute';
+import { PRODUCTS } from './data/catalog';
+import ThemeProvider from './theme/ThemeProvider';
 import Nav from './Components/Nav/Nav';
-import LandingPage from './Components/LandingPage/LandingPage';
-import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
+import Home from './Components/Home/Home';
+import ProductPage from './Components/ProductPage/ProductPage';
+import Studio from './Components/Studio/Studio';
+import Changelog from './Components/Changelog/Changelog';
 import Support from './Components/Support/Support';
+import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import Footer from './Components/Footer/Footer';
+import { Shell, Wrap } from './styles/primitives';
 
-function useHashRoute() {
-  const [route, setRoute] = useState(() => window.location.hash.slice(1));
+const DEFAULT_META = {
+  title: 'Toastbyte Studios — independent software development',
+  description:
+    'Toastbyte Studios is an independent development studio in Las Vegas building GitAll, TOAST and Alley Admin — software that works offline, loads fast, and is maintained after launch.',
+};
 
-  useEffect(() => {
-    const handleHashChange = () => setRoute(window.location.hash.slice(1));
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  return route;
-}
-
-const ROUTE_META: Record<string, { title: string; description: string }> = {
+const STATIC_META: Record<string, { title: string; description: string }> = {
+  studio: {
+    title: 'The studio | Toastbyte Studios',
+    description:
+      'How Toastbyte Studios works: an independent development studio in Las Vegas that ships products and keeps maintaining them.',
+  },
+  changelog: {
+    title: 'Changelog | Toastbyte Studios',
+    description:
+      'Release notes across the Toastbyte Studios portfolio — GitAll, TOAST and Alley Admin — newest first.',
+  },
+  support: {
+    title: 'Support | Toastbyte Studios',
+    description:
+      'Get help with a Toastbyte Studios product. Contact routes for general enquiries, product support and GitAll issues.',
+  },
   privacy: {
     title: 'Privacy Policy | Toastbyte Studios',
     description:
       'Privacy policy for TOAST — Trusted Outdoor and Survival Toolkit — by Toastbyte Studios.',
   },
-  support: {
-    title: 'Support | Toastbyte Studios',
-    description:
-      'Get help with TOAST — Trusted Outdoor and Survival Toolkit. Contact support or browse FAQs.',
-  },
 };
 
-const DEFAULT_META = {
-  title: 'TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios',
-  description:
-    'TOAST is an offline-first emergency preparedness app with maps, guides, references, and utilities — built by Toastbyte Studios for hikers, preppers, and anyone who wants to be ready.',
+/**
+ * Applies the given title and description to the document head, keeping the
+ * Open Graph and Twitter card tags in step with the canonical ones.
+ */
+const applyMeta = (title: string, description: string) => {
+  document.title = title;
+
+  const set = (selector: string, attribute: string, value: string) =>
+    document.querySelector(selector)?.setAttribute(attribute, value);
+
+  set('meta[name="description"]', 'content', description);
+  set('meta[property="og:title"]', 'content', title);
+  set('meta[property="og:description"]', 'content', description);
+  set('meta[name="twitter:title"]', 'content', title);
+  set('meta[name="twitter:description"]', 'content', description);
 };
 
-function App() {
-  const route = useHashRoute();
+/**
+ * App is the site shell: it resolves the hash route, keeps the document
+ * metadata in sync for share previews and search, and renders the header,
+ * active view and footer inside the themed container.
+ *
+ * @returns {JSX.Element} The rendered application.
+ */
+function App(): JSX.Element {
+  const { view, product } = useHashRoute();
 
   useEffect(() => {
-    const { title, description } = ROUTE_META[route] ?? DEFAULT_META;
+    if (view === 'product') {
+      const current =
+        PRODUCTS.find((entry) => entry.key === product) ?? PRODUCTS[0];
+      applyMeta(
+        `${current.name} — ${current.kind} | Toastbyte Studios`,
+        current.blurb,
+      );
+      return;
+    }
 
-    document.title = title;
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', description);
-    document
-      .querySelector('meta[property="og:title"]')
-      ?.setAttribute('content', title);
-    document
-      .querySelector('meta[property="og:description"]')
-      ?.setAttribute('content', description);
-    document
-      .querySelector('meta[name="twitter:title"]')
-      ?.setAttribute('content', title);
-    document
-      .querySelector('meta[name="twitter:description"]')
-      ?.setAttribute('content', description);
-  }, [route]);
+    const meta = STATIC_META[view] ?? DEFAULT_META;
+    applyMeta(meta.title, meta.description);
+  }, [view, product]);
 
-  const renderPage = () => {
-    switch (route) {
-      case 'privacy':
-        return <PrivacyPolicy />;
+  const renderView = () => {
+    switch (view) {
+      case 'product':
+        return <ProductPage productKey={product} />;
+      case 'studio':
+        return <Studio />;
+      case 'changelog':
+        return <Changelog />;
       case 'support':
         return <Support />;
+      case 'privacy':
+        return <PrivacyPolicy />;
       default:
-        return <LandingPage />;
+        return <Home />;
     }
   };
 
   return (
-    <Container>
-      <Nav />
-      {renderPage()}
-      <Footer />
-    </Container>
+    <ThemeProvider>
+      <Shell>
+        <Wrap>
+          <Nav view={view} />
+          {renderView()}
+          <Footer />
+        </Wrap>
+      </Shell>
+    </ThemeProvider>
   );
 }
-
-const Container = styled(FlexCol)`
-  min-height: 100vh;
-  width: 100%;
-  justify-content: flex-start;
-  background: linear-gradient(
-    160deg,
-    ${COLORS.GRADIENT_START} 0%,
-    ${COLORS.GRADIENT_END} 100%
-  );
-  color: ${COLORS.PRIMARY_DARK};
-  user-select: none;
-`;
 
 export default App;
