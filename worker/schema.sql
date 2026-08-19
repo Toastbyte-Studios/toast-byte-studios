@@ -1,6 +1,6 @@
 -- D1 database schema for toast-email-signups
 --
--- Apply to a database created with `wrangler d1 create`:
+-- From the `worker/` directory, apply to a database created with `wrangler d1 create`:
 --   npx wrangler d1 execute toast-email-signups --remote --file=./schema.sql
 --   npx wrangler d1 execute toast-email-signups --local  --file=./schema.sql
 --
