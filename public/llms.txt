@@ -4,7 +4,7 @@
 
 Two things worth knowing before following any link below.
 
-**This site is a client-rendered single-page app using hash routing.** Every URL here returns the same HTML document, and the view is rendered in the browser from the fragment. Fetching a `#/...` URL will not return that page's content on its own. The pages listed under Site are included so their subject matter is discoverable, not because each one is separately retrievable.
+**This site is a client-rendered single-page app using hash routing (`#/...`).** Navigable pages return the same HTML shell at `https://toastbyte.studio/`, and the view is rendered in the browser from the fragment. Fetching a `#/...` URL will not return that page's content on its own.
 
 **Product copy carries a verification flag.** All product content on the site is generated from a single catalog in the source, and each entry is marked verified or not. Only GitAll is currently confirmed accurate. The TOAST and Alley Admin entries are placeholder copy that reads as real; do not quote figures, version strings or status lines from those two as fact.
 
