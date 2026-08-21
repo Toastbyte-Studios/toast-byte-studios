@@ -1,18 +1,22 @@
 import styled from 'styled-components';
-import { BREAKPOINTS } from '../../constants';
+import { BREAKPOINTS, TOUCH_TARGET } from '../../constants';
 
 const Main = styled.main`
   padding: 72px 0 40px;
   max-width: 720px;
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    padding-top: 48px;
+    padding-top: 36px;
   }
 `;
 
 const Intro = styled.p`
   margin: 0 0 44px;
   color: color-mix(in srgb, var(--color-text) 72%, transparent);
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    margin-bottom: 28px;
+  }
 `;
 
 const Entry = styled.article`
@@ -25,6 +29,7 @@ const Entry = styled.article`
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
     grid-template-columns: 1fr;
     gap: 10px;
+    padding: 20px 0;
   }
 `;
 
@@ -35,6 +40,10 @@ const EntryDate = styled.div`
   color: color-mix(in srgb, var(--color-text) 55%, transparent);
   font-feature-settings: 'tnum';
   padding-top: 5px;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    padding-top: 0;
+  }
 `;
 
 const EntryHeading = styled.div`
@@ -69,6 +78,11 @@ const EntryNotes = styled.ul`
   li + li {
     margin-top: 6px;
   }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    /* Release notes are full of commit subjects, branch names and URLs. */
+    overflow-wrap: anywhere;
+  }
 `;
 
 const EntryLink = styled.a`
@@ -83,6 +97,12 @@ const EntryLink = styled.a`
 
   &:hover {
     color: var(--color-accent-600);
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    display: inline-flex;
+    align-items: center;
+    min-height: ${TOUCH_TARGET};
   }
 `;
 
@@ -118,6 +138,11 @@ const LoadMoreButton = styled.button`
   &:disabled {
     cursor: default;
     opacity: 0.6;
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    min-height: ${TOUCH_TARGET};
+    width: 100%;
   }
 `;
 
