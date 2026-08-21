@@ -34,15 +34,47 @@ interface RawGithubRelease {
 }
 
 /**
- * Repos to pull releases from, derived from the product catalog so this list
- * never drifts out of sync with it. A product whose `repo` points at the org
- * root rather than a specific repo (no public repo yet) is skipped.
+ * Product repos to pull releases from, derived from the product catalog so
+ * this list never drifts out of sync with it. A product whose `repo` points
+ * at the org root rather than a specific repo (no public repo yet) is skipped.
  */
-const RELEASE_SOURCES: ReleaseSource[] = PRODUCTS.flatMap((product) => {
+const PRODUCT_RELEASE_SOURCES: ReleaseSource[] = PRODUCTS.flatMap((product) => {
   const match = product.repo.match(REPO_URL_PATTERN);
   if (!match) return [];
   return [{ owner: match[1], repo: match[2], product: product.name }];
 });
+
+/**
+ * Repos that ship releases but are not entries in the product catalog.
+ *
+ * The site itself lives here: its updates belong in the changelog it renders,
+ * but it is not a product and should not appear on the products grid, so it
+ * is deliberately kept out of the catalog rather than added as an entry.
+ */
+const EXTRA_RELEASE_SOURCES: ReleaseSource[] = [
+  {
+    owner: 'Toastbyte-Studios',
+    repo: 'toast-byte-studios',
+    product: 'Toastbyte.Studio',
+  },
+];
+
+/** Drops repeats so one repo cannot be fetched, and listed, twice. */
+const dedupeSources = (sources: ReleaseSource[]): ReleaseSource[] => {
+  const seen = new Set<string>();
+  return sources.filter((source) => {
+    const key = `${source.owner}/${source.repo}`.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+};
+
+/** Every repo the changelog pulls from: the products, then the site. */
+const RELEASE_SOURCES: ReleaseSource[] = dedupeSources([
+  ...PRODUCT_RELEASE_SOURCES,
+  ...EXTRA_RELEASE_SOURCES,
+]);
 
 /** Fetches one page of a single repo's releases, newest first. */
 const fetchReleasePage = async (
