@@ -20,9 +20,9 @@ const tnum = css`
 `;
 
 /**
- * Gives an inline control a full touch target on narrow layouts without
- * changing how it looks: the padding is negative-margined back out, so the
- * hit area grows while the text stays where it was.
+ * Gives an inline control a minimum tap height on narrow layouts by setting
+ * `min-height` via `inline-flex`, so short controls meet touch-target sizing
+ * without affecting the surrounding text flow.
  */
 const touchTarget = css`
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {

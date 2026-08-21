@@ -57,24 +57,21 @@ const useNavMenu = (desktopQuery: string): NavMenu => {
       setOpen(false);
     };
 
+    const media = window.matchMedia(desktopQuery);
+    const onMediaChange = (event: MediaQueryListEvent) => {
+      if (event.matches) setOpen(false);
+    };
+
     document.addEventListener('keydown', onKeyDown);
     document.addEventListener('pointerdown', onPointerDown);
+    media.addEventListener('change', onMediaChange);
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('pointerdown', onPointerDown);
+      media.removeEventListener('change', onMediaChange);
     };
-  }, [open]);
-
-  useEffect(() => {
-    const media = window.matchMedia(desktopQuery);
-    const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) setOpen(false);
-    };
-
-    media.addEventListener('change', onChange);
-    return () => media.removeEventListener('change', onChange);
-  }, [desktopQuery]);
+  }, [open, desktopQuery]);
 
   return { open, toggle, close, panelRef, toggleRef };
 };
