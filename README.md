@@ -6,14 +6,14 @@ Live at [toastbyte.studio](https://toastbyte.studio/)
 
 ## What the site contains
 
-| View          | Route                | Contents                                                             |
-| ------------- | -------------------- | -------------------------------------------------------------------- |
-| Home          | `#/`                 | Positioning hero, live product status panel, email signup, product index |
-| Product       | `#/product/<key>`    | Per-product page: lede, numbered features, facts table, related products |
-| Studio        | `#/studio`           | How the studio works, its principles, and press details              |
-| Changelog     | `#/changelog`        | GitHub releases across the portfolio and this site, merged newest first |
-| Support       | `#/support`          | Contact routes for enquiries, product support and issue trackers     |
-| Privacy       | `#/privacy`          | Privacy policy                                                       |
+| View      | Route             | Contents                                                                 |
+| --------- | ----------------- | ------------------------------------------------------------------------ |
+| Home      | `#/`              | Positioning hero, live product status panel, email signup, product index |
+| Product   | `#/product/<key>` | Per-product page: lede, numbered features, facts table, related products |
+| Studio    | `#/studio`        | How the studio works, its principles, and press details                  |
+| Changelog | `#/changelog`     | GitHub releases across the portfolio and this site, merged newest first  |
+| Support   | `#/support`       | Contact routes for enquiries, product support and issue trackers         |
+| Privacy   | `#/privacy`       | Privacy policy                                                           |
 
 Routing is hash-based (`src/routing/useHashRoute.ts`). The parser also accepts the legacy bare forms (`#support`, `#privacy`) alongside the slash-prefixed ones, so older links keep resolving.
 
@@ -113,28 +113,28 @@ The Worker has its own config in `worker/wrangler.toml` and its own secret (`TUR
 
 ## Available Scripts
 
-| Script                    | Description                                                  |
-| ------------------------- | ------------------------------------------------------------ |
-| `npm run dev`             | Start the local dev server                                    |
-| `npm run build`           | Type-check and build for production                           |
-| `npm run postbuild`       | Update sitemap timestamps (runs automatically after `build`)  |
-| `npm run preview`         | Preview the production build locally                          |
-| `npm run lint`            | Run ESLint                                                    |
-| `npm run lint:fix`        | Run ESLint with autofix                                       |
-| `npm run format`          | Format with Prettier                                          |
-| `npm run format:check`    | Check formatting without writing                              |
-| `npm run cleanup`         | Format, then lint                                             |
-| `npm run clean:appledouble` | Remove AppleDouble (`._*`) files                            |
-| `npm run generate:icons`  | Regenerate favicon and icon assets from source                |
+| Script                      | Description                                                  |
+| --------------------------- | ------------------------------------------------------------ |
+| `npm run dev`               | Start the local dev server                                   |
+| `npm run build`             | Type-check and build for production                          |
+| `npm run postbuild`         | Update sitemap timestamps (runs automatically after `build`) |
+| `npm run preview`           | Preview the production build locally                         |
+| `npm run lint`              | Run ESLint                                                   |
+| `npm run lint:fix`          | Run ESLint with autofix                                      |
+| `npm run format`            | Format with Prettier                                         |
+| `npm run format:check`      | Check formatting without writing                             |
+| `npm run cleanup`           | Format, then lint                                            |
+| `npm run clean:appledouble` | Remove AppleDouble (`._*`) files                             |
+| `npm run generate:icons`    | Regenerate favicon and icon assets from source               |
 
 ## Workflows
 
-| Workflow                    | Trigger           | What it does                                              |
-| --------------------------- | ----------------- | --------------------------------------------------------- |
-| `ci.yml`                    | PR to `main`      | Lint, format check, build                                  |
-| `require-version-bump.yml`  | PR to `main`      | Fails if `package.json` version matches `main`             |
-| `deploy.yml`                | Push to `main`    | Builds and deploys to Cloudflare Pages                     |
-| `tag-and-release.yml`       | Push to `main`    | Tags the version and publishes a GitHub release            |
+| Workflow                   | Trigger        | What it does                                    |
+| -------------------------- | -------------- | ----------------------------------------------- |
+| `ci.yml`                   | PR to `main`   | Lint, format check, build                       |
+| `require-version-bump.yml` | PR to `main`   | Fails if `package.json` version matches `main`  |
+| `deploy.yml`               | Push to `main` | Builds and deploys to Cloudflare Pages          |
+| `tag-and-release.yml`      | Push to `main` | Tags the version and publishes a GitHub release |
 
 **Every pull request to `main` must bump the `package.json` version**, or CI fails. That version becomes the release tag, which is what the changelog then displays.
 
