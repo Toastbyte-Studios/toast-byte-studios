@@ -15,6 +15,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Stops iOS bumping type up a size when a phone is turned to landscape. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html {
@@ -26,13 +30,19 @@ body,
 #root {
   margin: 0;
   padding: 0;
+  /* dvh tracks the visible viewport as mobile browser chrome collapses;
+     the vh line above it is the fallback for anything that lacks dvh. */
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-text);
+  /* Long unbroken strings — repo URLs and email addresses on the support
+     page — would otherwise push the layout sideways on a narrow screen. */
+  overflow-wrap: break-word;
 }
 
 a {
@@ -46,6 +56,14 @@ a:hover {
   text-decoration: underline;
 }
 
+/* A visible focus ring for keyboard and switch users. :focus-visible keeps
+   it off pointer presses, so it costs nothing visually on touch. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 h1,
 h2,
 h3,
@@ -56,9 +74,27 @@ h6 {
   font-weight: var(--font-heading-weight);
   line-height: 1.12;
   letter-spacing: -0.015em;
+  /* Headings are the widest single words on the page; on a 320px screen a
+     long product name would otherwise overflow the viewport. */
+  overflow-wrap: break-word;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
