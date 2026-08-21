@@ -5,7 +5,7 @@ const Main = styled.main`
   padding: 72px 0 0;
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    padding-top: 48px;
+    padding-top: 36px;
   }
 `;
 
@@ -41,6 +41,7 @@ const StatusPill = styled.span`
   padding: 5px 10px;
   border-radius: var(--radius-md);
   color: color-mix(in srgb, var(--color-text) 62%, transparent);
+  white-space: nowrap;
 `;
 
 const Lede = styled.p`
@@ -49,6 +50,11 @@ const Lede = styled.p`
   max-width: 58ch;
   margin: 0 0 34px;
   text-wrap: pretty;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
 `;
 
 const ActionRow = styled.div`
@@ -57,6 +63,13 @@ const ActionRow = styled.div`
   flex-wrap: wrap;
   padding-bottom: 44px;
   border-bottom: 1px solid var(--color-divider);
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-bottom: 32px;
+  }
 `;
 
 const Columns = styled.div`
@@ -69,6 +82,11 @@ const Columns = styled.div`
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    gap: 32px;
+    padding: 32px 0 32px;
+  }
 `;
 
 const FeatureRow = styled.div`
@@ -77,6 +95,11 @@ const FeatureRow = styled.div`
   gap: 14px;
   padding: 16px 0;
   border-bottom: 1px solid var(--color-divider);
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    grid-template-columns: 22px 1fr;
+    gap: 10px;
+  }
 `;
 
 const FeatureNumber = styled.span`
@@ -99,6 +122,11 @@ const FeatureBody = styled.p`
   color: color-mix(in srgb, var(--color-text) 78%, transparent);
 `;
 
+/**
+ * Key/value row. Stacks below phone width — several values ("iOS · Android",
+ * "Early access list") are long enough that a space-between row squeezes the
+ * key down to a couple of characters per line.
+ */
 const FactRow = styled.div`
   display: flex;
   justify-content: space-between;
@@ -106,6 +134,11 @@ const FactRow = styled.div`
   padding: 11px 0;
   border-bottom: 1px solid var(--color-divider);
   font-size: 14px;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    flex-direction: column;
+    gap: 2px;
+  }
 `;
 
 const FactKey = styled.span`
@@ -115,6 +148,10 @@ const FactKey = styled.span`
 const FactValue = styled.span`
   font-feature-settings: 'tnum';
   text-align: right;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    text-align: left;
+  }
 `;
 
 const ShotFrame = styled.div`
@@ -130,6 +167,12 @@ const ShotFrame = styled.div`
   display: flex;
   align-items: flex-end;
   padding: 12px;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    height: 150px;
+    margin-top: 24px;
+    border-width: 4px;
+  }
 `;
 
 const ShotCaption = styled.span`
@@ -146,6 +189,12 @@ const OtherRow = styled.div`
   flex-wrap: wrap;
   padding: 32px 0 0;
   border-top: 1px solid var(--color-divider);
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 24px;
+  }
 `;
 
 const OtherLink = styled.a`

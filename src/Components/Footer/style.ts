@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BREAKPOINTS } from '../../constants';
+import { BREAKPOINTS, TOUCH_TARGET } from '../../constants';
 
 const Container = styled.footer`
   display: flex;
@@ -16,6 +16,13 @@ const Container = styled.footer`
   @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
     margin-top: 56px;
   }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-top: 44px;
+  }
 `;
 
 const Info = styled.span`
@@ -29,7 +36,7 @@ const Links = styled.span`
   align-items: center;
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    gap: 14px;
+    gap: 4px 20px;
   }
 `;
 
@@ -40,6 +47,12 @@ const Link = styled.a`
   &:hover {
     color: var(--color-accent-600);
     text-decoration: underline;
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    display: inline-flex;
+    align-items: center;
+    min-height: ${TOUCH_TARGET};
   }
 `;
 
@@ -61,6 +74,19 @@ const SocialIconLink = styled.a`
 
   &:hover {
     color: var(--color-accent-600);
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    /* A 15px icon is a 15px tap target without this. */
+    align-items: center;
+    justify-content: center;
+    min-width: ${TOUCH_TARGET};
+    min-height: ${TOUCH_TARGET};
+    margin-left: -12px;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 `;
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { BREAKPOINTS } from '../constants';
+import { BREAKPOINTS, TOUCH_TARGET } from '../constants';
 
 /**
  * Shared primitives for the studio site.
@@ -19,10 +19,24 @@ const tnum = css`
   font-feature-settings: 'tnum';
 `;
 
+/**
+ * Gives an inline control a minimum tap height on narrow layouts by setting
+ * `min-height` via `inline-flex`, so short controls meet touch-target sizing
+ * without affecting the surrounding text flow.
+ */
+const touchTarget = css`
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    display: inline-flex;
+    align-items: center;
+    min-height: ${TOUCH_TARGET};
+  }
+`;
+
 const Shell = styled.div`
   background: var(--color-bg);
   color: var(--color-text);
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   font-family: var(--font-body);
   font-size: 16px;
@@ -37,8 +51,12 @@ const Wrap = styled.div`
   margin: 0 auto;
   padding: 0 32px 72px;
 
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    padding: 0 24px 56px;
+  }
+
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    padding: 0 20px 48px;
+    padding: 0 18px 48px;
   }
 `;
 
@@ -77,6 +95,7 @@ const BackLink = styled.a`
   text-transform: uppercase;
   text-decoration: none;
   ${muted(60)}
+  ${touchTarget}
 
   &:hover {
     color: var(--color-accent-600);
@@ -86,6 +105,7 @@ const BackLink = styled.a`
 const Button = styled.a<{ $variant?: 'primary' | 'secondary' }>`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-family: var(--font-heading);
   font-size: 15px;
@@ -98,6 +118,10 @@ const Button = styled.a<{ $variant?: 'primary' | 'secondary' }>`
     background 140ms ease,
     border-color 140ms ease,
     color 140ms ease;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    min-height: ${TOUCH_TARGET};
+  }
 
   ${({ $variant = 'primary' }) =>
     $variant === 'primary'
@@ -144,6 +168,7 @@ const QuietLink = styled.a`
   border-bottom: 1px solid
     color-mix(in srgb, var(--color-accent) 50%, transparent);
   cursor: pointer;
+  ${touchTarget}
 
   &:hover {
     color: var(--color-accent-600);
@@ -162,11 +187,21 @@ const TwoCol = styled.div<{ $columns?: string; $gap?: number }>`
   }
 `;
 
-/** Justified body paragraph used in the prose columns. */
+/**
+ * Justified body paragraph used in the prose columns.
+ *
+ * Justification is dropped on narrow screens: at a phone measure there are
+ * too few words per line for the browser to distribute the slack, and it
+ * comes out as rivers of white space between words.
+ */
 const Prose = styled.p`
   margin: 0 0 14px;
   text-align: justify;
   hyphens: auto;
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    text-align: left;
+  }
 `;
 
 export {
@@ -182,4 +217,5 @@ export {
   Prose,
   muted,
   tnum,
+  touchTarget,
 };

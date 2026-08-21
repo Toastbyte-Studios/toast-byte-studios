@@ -7,8 +7,22 @@
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-    <meta name="theme-color" content="#0f0f10" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Matched to the actual page background in each theme so the mobile
+         browser chrome blends with the page instead of banding against it. -->
+    <meta
+      name="theme-color"
+      content="#f3f2f2"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#17161a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta
       name="description"
       content="Toastbyte Studios is an independent development studio in Las Vegas building GitAll, TOAST and Alley Admin — software that works offline, loads fast, and is maintained after launch."
@@ -124,37 +138,24 @@
         ]
       }
     </script>
+    <!-- Preload the two faces tokens.css actually declares. The latin-ext
+         subsets are left to load on demand — almost no page here needs
+         them, and preloading a font nothing renders is wasted bandwidth. -->
     <link
       rel="preload"
-      href="/assets/fonts/Raleway-VariableFont_wght.woff2"
+      href="/assets/fonts/CormorantGaramond-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="/assets/fonts/Raleway-Italic-VariableFont_wght.woff2"
+      href="/assets/fonts/Lora-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
-    <link
-      rel="preload"
-      href="/assets/fonts/Inter-VariableFont_opsz,wght.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/assets/fonts/Inter-Italic-VariableFont_opsz,wght.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <title>
-      TOAST — Trusted Outdoor and Survival Toolkit | Toastbyte Studios
-    </title>
+    <title>Toastbyte Studios — independent software development</title>
     <script
       src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
       async

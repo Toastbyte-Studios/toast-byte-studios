@@ -33,4 +33,31 @@ const BREAKPOINTS = {
   TABLET_LANDSCAPE: '1024px',
 };
 
-export { COLORS, BREAKPOINTS };
+/**
+ * The width at and below which the header collapses into a drawer.
+ *
+ * Two forms of the same threshold: the max-width the styles use, and the
+ * matching min-width query the drawer hook listens on to close itself when
+ * the viewport grows. They are derived from one value on purpose — if the
+ * two ever drifted apart there would be a band of widths where the drawer
+ * stays open on top of a nav that is already fully visible.
+ */
+const NAV_DRAWER_MAX_WIDTH = BREAKPOINTS.TABLET_PORTRAIT;
+const NAV_DESKTOP_QUERY = `(min-width: ${
+  parseInt(NAV_DRAWER_MAX_WIDTH, 10) + 1
+}px)`;
+
+/**
+ * Minimum size for anything a finger has to hit, per the WCAG 2.2 target
+ * size guidance. Applied on touch-width layouts only — pointer targets do
+ * not need the extra height and it would loosen the desktop header.
+ */
+const TOUCH_TARGET = '44px';
+
+export {
+  COLORS,
+  BREAKPOINTS,
+  NAV_DRAWER_MAX_WIDTH,
+  NAV_DESKTOP_QUERY,
+  TOUCH_TARGET,
+};
