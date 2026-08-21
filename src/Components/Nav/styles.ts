@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { BREAKPOINTS } from '../../constants';
+import { NAV_DRAWER_MAX_WIDTH, TOUCH_TARGET } from '../../constants';
 
 const Header = styled.header`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,6 +10,14 @@ const Header = styled.header`
   padding: 26px 0 22px;
   border-bottom: 1px solid var(--color-divider);
   flex-wrap: wrap;
+
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    /* nowrap keeps the brand and the toggle on one line — wrapping them was
+       what pushed the links onto a second row in the first place. */
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding: 18px 0 16px;
+  }
 `;
 
 const Brand = styled.a`
@@ -17,6 +26,7 @@ const Brand = styled.a`
   gap: 12px;
   text-decoration: none;
   color: var(--color-text);
+  min-width: 0;
 
   &:hover {
     color: var(--color-text);
@@ -31,15 +41,55 @@ const BrandMark = styled.img`
   object-fit: cover;
   object-position: 50% 38%;
   outline: 1px solid var(--color-divider);
+  flex: none;
+
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    width: 34px;
+    height: 34px;
+  }
 `;
 
 const BrandName = styled.span`
   font-family: var(--font-heading);
   font-size: 20px;
   letter-spacing: 0.02em;
+
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
-const NavLinks = styled.nav`
+const NavToggle = styled.button`
+  display: none;
+
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: ${TOUCH_TARGET};
+    height: ${TOUCH_TARGET};
+    padding: 0;
+    background: none;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    color: inherit;
+    cursor: pointer;
+  }
+`;
+
+const NavToggleBar = styled.span`
+  width: 18px;
+  height: 2px;
+  background: var(--color-text);
+`;
+
+const NavLinks = styled.nav<{ $open: boolean }>`
   display: flex;
   align-items: center;
   gap: 26px;
@@ -48,9 +98,24 @@ const NavLinks = styled.nav`
   letter-spacing: 0.09em;
   text-transform: uppercase;
 
-  @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    gap: 14px;
-    font-size: 12px;
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    /* Absolutely positioned so opening the drawer cannot change the height
+       of the header row — otherwise the toggle slides out from under the
+       thumb that just pressed it. */
+    display: ${({ $open }) => ($open ? 'flex' : 'none')};
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0 14px;
+    font-size: 14px;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-divider);
+    box-shadow: var(--shadow-md);
   }
 `;
 
@@ -67,6 +132,18 @@ const NavLink = styled.a<{ $active?: boolean }>`
   &:hover {
     color: var(--color-accent-600);
     text-decoration: none;
+  }
+
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 16px;
+    border-bottom: none;
+    /* The active marker moves to the leading edge: an underline reads as
+       decoration once the links are stacked. */
+    border-left: 2px solid
+      ${({ $active }) => ($active ? 'var(--color-accent)' : 'transparent')};
   }
 `;
 
@@ -91,6 +168,14 @@ const ThemeToggle = styled.button`
   &:hover {
     background: color-mix(in srgb, var(--color-accent) 5%, transparent);
   }
+
+  @media (max-width: ${NAV_DRAWER_MAX_WIDTH}) {
+    align-self: flex-start;
+    justify-content: center;
+    min-height: ${TOUCH_TARGET};
+    margin: 12px 16px 0;
+    padding: 6px 16px;
+  }
 `;
 
 const ThemeDot = styled.span<{ $filled: boolean }>`
@@ -106,6 +191,8 @@ export {
   Brand,
   BrandMark,
   BrandName,
+  NavToggle,
+  NavToggleBar,
   NavLinks,
   NavLink,
   ThemeToggle,
