@@ -1,9 +1,13 @@
 import styled from 'styled-components';
-import { BREAKPOINTS } from '../../constants';
+import { BREAKPOINTS, TOUCH_TARGET } from '../../constants';
 
 const Section = styled.section`
   border: 1px solid var(--color-divider);
   padding: 26px;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    padding: 20px 18px;
+  }
 `;
 
 const Label = styled.h2`
@@ -35,7 +39,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   flex: 1;
-  min-width: 200px;
+  min-width: 0;
   background: var(--color-bg);
   border: 1px solid var(--color-divider);
   border-radius: var(--radius-md);
@@ -51,6 +55,13 @@ const Input = styled.input`
   &:focus {
     outline: 2px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
     outline-offset: 1px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    /* iOS Safari zooms the whole page in when a focused input is under
+       16px, and does not zoom back out afterwards. */
+    font-size: 16px;
+    min-height: ${TOUCH_TARGET};
   }
 `;
 
@@ -76,11 +87,19 @@ const SubmitButton = styled.button`
     opacity: 0.55;
     cursor: not-allowed;
   }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    min-height: ${TOUCH_TARGET};
+  }
 `;
 
 const TurnstileSlot = styled.div<{ $hidden?: boolean }>`
   margin: 12px 0 0;
   display: ${({ $hidden }) => ($hidden ? 'none' : 'block')};
+  /* The Turnstile iframe has a fixed 300px intrinsic width; letting the
+     slot scroll keeps it from widening the page on a 320px screen. */
+  max-width: 100%;
+  overflow-x: auto;
 `;
 
 const SuccessMessage = styled.p`
