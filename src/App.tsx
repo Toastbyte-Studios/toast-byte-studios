@@ -28,7 +28,7 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
   changelog: {
     title: 'Changelog | Toastbyte Studios',
     description:
-      'Release notes across the Toastbyte Studios portfolio — GitAll, TOAST and Alley Admin — newest first.',
+      'Release notes across the Toastbyte Studios portfolio — GitAll, TOAST, Alley Admin and this site — newest first.',
   },
   support: {
     title: 'Support | Toastbyte Studios',

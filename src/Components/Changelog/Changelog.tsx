@@ -27,8 +27,8 @@ const formatDate = (iso: string) =>
 
 /**
  * Changelog renders release notes across the whole portfolio, newest first,
- * pulled live from each product's GitHub releases and revealed a page at a
- * time.
+ * pulled live from each product repo's GitHub releases — and from this site's
+ * own — revealed a page at a time.
  *
  * @component
  * @returns {JSX.Element} The rendered changelog view.
@@ -41,7 +41,7 @@ const Changelog: React.FC = (): JSX.Element => {
     <Main id="main">
       <BackLink href="#/">← Toastbyte Studios</BackLink>
       <PageTitle>Changelog</PageTitle>
-      <Intro>Releases across the portfolio, newest first.</Intro>
+      <Intro>Releases across the portfolio and this site, newest first.</Intro>
 
       {loading && <StateMessage>Loading releases…</StateMessage>}
 
