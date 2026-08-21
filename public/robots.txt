@@ -19,3 +19,4 @@ Allow: /
 
 Sitemap: https://toastbyte.studio/sitemap.xml
 
+# Structured guidance for language models: https://toastbyte.studio/llms.txt
