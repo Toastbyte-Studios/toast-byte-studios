@@ -14,7 +14,7 @@ const PageContainer = styled.div`
   padding: 72px 0 40px;
 
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
-    padding-top: 48px;
+    padding-top: 36px;
   }
 `;
 
@@ -30,6 +30,14 @@ const PageContent = styled.div`
   color: var(--color-text);
   font-size: 16px;
   line-height: 1.7;
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    gap: 16px;
+    padding-top: 24px;
+    /* Legal prose is dense; a slightly shorter measure is easier to track
+       line to line on a phone. */
+    line-height: 1.65;
+  }
 `;
 
 const PageHeader = styled.div`
@@ -50,6 +58,7 @@ const PageHeader = styled.div`
   @media (max-width: ${BREAKPOINTS.MOBILE}) {
     h1 {
       font-size: 32px;
+      margin: 20px 0 14px;
     }
   }
 `;
@@ -64,6 +73,7 @@ const ContactLink = styled.a`
   text-decoration: none;
   border-bottom: 1px solid
     color-mix(in srgb, var(--color-accent) 50%, transparent);
+  overflow-wrap: anywhere;
 
   &:hover {
     color: var(--color-accent-600);
