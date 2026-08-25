@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { PRODUCTS } from '../data/catalog';
 import { ANALYTICS_EVENTS, trackClientEvent } from '../lib/analytics-client';
 
@@ -76,12 +76,6 @@ const useHashRoute = (): Route => {
     parseHash(window.location.hash),
   );
 
-  // Zaraz's automated Pageviews action already sent a page_view for whatever
-  // route the document loaded on. Firing again here would double-count every
-  // landing page, so the first run is deliberately skipped and only real
-  // navigation is reported.
-  const hasTrackedInitialRoute = useRef(false);
-
   useEffect(() => {
     const handleHashChange = () => {
       const next = parseHash(window.location.hash);
@@ -89,10 +83,6 @@ const useHashRoute = (): Route => {
       window.scrollTo(0, 0);
       trackRouteView(next);
     };
-
-    if (!hasTrackedInitialRoute.current) {
-      hasTrackedInitialRoute.current = true;
-    }
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);

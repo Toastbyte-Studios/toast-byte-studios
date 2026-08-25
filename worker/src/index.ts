@@ -159,14 +159,6 @@ export default {
     }
 
     if (!turnstileToken) {
-      trackSignupEvent(
-        request,
-        env,
-        ctx,
-        ANALYTICS_EVENTS.emailSignupFailed,
-        { reason: 'missing_turnstile_token' },
-        analyticsConsent,
-      );
       return new Response(JSON.stringify({ error: 'Verification required' }), {
         status: 400,
         headers: { ...headers, 'Content-Type': 'application/json' },

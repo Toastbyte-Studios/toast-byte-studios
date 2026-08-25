@@ -8,7 +8,7 @@
  *
  * Pages Functions cannot import from src/, so the event allowlist is
  * duplicated here rather than imported. Keep it in sync with
- * src/lib/analytics-events.ts — the test in __tests__ asserts they match.
+ * src/lib/analytics-events.ts.
  */
 
 interface Env {
@@ -143,7 +143,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   // Checked before the rate-limit budget is spent, so a visitor who declined
   // is not also throttled.
-  if (env.ANALYTICS_REQUIRE_CONSENT === '1' && readConsent(request) !== 'granted') {
+  if (
+    env.ANALYTICS_REQUIRE_CONSENT === '1' &&
+    readConsent(request) !== 'granted'
+  ) {
     return json({ error: 'Analytics consent not granted.' }, 403);
   }
 
