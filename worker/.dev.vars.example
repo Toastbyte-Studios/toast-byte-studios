@@ -10,3 +10,24 @@
 # Get yours at: https://dash.cloudflare.com/ > Turnstile
 # The value below is Cloudflare's test secret (always passes, for local dev only).
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+
+# ── Analytics (optional) ─────────────────────────────────────────────
+# Signup outcome events are sent to GA4 via the Measurement Protocol.
+# If EITHER value below is missing, every analytics call returns early and
+# the signup flow is unaffected — that is the intended state until the
+# Measurement Protocol secret is provisioned.
+#
+# The measurement ID is the G-XXXXXXXXXX shown on the data stream. The API
+# secret is separate and is NOT the gtag.js snippet: create one under
+# GA4 Admin > Data streams > (stream) > Measurement Protocol API secrets.
+#
+# In production set the secret with `wrangler secret put`, not here:
+#   wrangler secret put ANALYTICS_GA4_API_SECRET
+ANALYTICS_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+ANALYTICS_GA4_API_SECRET=your_ga4_measurement_protocol_api_secret
+
+# Set to 1 to require consent before any event is delivered. When enabled,
+# the browser passes its recorded choice in the signup request body, and an
+# absent choice is treated as a decline. Leave unset until the consent banner
+# is live on the site.
+ANALYTICS_REQUIRE_CONSENT=0

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PRODUCTS } from '../data/catalog';
+import { ANALYTICS_EVENTS, trackClientEvent } from '../lib/analytics-client';
 
 type View = 'home' | 'product' | 'studio' | 'changelog' | 'support' | 'privacy';
 
@@ -42,6 +43,27 @@ const parseHash = (raw: string): Route => {
 };
 
 /**
+ * Sends a GA4 page_view for a route change.
+ *
+ * `page_location` and `page_title` are the field names GA4's built-in Pages
+ * reports read, so they have to be spelled exactly this way — a custom name
+ * would leave the route reports empty. `view` and `product` come along as
+ * extra params because they are far more useful for segmentation than parsing
+ * a hash fragment after the fact.
+ */
+const trackRouteView = (route: Route) => {
+  const label =
+    route.view === 'product' ? `${route.view}/${route.product}` : route.view;
+
+  trackClientEvent(ANALYTICS_EVENTS.pageView, {
+    page_location: window.location.href,
+    page_title: `${document.title} \u2014 ${label}`,
+    view: route.view,
+    ...(route.view === 'product' ? { product: route.product } : {}),
+  });
+};
+
+/**
  * Tracks the current hash route and keeps it in sync with browser navigation.
  *
  * Scrolls to the top whenever the route changes, matching the behaviour of the
@@ -56,8 +78,10 @@ const useHashRoute = (): Route => {
 
   useEffect(() => {
     const handleHashChange = () => {
-      setRoute(parseHash(window.location.hash));
+      const next = parseHash(window.location.hash);
+      setRoute(next);
       window.scrollTo(0, 0);
+      trackRouteView(next);
     };
 
     window.addEventListener('hashchange', handleHashChange);
