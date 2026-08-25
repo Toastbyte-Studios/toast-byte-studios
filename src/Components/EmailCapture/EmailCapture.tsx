@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import type { JSX } from 'react';
+import {
+  ANALYTICS_EVENTS,
+  consentForRequestBody,
+  trackClientEvent,
+} from '../../lib/analytics-client';
 import { useTheme } from '../../theme/useTheme';
 import {
   Section,
@@ -23,6 +28,17 @@ const STORAGE_KEY = 'toast_notify_submitted';
  * Cloudflare email worker and are gated behind a Turnstile challenge. A
  * successful submission is remembered in localStorage so returning visitors
  * see the confirmation rather than an empty form.
+ *
+ * ANALYTICS: the outcome events are fired from HERE rather than from the
+ * worker, even though the worker can also send them. The browser is the only
+ * place that knows the outcome AND has the visitor's GA4 session, so events
+ * fired here join the same session as their page views and the funnel is
+ * readable end to end. Worker-side events use a server-derived identifier and
+ * would land on a different user, breaking the funnel and double-counting.
+ * Leave the worker's GA4 variables unset unless you deliberately want
+ * server-side truth instead of this.
+ *
+ * No event carries the email address, a hash of it, or its length.
  *
  * @component
  * @returns {JSX.Element} The rendered signup section.
@@ -91,18 +107,55 @@ const EmailCapture: React.FC = (): JSX.Element => {
     }
 
     if (!EMAIL_REGEX.test(email.trim())) {
+      // Client-side rejections are their own thing: they never reach the
+      // worker, so counting them as a server failure would misattribute the
+      // cause of a drop-off.
+      trackClientEvent(ANALYTICS_EVENTS.emailSignupFailed, {
+        reason: 'invalid_email_client',
+      });
       setEmailError('Please enter a valid email address.');
       return;
     }
     setEmailError('');
 
+    trackClientEvent(ANALYTICS_EVENTS.emailSignupStarted);
+
     try {
       const res = await fetch(resolvedWorkerURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), turnstileToken }),
+        body: JSON.stringify({
+          email: email.trim(),
+          turnstileToken,
+          // The worker is cross-origin and the consent cookie is host-only for
+          // toastbyte.studio, so it never arrives there on its own. Passing it
+          // explicitly is what lets the worker's own gate mean anything.
+          analyticsConsent: consentForRequestBody(),
+        }),
       });
-      if (!res.ok) throw new Error('Request failed');
+
+      if (!res.ok) {
+        trackClientEvent(ANALYTICS_EVENTS.emailSignupFailed, {
+          reason: 'worker_rejected',
+          status: res.status,
+        });
+        throw new Error('Request failed');
+      }
+
+      // The worker returns 200 with `duplicate: true` for an address already
+      // on the list, and 201 for a new one. Both are `res.ok`, so the body has
+      // to be read to tell them apart — collapsing them would overstate list
+      // growth.
+      const payload = (await res.json().catch(() => null)) as {
+        duplicate?: boolean;
+      } | null;
+
+      trackClientEvent(
+        payload?.duplicate
+          ? ANALYTICS_EVENTS.emailSignupDuplicate
+          : ANALYTICS_EVENTS.emailSignupSucceeded,
+      );
+
       try {
         localStorage.setItem(STORAGE_KEY, 'true');
       } catch {
@@ -111,6 +164,13 @@ const EmailCapture: React.FC = (): JSX.Element => {
       setSubmitted(true);
     } catch (error) {
       console.error('Failed to submit email:', error);
+      // Only reached for a network-level failure; the non-ok case above has
+      // already reported its own reason before throwing.
+      if (error instanceof TypeError) {
+        trackClientEvent(ANALYTICS_EVENTS.emailSignupFailed, {
+          reason: 'network_error',
+        });
+      }
       setEmailError(
         'Could not reach our server — please check your connection and try again.',
       );
