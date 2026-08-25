@@ -12,11 +12,21 @@
  */
 export const ANALYTICS_EVENTS = {
   /**
-   * A hash-route change. The site uses `#/`-style routing, so navigation never
-   * reaches the server and GA4 records nothing on its own. Without this event
-   * the entire site looks like a single page view per session.
+   * GA4's native page view, fired manually on hash-route changes.
+   *
+   * Two things make this necessary. Hash navigation never reaches the server
+   * and never reloads the document, so Zaraz's automatic Pageviews action
+   * fires exactly once — on initial load — and the rest of the session looks
+   * like the visitor never moved.
+   *
+   * The name is `page_view` rather than something custom on purpose: GA4's
+   * built-in Pages reports only understand this event, so a custom name would
+   * leave every route report to be rebuilt by hand as an exploration.
+   *
+   * The listener MUST skip the initial route. Zaraz has already sent one for
+   * it, and firing again would double-count every landing page.
    */
-  routeView: 'route_view',
+  pageView: 'page_view',
 
   /** The signup form was submitted and passed client-side validation. */
   emailSignupStarted: 'email_signup_started',
@@ -38,7 +48,13 @@ export const ANALYTICS_EVENTS = {
    */
   emailSignupFailed: 'email_signup_failed',
 
-  /** An outbound click to a product or external destination. */
+  /**
+   * An outbound click to a product or external destination.
+   *
+   * Explicit rather than inherited: GA4's enhanced-measurement outbound-click
+   * tracking ships with the gtag.js snippet, and Zaraz does not provide those
+   * automatic events. Nothing captures this unless we fire it ourselves.
+   */
   productLinkClicked: 'product_link_clicked',
 } as const;
 
