@@ -25,11 +25,7 @@ const AnalyticsConsentBanner: React.FC<AnalyticsConsentBannerProps> = ({
   };
 
   return (
-    <Banner
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="analytics-consent-title"
-    >
+    <Banner role="dialog" aria-labelledby="analytics-consent-title">
       <Content>
         <Title id="analytics-consent-title">Analytics cookies</Title>
         <p>

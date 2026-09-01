@@ -78,9 +78,11 @@ function syncConsentFromZaraz() {
   }
 
   try {
-    writeConsentCookie(
-      Object.values(getAll()).some(Boolean) ? 'granted' : 'denied',
-    );
+    const granted = Object.values(getAll()).some(Boolean);
+    writeConsentCookie(granted ? 'granted' : 'denied');
+    if (granted) {
+      window.zaraz?.consent?.sendQueuedEvents?.();
+    }
     document.dispatchEvent(new Event('analyticsConsentUpdated'));
   } catch {
     // no-op
