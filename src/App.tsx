@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { JSX } from 'react';
 import { useHashRoute } from './routing/useHashRoute';
 import { PRODUCTS } from './data/catalog';
@@ -11,6 +11,11 @@ import Changelog from './Components/Changelog/Changelog';
 import Support from './Components/Support/Support';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import Footer from './Components/Footer/Footer';
+import AnalyticsConsentBanner from './Components/AnalyticsConsentBanner/AnalyticsConsentBanner';
+import {
+  initAnalyticsConsentBridge,
+  readAnalyticsConsent,
+} from './lib/analytics-client';
 import { Shell, Wrap } from './styles/primitives';
 
 const DEFAULT_META = {
@@ -68,6 +73,22 @@ const applyMeta = (title: string, description: string) => {
  */
 function App(): JSX.Element {
   const { view, product } = useHashRoute();
+  const [showAnalyticsConsent, setShowAnalyticsConsent] = useState(
+    () => readAnalyticsConsent() === null,
+  );
+
+  useEffect(() => {
+    const updateBanner = () => {
+      setShowAnalyticsConsent(readAnalyticsConsent() === null);
+    };
+    document.addEventListener('analyticsConsentUpdated', updateBanner);
+    const cleanup = initAnalyticsConsentBridge();
+
+    return () => {
+      document.removeEventListener('analyticsConsentUpdated', updateBanner);
+      cleanup?.();
+    };
+  }, []);
 
   useEffect(() => {
     if (view === 'product') {
@@ -107,8 +128,12 @@ function App(): JSX.Element {
         <Wrap>
           <Nav view={view} />
           {renderView()}
-          <Footer />
+          <Footer onCookieSettings={() => setShowAnalyticsConsent(true)} />
         </Wrap>
+        <AnalyticsConsentBanner
+          open={showAnalyticsConsent}
+          onClose={() => setShowAnalyticsConsent(false)}
+        />
       </Shell>
     </ThemeProvider>
   );

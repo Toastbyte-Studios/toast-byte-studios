@@ -19,6 +19,9 @@ declare global {
     zaraz?: {
       track?: (eventName: string, params?: Record<string, unknown>) => void;
       consent?: {
+        APIReady?: boolean;
+        getAll?: () => Record<string, boolean>;
+        sendQueuedEvents?: () => void;
         setAll?: (value: boolean) => void;
       };
       set?: (key: string, value: unknown) => void;
@@ -54,6 +57,68 @@ function writeConsentCookie(value: ConsentValue) {
   document.cookie =
     `${ANALYTICS_CONSENT_COOKIE}=${value}; Path=/; ` +
     `Max-Age=${ANALYTICS_CONSENT_MAX_AGE_SECONDS}; SameSite=Lax${secure}`;
+}
+
+const ZARAZ_CONSENT_COOKIES = ['zaraz-consent', 'cf_consent'];
+
+function hasCookie(name: string): boolean {
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
+  return document.cookie
+    .split(';')
+    .some((part) => part.trim().startsWith(`${name}=`));
+}
+
+function syncConsentFromZaraz() {
+  const getAll = window.zaraz?.consent?.getAll;
+  if (typeof getAll !== 'function') {
+    return;
+  }
+
+  try {
+    writeConsentCookie(
+      Object.values(getAll()).some(Boolean) ? 'granted' : 'denied',
+    );
+    document.dispatchEvent(new Event('analyticsConsentUpdated'));
+  } catch {
+    // no-op
+  }
+}
+
+function reconcileExistingConsent() {
+  if (readConsentCookie() !== null) {
+    return;
+  }
+  if (!ZARAZ_CONSENT_COOKIES.some((name) => hasCookie(name))) {
+    return;
+  }
+  syncConsentFromZaraz();
+}
+
+export function initAnalyticsConsentBridge() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  document.addEventListener('zarazConsentChoicesUpdated', syncConsentFromZaraz);
+  if (window.zaraz?.consent?.APIReady) {
+    reconcileExistingConsent();
+  } else {
+    document.addEventListener('zarazConsentAPIReady', reconcileExistingConsent);
+  }
+
+  return () => {
+    document.removeEventListener(
+      'zarazConsentChoicesUpdated',
+      syncConsentFromZaraz,
+    );
+    document.removeEventListener(
+      'zarazConsentAPIReady',
+      reconcileExistingConsent,
+    );
+  };
 }
 
 function mayTrack(eventName: AnalyticsEventName): boolean {

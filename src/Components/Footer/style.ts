@@ -56,6 +56,26 @@ const Link = styled.a`
   }
 `;
 
+const CookieSettings = styled.button`
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--color-text) 58%, transparent);
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-accent-600);
+    text-decoration: underline;
+  }
+
+  @media (max-width: ${BREAKPOINTS.TABLET_PORTRAIT}) {
+    display: inline-flex;
+    align-items: center;
+    min-height: ${TOUCH_TARGET};
+  }
+`;
+
 const SocialLinks = styled.span`
   display: flex;
   gap: 14px;
@@ -90,4 +110,12 @@ const SocialIconLink = styled.a`
   }
 `;
 
-export { Container, Info, Links, Link, SocialLinks, SocialIconLink };
+export {
+  Container,
+  Info,
+  Links,
+  Link,
+  CookieSettings,
+  SocialLinks,
+  SocialIconLink,
+};
