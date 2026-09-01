@@ -4,9 +4,15 @@ import {
   Info,
   Links,
   Link,
+  CookieSettings,
   SocialLinks,
   SocialIconLink,
 } from './style';
+import { getAnalyticsConsentRequirement } from '../../lib/analytics-client';
+
+interface FooterProps {
+  onCookieSettings: () => void;
+}
 
 /**
  * Footer renders the site footer: the copyright and build version, links to
@@ -16,7 +22,7 @@ import {
  * @component
  * @returns {JSX.Element} The rendered site footer.
  */
-const Footer: React.FC = (): JSX.Element => {
+const Footer: React.FC<FooterProps> = ({ onCookieSettings }): JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -49,6 +55,11 @@ const Footer: React.FC = (): JSX.Element => {
         <Link href="mailto:info@toastbyte.studio">Email</Link>
         <Link href="#/support">Support</Link>
         <Link href="#/privacy">Privacy Policy</Link>
+        {getAnalyticsConsentRequirement() && (
+          <CookieSettings type="button" onClick={onCookieSettings}>
+            Cookie settings
+          </CookieSettings>
+        )}
         <SocialLinks>
           <SocialIconLink
             href="https://www.tiktok.com/@toastbytestudios"
