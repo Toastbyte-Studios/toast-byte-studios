@@ -62,9 +62,16 @@ const Home: React.FC = (): JSX.Element => {
             keep maintaining them after launch.
           </HeroLede>
           <ButtonRow>
-            {/* Bare fragment, not a route — scrolls to the products section
-                below and is left alone by the link interceptor. */}
-            <Button href="#products" $variant="primary">
+            <Button
+              href="#products"
+              $variant="primary"
+              onClick={(event) => {
+                event.preventDefault();
+                document
+                  .getElementById('products')
+                  ?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               See the products
             </Button>
             <Button href="/studio" $variant="secondary">

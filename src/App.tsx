@@ -68,7 +68,20 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
 const applyMeta = (title: string, description: string) => {
   document.title = title;
 
-  const canonical = `${SITE_ORIGIN}${window.location.pathname}`;
+  const hashPath = window.location.hash
+    .replace(/^#\/*/, '')
+    .replace(/\/+$/, '');
+  const isKnownHashRoute =
+    hashPath in STATIC_META ||
+    (hashPath.startsWith('product/') &&
+      PRODUCTS.some((product) => `product/${product.key}` === hashPath));
+  const canonicalPath =
+    window.location.pathname === '/'
+      ? isKnownHashRoute
+        ? `/${hashPath}`
+        : '/'
+      : window.location.pathname;
+  const canonical = `${SITE_ORIGIN}${canonicalPath}`;
 
   const set = (selector: string, attribute: string, value: string) =>
     document.querySelector(selector)?.setAttribute(attribute, value);
