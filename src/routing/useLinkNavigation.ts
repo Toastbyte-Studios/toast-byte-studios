@@ -56,9 +56,9 @@ const useLinkNavigation = (): void => {
     const handleClick = (event: MouseEvent) => {
       if (isModifiedClick(event)) return;
 
-      const target = event.target as Element | null;
-      const anchor = target?.closest?.('a') ?? null;
-      if (!anchor) return;
+      const anchor =
+        event.target instanceof Element ? event.target.closest('a') : null;
+      if (!(anchor instanceof HTMLAnchorElement)) return;
 
       const to = routeFor(anchor);
       if (!to) return;
