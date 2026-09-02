@@ -25,7 +25,7 @@ import {
 const Support: React.FC = (): JSX.Element => {
   return (
     <Main id="main">
-      <BackLink href="#/">← Toastbyte Studios</BackLink>
+      <BackLink href="/">← Toastbyte Studios</BackLink>
       <PageTitle>Support</PageTitle>
       <Lede>
         Include the product name and what you were doing when it broke. You will

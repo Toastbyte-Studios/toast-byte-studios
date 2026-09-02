@@ -53,8 +53,8 @@ const Footer: React.FC<FooterProps> = ({ onCookieSettings }): JSX.Element => {
           GitHub
         </Link>
         <Link href="mailto:info@toastbyte.studio">Email</Link>
-        <Link href="#/support">Support</Link>
-        <Link href="#/privacy">Privacy Policy</Link>
+        <Link href="/support">Support</Link>
+        <Link href="/privacy">Privacy Policy</Link>
         {getAnalyticsConsentRequirement() && (
           <CookieSettings type="button" onClick={onCookieSettings}>
             Cookie settings

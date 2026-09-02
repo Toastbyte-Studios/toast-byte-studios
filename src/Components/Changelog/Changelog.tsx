@@ -39,7 +39,7 @@ const Changelog: React.FC = (): JSX.Element => {
 
   return (
     <Main id="main">
-      <BackLink href="#/">← Toastbyte Studios</BackLink>
+      <BackLink href="/">← Toastbyte Studios</BackLink>
       <PageTitle>Changelog</PageTitle>
       <Intro>Releases across the portfolio and this site, newest first.</Intro>
 

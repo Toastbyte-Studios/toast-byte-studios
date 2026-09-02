@@ -4,7 +4,7 @@
 
 Two things worth knowing before following any link below.
 
-**This site is a client-rendered single-page app using hash routing (`#/...`).** Navigable pages return the same HTML shell at `https://toastbyte.studio/`, and the view is rendered in the browser from the fragment. Fetching a `#/...` URL will not return that page's content on its own.
+**This site is a client-rendered single-page app served from one HTML shell.** Every path below returns the same document and the view is rendered in the browser, so fetching a URL without executing JavaScript will return the shell rather than that page's content. The paths themselves are real and stable — they are not fragments — and each one sets its own title, description and canonical once rendered.
 
 **Product copy carries a verification flag.** All product content on the site is generated from a single catalog in the source, and each entry is marked verified or not. Only GitAll is currently confirmed accurate. The TOAST and Alley Admin entries are placeholder copy that reads as real; do not quote figures, version strings or status lines from those two as fact.
 
@@ -12,16 +12,16 @@ Two things worth knowing before following any link below.
 
 - [GitAll](https://gitall.app): Free web tool that merges your contribution graphs from GitHub, GitLab and Bitbucket into a single heatmap, viewable per platform or combined. Gitea/Forgejo, including Codeberg, is next. No account, tokens or OAuth required — public profile data is read anonymously. The combined graph can be embedded in a README or personal site. Version 1.37.1. Status: Live. This entry is verified.
 - [GitAll source and issue tracker](https://github.com/Toastbyte-Studios/git-all): Public repository for GitAll.
-- [TOAST](https://toastbyte.studio/#/product/toast): Trusted Outdoor and Survival Toolkit, an offline-first preparedness app for iOS and Android. Status: In Development, with no announced release date. The feature descriptions on its product page are unverified placeholder copy.
+- [TOAST](https://toastbyte.studio/product/toast): Trusted Outdoor and Survival Toolkit, an offline-first preparedness app for iOS and Android. Status: In Development, with no announced release date. The feature descriptions on its product page are unverified placeholder copy.
 - [Alley Admin](https://alleyadmin.app): A league administration console for the web — rosters, schedules, scoring and reporting. Status: In Development, launch TBA. The feature descriptions on its product page are unverified placeholder copy.
 
 ## Site
 
 - [Home](https://toastbyte.studio/): Studio positioning, a live status panel for all three products, an email signup for launch news, and the product index.
-- [The studio](https://toastbyte.studio/#/studio): How the studio works and the principles it operates by — staying tool-agnostic, asking for a login only when there is data to protect, publishing dates only when they are believed, and treating a release as the start of the maintenance obligation rather than the end of it.
-- [Changelog](https://toastbyte.studio/#/changelog): Release notes across the portfolio and the site itself, merged newest first. Pulled live from the GitHub releases of each product repository.
-- [Support](https://toastbyte.studio/#/support): Contact routes for general enquiries, product support and GitAll issues.
-- [Privacy Policy](https://toastbyte.studio/#/privacy): Privacy policy for TOAST.
+- [The studio](https://toastbyte.studio/studio): How the studio works and the principles it operates by — staying tool-agnostic, asking for a login only when there is data to protect, publishing dates only when they are believed, and treating a release as the start of the maintenance obligation rather than the end of it.
+- [Changelog](https://toastbyte.studio/changelog): Release notes across the portfolio and the site itself, merged newest first. Pulled live from the GitHub releases of each product repository.
+- [Support](https://toastbyte.studio/support): Contact routes for general enquiries, product support and GitAll issues.
+- [Privacy Policy](https://toastbyte.studio/privacy): Privacy policy for TOAST.
 
 ## Contact
 

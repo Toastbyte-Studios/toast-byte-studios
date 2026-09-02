@@ -19,6 +19,13 @@ import {
 } from './lib/analytics-client';
 import { Shell, Wrap } from './styles/primitives';
 
+/**
+ * Origin used to build absolute canonical and og:url values. Hard-coded
+ * rather than read from window.location so that a preview deployment never
+ * advertises itself as the canonical home of this content.
+ */
+const SITE_ORIGIN = 'https://toastbyte.studio';
+
 const DEFAULT_META = {
   title: 'Toastbyte Studios — independent software development',
   description:
@@ -51,9 +58,17 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
 /**
  * Applies the given title and description to the document head, keeping the
  * Open Graph and Twitter card tags in step with the canonical ones.
+ *
+ * The canonical link is rewritten per route as well. index.html ships a single
+ * static canonical pointing at the site root, and since every path is served
+ * that same document, leaving it alone would have every route declare the home
+ * page as its canonical — which asks Google to drop the very URLs this
+ * migration exists to get indexed.
  */
 const applyMeta = (title: string, description: string) => {
   document.title = title;
+
+  const canonical = `${SITE_ORIGIN}${window.location.pathname}`;
 
   const set = (selector: string, attribute: string, value: string) =>
     document.querySelector(selector)?.setAttribute(attribute, value);
@@ -63,6 +78,8 @@ const applyMeta = (title: string, description: string) => {
   set('meta[property="og:description"]', 'content', description);
   set('meta[name="twitter:title"]', 'content', title);
   set('meta[name="twitter:description"]', 'content', description);
+  set('link[rel="canonical"]', 'href', canonical);
+  set('meta[property="og:url"]', 'content', canonical);
 };
 
 /**

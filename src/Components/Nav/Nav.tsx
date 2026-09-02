@@ -23,10 +23,10 @@ interface NavProps {
 }
 
 const LINKS: { label: string; href: string; view: View }[] = [
-  { label: 'Products', href: '#/', view: 'home' },
-  { label: 'Studio', href: '#/studio', view: 'studio' },
-  { label: 'Changelog', href: '#/changelog', view: 'changelog' },
-  { label: 'Support', href: '#/support', view: 'support' },
+  { label: 'Products', href: '/', view: 'home' },
+  { label: 'Studio', href: '/studio', view: 'studio' },
+  { label: 'Changelog', href: '/changelog', view: 'changelog' },
+  { label: 'Support', href: '/support', view: 'support' },
 ];
 
 /**
@@ -51,7 +51,7 @@ const Nav: React.FC<NavProps> = ({ view }): JSX.Element => {
 
   return (
     <Header>
-      <Brand href="#/" aria-label="Toastbyte Studios — home" onClick={close}>
+      <Brand href="/" aria-label="Toastbyte Studios — home" onClick={close}>
         <BrandMark
           src="/assets/images/ToastHeadShotClear.webp"
           alt=""

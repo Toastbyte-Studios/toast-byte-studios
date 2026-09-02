@@ -30,7 +30,7 @@ const AnalyticsConsentBanner: React.FC<AnalyticsConsentBannerProps> = ({
         <Title id="analytics-consent-title">Analytics cookies</Title>
         <p>
           We use analytics cookies to understand how visitors use this site.
-          Read our <Link href="#/privacy">Privacy Policy</Link>.
+          Read our <Link href="/privacy">Privacy Policy</Link>.
         </p>
       </Content>
       <Actions>

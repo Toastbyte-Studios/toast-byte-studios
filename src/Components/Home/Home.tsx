@@ -62,10 +62,12 @@ const Home: React.FC = (): JSX.Element => {
             keep maintaining them after launch.
           </HeroLede>
           <ButtonRow>
+            {/* Bare fragment, not a route — scrolls to the products section
+                below and is left alone by the link interceptor. */}
             <Button href="#products" $variant="primary">
               See the products
             </Button>
-            <Button href="#/studio" $variant="secondary">
+            <Button href="/studio" $variant="secondary">
               About the studio
             </Button>
           </ButtonRow>
@@ -105,7 +107,7 @@ const Home: React.FC = (): JSX.Element => {
               <ProductMeta>{product.meta}</ProductMeta>
             </div>
             <ProductActions>
-              <QuietLink href={`#/product/${product.key}`}>Details →</QuietLink>
+              <QuietLink href={`/product/${product.key}`}>Details →</QuietLink>
               <DomainLink
                 href={product.site}
                 target="_blank"
@@ -132,7 +134,7 @@ const Home: React.FC = (): JSX.Element => {
             code. Our products are funded by our products, so nothing here gets
             sunset by a reorg.
           </Prose>
-          <QuietLink href="#/studio">How we work →</QuietLink>
+          <QuietLink href="/studio">How we work →</QuietLink>
         </div>
         <div>
           <SectionLabel>Selective client work</SectionLabel>

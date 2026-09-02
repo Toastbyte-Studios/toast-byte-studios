@@ -30,7 +30,7 @@ import {
 const Studio: React.FC = (): JSX.Element => {
   return (
     <Main id="main">
-      <BackLink href="#/">← Toastbyte Studios</BackLink>
+      <BackLink href="/">← Toastbyte Studios</BackLink>
       <PageTitle>The studio</PageTitle>
       <Lede>
         An independent development studio in Las Vegas, building cool apps in
