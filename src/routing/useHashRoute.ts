@@ -41,11 +41,11 @@ const parseSegments = (path: string): Route => {
 
 /** Strips the leading '#', optional '/' and any trailing slash from a hash. */
 const normaliseHash = (raw: string): string =>
-  raw.replace(/^#\/?/, '').replace(/\/$/, '');
+  raw.replace(/^#\/*/, '').replace(/\/+$/, '');
 
 /** Strips the leading and trailing slashes from a pathname. */
 const normalisePath = (raw: string): string =>
-  raw.replace(/^\//, '').replace(/\/$/, '');
+  raw.replace(/^\/+/, '').replace(/\/+$/, '');
 
 /**
  * Parses a raw location hash into a route.
