@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { JSX } from 'react';
 import { useHashRoute } from './routing/useHashRoute';
+import { useLinkNavigation } from './routing/useLinkNavigation';
 import { PRODUCTS } from './data/catalog';
 import ThemeProvider from './theme/ThemeProvider';
 import Nav from './Components/Nav/Nav';
@@ -65,7 +66,7 @@ const applyMeta = (title: string, description: string) => {
 };
 
 /**
- * App is the site shell: it resolves the hash route, keeps the document
+ * App is the site shell: it resolves the active route, keeps the document
  * metadata in sync for share previews and search, and renders the header,
  * active view and footer inside the themed container.
  *
@@ -76,6 +77,8 @@ function App(): JSX.Element {
   const [showAnalyticsConsent, setShowAnalyticsConsent] = useState(
     () => readAnalyticsConsent() === null,
   );
+
+  useLinkNavigation();
 
   useEffect(() => {
     const updateBanner = () => {
