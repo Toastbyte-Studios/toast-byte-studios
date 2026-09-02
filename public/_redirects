@@ -1,0 +1,7 @@
+# SPA fallback: serve index.html for any path that is not a real asset so
+# client-side routes (/studio, /product/gitall) resolve on a hard load or a
+# direct crawl instead of 404ing.
+#
+# This does not affect /api/* — redirects are not applied to requests served
+# by Pages Functions, so functions/api/analytics keeps handling its own routes.
+/*  /index.html  200
