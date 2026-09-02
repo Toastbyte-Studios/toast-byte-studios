@@ -22,5 +22,17 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  /*
+   * The build-time prerender plugin reads the same route metadata the app
+   * does. Because this is a referenced project, every file it pulls in has to
+   * be listed here as well or tsc reports TS6307. src/data and src/types are
+   * plain data and types with no DOM dependency, so they type-check fine
+   * under this project's ES2023-only lib.
+   */
+  "include": [
+    "vite.config.ts",
+    "plugins/**/*.ts",
+    "src/data/**/*.ts",
+    "src/types/**/*.ts"
+  ]
 }

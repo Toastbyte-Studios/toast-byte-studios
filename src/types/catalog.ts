@@ -14,7 +14,7 @@ interface ProductFact {
 
 /** A product in the studio catalog. */
 interface Product {
-  /** URL-safe identifier used in the hash route, e.g. 'gitall'. */
+  /** URL-safe identifier used in the product route, e.g. 'gitall'. */
   key: string;
   name: string;
   /** Status dot colour, a hex string. */
