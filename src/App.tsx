@@ -32,7 +32,19 @@ import { Shell, Wrap } from './styles/primitives';
 const applyMeta = (title: string, description: string) => {
   document.title = title;
 
-  const canonical = `${SITE_ORIGIN}${window.location.pathname}`;
+  const hashPath = window.location.hash
+    .replace(/^#\/*/, '')
+    .replace(/\/+$/, '');
+  const isHashRoute =
+    window.location.pathname === '/' &&
+    (hashPath === 'studio' ||
+      hashPath === 'changelog' ||
+      hashPath === 'support' ||
+      hashPath === 'privacy' ||
+      hashPath.startsWith('product/'));
+  const canonicalPath =
+    isHashRoute && hashPath ? `/${hashPath}` : window.location.pathname;
+  const canonical = `${SITE_ORIGIN}${canonicalPath}`;
 
   const set = (selector: string, attribute: string, value: string) =>
     document.querySelector(selector)?.setAttribute(attribute, value);
