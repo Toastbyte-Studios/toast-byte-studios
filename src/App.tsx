@@ -11,6 +11,7 @@ import Studio from './Components/Studio/Studio';
 import Changelog from './Components/Changelog/Changelog';
 import Support from './Components/Support/Support';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
+import NotFound from './Components/NotFound/NotFound';
 import Footer from './Components/Footer/Footer';
 import AnalyticsConsentBanner from './Components/AnalyticsConsentBanner/AnalyticsConsentBanner';
 import {
@@ -103,6 +104,8 @@ function App(): JSX.Element {
         return <Support />;
       case 'privacy':
         return <PrivacyPolicy />;
+      case 'notFound':
+        return <NotFound />;
       default:
         return <Home />;
     }
