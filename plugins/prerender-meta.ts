@@ -26,9 +26,22 @@ const setMetaContent = (
 ): string => {
   const tag = new RegExp(`<meta\\b[^>]*\\b${attribute}="${name}"[^>]*>`, 'i');
 
-  return html.replace(tag, (match) =>
-    match.replace(/content="[^"]*"/i, `content="${escapeAttribute(content)}"`),
-  );
+  if (!tag.test(html)) {
+    throw new Error(`prerender-meta: <meta ${attribute}="${name}"> not found`);
+  }
+
+  return html.replace(tag, (match) => {
+    if (!/content="[^"]*"/i.test(match)) {
+      throw new Error(
+        `prerender-meta: <meta ${attribute}="${name}"> has no content attribute`,
+      );
+    }
+
+    return match.replace(
+      /content="[^"]*"/i,
+      `content="${escapeAttribute(content)}"`,
+    );
+  });
 };
 
 /** Rewrites the href of the canonical link tag. */
