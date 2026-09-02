@@ -6,16 +6,31 @@ Live at [toastbyte.studio](https://toastbyte.studio/)
 
 ## What the site contains
 
-| View      | Route             | Contents                                                                 |
-| --------- | ----------------- | ------------------------------------------------------------------------ |
-| Home      | `#/`              | Positioning hero, live product status panel, email signup, product index |
-| Product   | `#/product/<key>` | Per-product page: lede, numbered features, facts table, related products |
-| Studio    | `#/studio`        | How the studio works, its principles, and press details                  |
-| Changelog | `#/changelog`     | GitHub releases across the portfolio and this site, merged newest first  |
-| Support   | `#/support`       | Contact routes for enquiries, product support and issue trackers         |
-| Privacy   | `#/privacy`       | Privacy policy                                                           |
+| View      | Route            | Contents                                                                 |
+| --------- | ---------------- | ------------------------------------------------------------------------ |
+| Home      | `/`              | Positioning hero, live product status panel, email signup, product index |
+| Product   | `/product/<key>` | Per-product page: lede, numbered features, facts table, related products |
+| Studio    | `/studio`        | How the studio works, its principles, and press details                  |
+| Changelog | `/changelog`     | GitHub releases across the portfolio and this site, merged newest first  |
+| Support   | `/support`       | Contact routes for enquiries, product support and issue trackers         |
+| Privacy   | `/privacy`       | Privacy policy                                                           |
 
-Routing is hash-based (`src/routing/useHashRoute.ts`). The parser also accepts the legacy bare forms (`#support`, `#privacy`) alongside the slash-prefixed ones, so older links keep resolving.
+### Routing
+
+Routing is path-based and hand-rolled, spread across three files in `src/routing/`:
+
+- **`useHashRoute.ts`** resolves the active route from `location.pathname`, falling back to the hash when the pathname is bare. Back/forward is handled by listening for both `popstate` and `hashchange`.
+- **`navigate.ts`** performs a `pushState` and dispatches `popstate` by hand, since `pushState` does not fire it.
+- **`useLinkNavigation.ts`** is one delegated click listener on `document` that turns internal anchors into client-side navigations. Modified clicks, `target`, `download`, cross-origin, `mailto:`/`tel:` and bare in-page anchors like `#products` are handed back to the browser.
+
+Because every path is served the same `index.html`, two things have to hold for a path route to work at all:
+
+1. **`public/_redirects`** rewrites unmatched paths to `/index.html` with a 200, so a hard load of `/studio` serves the app rather than a 404. Redirects there do not apply to requests served by Pages Functions, so `/api/*` still reaches `functions/`.
+2. **`applyMeta` in `App.tsx`** rewrites `link[rel=canonical]` and `og:url` per route. The static canonical in `index.html` is a starting value; left unmanaged, every route would declare the home page as its canonical and none of them would be indexed.
+
+Legacy hash URLs (`#/studio`, and the bare `#support` and `#privacy` forms that older links and app store listings point at) still resolve. Clicking one navigates to its path equivalent, so the address bar canonicalises itself.
+
+The site is still client-rendered, so a crawler that does not execute JavaScript sees the shell and its default metadata rather than the route's own. Google renders and is unaffected; social and AI crawlers are not. Prerendering is the fix and is not implemented yet.
 
 ## Products
 
@@ -50,8 +65,11 @@ No routing, state or UI dependency beyond the above — routing, theming and dat
 ## Project Structure
 
 ```text
+public/
+  _redirects          — SPA fallback so path routes resolve on a hard load
 src/
   Components/
+    AnalyticsConsentBanner/ — Analytics cookie consent dialog
     Changelog/      — Release feed, GitHub fetching hook, note formatting
     EmailCapture/   — Email signup form with Turnstile verification
     Footer/         — Site footer
@@ -66,7 +84,9 @@ src/
   lib/
     github.ts       — Release sources and the GitHub releases fetcher
   routing/
-    useHashRoute.ts — Hash route parsing and navigation
+    useHashRoute.ts     — Route parsing from pathname, with hash fallback
+    navigate.ts         — pushState navigation helper
+    useLinkNavigation.ts — Delegated click interception for internal links
   styles/
     tokens.css      — Design tokens; light values on :root, dark on .tb-dark
     primitives.ts   — Shared styled primitives

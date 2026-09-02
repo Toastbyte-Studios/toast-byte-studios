@@ -45,7 +45,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
 
   return (
     <Main id="main">
-      <BackLink href="#/">← Toastbyte Studios</BackLink>
+      <BackLink href="/">← Toastbyte Studios</BackLink>
       <TitleRow>
         <Dot $color={current.dot} $size={12} />
         <ProductTitle>{current.name}</ProductTitle>
@@ -100,7 +100,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
 
       <OtherRow>
         {others.map((other) => (
-          <OtherLink key={other.key} href={`#/product/${other.key}`}>
+          <OtherLink key={other.key} href={`/product/${other.key}`}>
             <Dot $color={other.dot} $size={8} />
             {other.name}
           </OtherLink>
