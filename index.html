@@ -28,7 +28,9 @@
       content="Toastbyte Studios is an independent development studio in Las Vegas building GitAll, TOAST and Alley Admin — software that works offline, loads fast, and is maintained after launch."
     />
 
-    <!-- Canonical -->
+    <!-- Canonical. This is the home-page value and the starting point only:
+         every path is served this same document, so App.tsx rewrites this
+         href (and og:url) to match the active route once rendered. -->
     <link rel="canonical" href="https://toastbyte.studio/" />
     <link rel="manifest" href="/site.webmanifest" />
 
@@ -172,8 +174,8 @@
         </p>
         <p>
           For assistance, visit
-          <a href="https://toastbyte.studio/#/support">Support</a> or email us
-          via the support page.
+          <a href="https://toastbyte.studio/support">Support</a> or email us via
+          the support page.
         </p>
       </main>
     </noscript>
