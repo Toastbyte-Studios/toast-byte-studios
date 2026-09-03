@@ -44,7 +44,9 @@ const readServerTheme = (): Theme => 'light';
 /** Subscribes to every source that can change the resolved theme. */
 const subscribeToTheme = (onChange: () => void): (() => void) => {
   const media =
-    typeof window.matchMedia === 'function' ? window.matchMedia(DARK_QUERY) : null;
+    typeof window.matchMedia === 'function'
+      ? window.matchMedia(DARK_QUERY)
+      : null;
 
   // 'storage' covers another tab; THEME_EVENT covers this one, which storage
   // deliberately does not fire for.
