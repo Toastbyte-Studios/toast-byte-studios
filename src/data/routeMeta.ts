@@ -31,6 +31,11 @@ const DEFAULT_META: PageMeta = {
 
 /** Metadata for the views whose copy does not come from the catalog. */
 const STATIC_META: Record<string, PageMeta> = {
+  notFound: {
+    title: 'Page not found | Toastbyte Studios',
+    description:
+      'The page you requested could not be found. Return to the Toastbyte Studios home page.',
+  },
   studio: {
     title: 'The studio | Toastbyte Studios',
     description:
@@ -92,10 +97,12 @@ const ROUTE_META: RouteMeta[] = [
     path: `/product/${product.key}`,
     ...productMeta(product),
   })),
-  ...Object.entries(STATIC_META).map(([view, meta]) => ({
-    path: `/${view}`,
-    ...meta,
-  })),
+  ...Object.entries(STATIC_META)
+    .filter(([view]) => view !== 'notFound')
+    .map(([view, meta]) => ({
+      path: `/${view}`,
+      ...meta,
+    })),
 ];
 
 export { SITE_ORIGIN, DEFAULT_META, STATIC_META, ROUTE_META, metaForView };

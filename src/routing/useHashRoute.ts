@@ -2,7 +2,14 @@ import { useState, useEffect } from 'react';
 import { PRODUCTS } from '../data/catalog';
 import { ANALYTICS_EVENTS, trackClientEvent } from '../lib/analytics-client';
 
-type View = 'home' | 'product' | 'studio' | 'changelog' | 'support' | 'privacy';
+type View =
+  | 'home'
+  | 'product'
+  | 'studio'
+  | 'changelog'
+  | 'support'
+  | 'privacy'
+  | 'notFound';
 
 interface Route {
   view: View;
@@ -19,29 +26,40 @@ interface Route {
  * @returns {Route} The resolved view and product key.
  */
 const parseSegments = (path: string): Route => {
-  const [head, tail] = path.split('/');
+  if (!path) return { view: 'home', product: PRODUCTS[0].key };
+
+  const [head, tail, ...remaining] = path.split('/');
+  const notFound = { view: 'notFound' as const, product: PRODUCTS[0].key };
 
   switch (head) {
     case 'product': {
-      const known = PRODUCTS.some((p) => p.key === tail);
-      return { view: 'product', product: known ? tail : PRODUCTS[0].key };
+      const known = !remaining.length && PRODUCTS.some((p) => p.key === tail);
+      return known ? { view: 'product', product: tail } : notFound;
     }
     case 'studio':
-      return { view: 'studio', product: PRODUCTS[0].key };
+      return !tail ? { view: 'studio', product: PRODUCTS[0].key } : notFound;
     case 'changelog':
-      return { view: 'changelog', product: PRODUCTS[0].key };
+      return !tail ? { view: 'changelog', product: PRODUCTS[0].key } : notFound;
     case 'support':
-      return { view: 'support', product: PRODUCTS[0].key };
+      return !tail ? { view: 'support', product: PRODUCTS[0].key } : notFound;
     case 'privacy':
-      return { view: 'privacy', product: PRODUCTS[0].key };
+      return !tail ? { view: 'privacy', product: PRODUCTS[0].key } : notFound;
     default:
-      return { view: 'home', product: PRODUCTS[0].key };
+      return notFound;
   }
 };
 
+const ROUTE_HASHES = new Set(['studio', 'changelog', 'support', 'privacy']);
+
 /** Strips the leading '#', optional '/' and any trailing slash from a hash. */
-const normaliseHash = (raw: string): string =>
-  raw.replace(/^#\/*/, '').replace(/\/+$/, '');
+const normaliseHash = (raw: string): string => {
+  const normalised = raw.replace(/^#\/*/, '').replace(/\/+$/, '');
+
+  if (!normalised) return '';
+
+  const [head] = normalised.split('/');
+  return head === 'product' || ROUTE_HASHES.has(head) ? normalised : '';
+};
 
 /** Strips the leading and trailing slashes from a pathname. */
 const normalisePath = (raw: string): string =>
