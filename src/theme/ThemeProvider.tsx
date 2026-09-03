@@ -43,18 +43,33 @@ const readServerTheme = (): Theme => 'light';
 
 /** Subscribes to every source that can change the resolved theme. */
 const subscribeToTheme = (onChange: () => void): (() => void) => {
-  const media = window.matchMedia(DARK_QUERY);
+  const media =
+    typeof window.matchMedia === 'function' ? window.matchMedia(DARK_QUERY) : null;
 
   // 'storage' covers another tab; THEME_EVENT covers this one, which storage
   // deliberately does not fire for.
   window.addEventListener('storage', onChange);
   document.addEventListener(THEME_EVENT, onChange);
-  media.addEventListener('change', onChange);
+
+  if (media) {
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', onChange);
+    } else {
+      media.addListener(onChange);
+    }
+  }
 
   return () => {
     window.removeEventListener('storage', onChange);
     document.removeEventListener(THEME_EVENT, onChange);
-    media.removeEventListener('change', onChange);
+
+    if (media) {
+      if (typeof media.removeEventListener === 'function') {
+        media.removeEventListener('change', onChange);
+      } else {
+        media.removeListener(onChange);
+      }
+    }
   };
 };
 
