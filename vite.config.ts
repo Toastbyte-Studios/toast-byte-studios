@@ -15,9 +15,22 @@ export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: [['babel-plugin-react-compiler']],
+        plugins: [
+          ['babel-plugin-react-compiler'],
+          // Gives every styled component a stable, source-derived id. Without
+          // it the ids come from a render-order counter, which the client and
+          // SSR bundles have no reason to agree on — the prerendered markup
+          // would carry class names the client stylesheet never defines.
+          ['babel-plugin-styled-components', { ssr: true, displayName: false }],
+        ],
       },
     }),
     prerenderMeta(),
   ],
+  ssr: {
+    // styled-components is CJS. Left external, Node's interop hands the SSR
+    // bundle a namespace object whose default export is undefined and every
+    // `styled.x` call throws. Bundling it keeps the ESM default intact.
+    noExternal: ['styled-components'],
+  },
 });

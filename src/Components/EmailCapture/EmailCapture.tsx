@@ -48,13 +48,18 @@ const EmailCapture: React.FC = (): JSX.Element => {
 
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [submitted, setSubmitted] = useState(() => {
+  // Read on mount rather than during render: localStorage does not exist at
+  // prerender time, and a returning visitor reading it during the first
+  // client render would hydrate a different form than the one prerendered.
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
     try {
-      return localStorage.getItem(STORAGE_KEY) === 'true';
+      if (localStorage.getItem(STORAGE_KEY) === 'true') setSubmitted(true);
     } catch {
-      return false;
+      // localStorage unavailable — the form simply shows again
     }
-  });
+  }, []);
 
   const workerURL = import.meta.env.VITE_EMAIL_WORKER_URL as string | undefined;
   const resolvedWorkerURL =

@@ -162,23 +162,29 @@
       src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
       async
     ></script>
+    <!-- Applies the saved or preferred theme before first paint. The body is
+         prerendered now, so without this a dark-mode visitor would see a full
+         page of light-themed content flash before ThemeProvider's effect runs. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('tb-theme');
+          var dark =
+            saved === 'dark' ||
+            (saved !== 'light' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) {
+            document.documentElement.classList.add('tb-dark');
+            document.documentElement.style.colorScheme = 'dark';
+          }
+        } catch (e) {
+          /* localStorage blocked — fall back to the light default */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <noscript>
-      <main>
-        <p>
-          Toastbyte Studios — an independent software development studio in Las
-          Vegas, building GitAll, TOAST and Alley Admin. Please enable
-          JavaScript to view this site.
-        </p>
-        <p>
-          For assistance, visit
-          <a href="https://toastbyte.studio/support">Support</a> or email us via
-          the support page.
-        </p>
-      </main>
-    </noscript>
     <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>

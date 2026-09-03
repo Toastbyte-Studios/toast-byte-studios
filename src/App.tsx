@@ -59,6 +59,16 @@ const applyMeta = (title: string, description: string) => {
   set('meta[property="og:url"]', 'content', canonical);
 };
 
+/** Props for {@link App}. */
+interface AppProps {
+  /**
+   * Pathname to render on the first pass, supplied by the build-time
+   * prerender where there is no `window` to read. Omitted in the browser,
+   * where the location is read instead.
+   */
+  initialPath?: string;
+}
+
 /**
  * App is the site shell: it resolves the active route, keeps the document
  * metadata in sync for share previews and search, and renders the header,
@@ -66,11 +76,14 @@ const applyMeta = (title: string, description: string) => {
  *
  * @returns {JSX.Element} The rendered application.
  */
-function App(): JSX.Element {
-  const { view, product } = useHashRoute();
-  const [showAnalyticsConsent, setShowAnalyticsConsent] = useState(
-    () => readAnalyticsConsent() === null,
-  );
+function App({ initialPath }: AppProps = {}): JSX.Element {
+  const { view, product } = useHashRoute(initialPath);
+  // Starts closed rather than reading the consent cookie during render. The
+  // cookie is invisible to the prerender, so initialising from it would make
+  // the server and the client disagree on the very first paint. The effect
+  // below opens it on mount when no choice has been recorded, which also
+  // stops the banner flashing at visitors who already answered.
+  const [showAnalyticsConsent, setShowAnalyticsConsent] = useState(false);
 
   useLinkNavigation();
 
@@ -78,6 +91,7 @@ function App(): JSX.Element {
     const updateBanner = () => {
       setShowAnalyticsConsent(readAnalyticsConsent() === null);
     };
+    updateBanner();
     document.addEventListener('analyticsConsentUpdated', updateBanner);
     const cleanup = initAnalyticsConsentBridge();
 

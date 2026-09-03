@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import { PRODUCTS } from '../data/catalog';
 import { ANALYTICS_EVENTS, trackClientEvent } from '../lib/analytics-client';
 
@@ -117,39 +117,64 @@ const trackRouteView = (route: Route) => {
   });
 };
 
+/** Separator that cannot occur in a pathname or hash. */
+const KEY_SEPARATOR = '\u0000';
+
+/** Serialises the parts of the location this hook cares about. */
+const readLocationKey = (): string =>
+  `${window.location.pathname}${KEY_SEPARATOR}${window.location.hash}`;
+
+/** Subscribes to both forms of history navigation. */
+const subscribeToLocation = (onChange: () => void): (() => void) => {
+  window.addEventListener('hashchange', onChange);
+  window.addEventListener('popstate', onChange);
+
+  return () => {
+    window.removeEventListener('hashchange', onChange);
+    window.removeEventListener('popstate', onChange);
+  };
+};
+
 /**
  * Tracks the current route and keeps it in sync with browser navigation.
  *
- * Listens for `popstate` as well as `hashchange` so back/forward works for
- * both URL forms. Scrolls to the top whenever the route changes, matching the
- * behaviour of the design comp without losing deep links.
+ * Reads the location through useSyncExternalStore so the first render can be
+ * served from a snapshot that exists without a DOM. That snapshot is the
+ * pathname alone, with no hash: the prerender only knows the pathname, so
+ * including the hash would have a legacy '/#/studio' link render Home on the
+ * server and Studio on the client. React swaps to the live snapshot straight
+ * after hydration, which resolves the hash without ever mismatching.
  *
+ * @param initialPath - Pathname for the first render, supplied by the build.
+ *   Omitted in the browser, where the live location is read instead.
  * @returns {Route} The active route.
  */
-const useHashRoute = (): Route => {
-  const [route, setRoute] = useState<Route>(() =>
-    parseLocation(window.location.pathname, window.location.hash),
+const useHashRoute = (initialPath?: string): Route => {
+  const key = useSyncExternalStore(
+    subscribeToLocation,
+    readLocationKey,
+    () => `${initialPath ?? window.location.pathname}${KEY_SEPARATOR}`,
   );
 
+  const route = useMemo(() => {
+    const [pathname, hash] = key.split(KEY_SEPARATOR);
+    return parseLocation(pathname, hash);
+  }, [key]);
+
+  const previous = useRef<Route | null>(null);
+
   useEffect(() => {
-    const handleLocationChange = () => {
-      const next = parseLocation(
-        window.location.pathname,
-        window.location.hash,
-      );
-      setRoute(next);
-      window.scrollTo(0, 0);
-      trackRouteView(next);
-    };
+    const last = previous.current;
+    previous.current = route;
 
-    window.addEventListener('hashchange', handleLocationChange);
-    window.addEventListener('popstate', handleLocationChange);
+    // Nothing to report on the first pass; Zaraz already logs the initial
+    // document load on its own.
+    if (!last) return;
+    if (last.view === route.view && last.product === route.product) return;
 
-    return () => {
-      window.removeEventListener('hashchange', handleLocationChange);
-      window.removeEventListener('popstate', handleLocationChange);
-    };
-  }, []);
+    window.scrollTo(0, 0);
+    trackRouteView(route);
+  }, [route]);
 
   return route;
 };

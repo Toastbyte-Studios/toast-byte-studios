@@ -72,10 +72,12 @@ const setTitle = (html: string, title: string): string =>
  * trailing-slash negotiation, which keeps the served URL identical to the one
  * in sitemap.xml and in each page's own canonical.
  *
- * The body is still the empty shell: this fixes metadata, not content.
+ * The body is filled in afterwards by scripts/prerender.mjs, which renders
+ * each route through the SSR bundle and writes the markup into #root.
  */
 const prerenderMeta = (): Plugin => {
   let outDir = 'dist';
+  let isSsrBuild = false;
 
   return {
     name: 'toastbyte:prerender-meta',
@@ -83,9 +85,15 @@ const prerenderMeta = (): Plugin => {
 
     configResolved(config) {
       outDir = path.resolve(config.root, config.build.outDir);
+      // The SSR pass emits a JS bundle and no index.html, so there is no
+      // shell for this plugin to copy. It only has work to do on the client
+      // build.
+      isSsrBuild = Boolean(config.build.ssr);
     },
 
     async closeBundle() {
+      if (isSsrBuild) return;
+
       const shell = await readFile(path.join(outDir, 'index.html'), 'utf-8');
 
       // '/' is served by index.html itself, which already carries the
