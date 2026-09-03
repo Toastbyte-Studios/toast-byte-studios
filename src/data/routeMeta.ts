@@ -97,10 +97,12 @@ const ROUTE_META: RouteMeta[] = [
     path: `/product/${product.key}`,
     ...productMeta(product),
   })),
-  ...Object.entries(STATIC_META).map(([view, meta]) => ({
-    path: `/${view}`,
-    ...meta,
-  })),
+  ...Object.entries(STATIC_META)
+    .filter(([view]) => view !== 'notFound')
+    .map(([view, meta]) => ({
+      path: `/${view}`,
+      ...meta,
+    })),
 ];
 
 export { SITE_ORIGIN, DEFAULT_META, STATIC_META, ROUTE_META, metaForView };

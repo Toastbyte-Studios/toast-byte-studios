@@ -49,9 +49,17 @@ const parseSegments = (path: string): Route => {
   }
 };
 
+const ROUTE_HASHES = new Set(['studio', 'changelog', 'support', 'privacy']);
+
 /** Strips the leading '#', optional '/' and any trailing slash from a hash. */
-const normaliseHash = (raw: string): string =>
-  raw.replace(/^#\/*/, '').replace(/\/+$/, '');
+const normaliseHash = (raw: string): string => {
+  const normalised = raw.replace(/^#\/*/, '').replace(/\/+$/, '');
+
+  if (!normalised) return '';
+
+  const [head] = normalised.split('/');
+  return head === 'product' || ROUTE_HASHES.has(head) ? normalised : '';
+};
 
 /** Strips the leading and trailing slashes from a pathname. */
 const normalisePath = (raw: string): string =>
