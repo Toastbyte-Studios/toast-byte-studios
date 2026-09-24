@@ -50,12 +50,22 @@ const PRODUCT_RELEASE_SOURCES: ReleaseSource[] = PRODUCTS.flatMap((product) => {
  * The site itself lives here: its updates belong in the changelog it renders,
  * but it is not a product and should not appear on the products grid, so it
  * is deliberately kept out of the catalog rather than added as an entry.
+ *
+ * ColdBoot lives here too: it publishes releases the changelog should carry,
+ * but it has no catalog entry of its own, so it is listed directly. If it is
+ * later added to the catalog with a repo URL, `dedupeSources` keeps it from
+ * being fetched twice — remove it from this list at that point.
  */
 const EXTRA_RELEASE_SOURCES: ReleaseSource[] = [
   {
     owner: 'Toastbyte-Studios',
     repo: 'toast-byte-studios',
     product: 'Toastbyte.Studio',
+  },
+  {
+    owner: 'Toastbyte-Studios',
+    repo: 'ColdBoot',
+    product: 'ColdBoot',
   },
 ];
 
