@@ -29,6 +29,11 @@ const RAW_PRODUCTS: Product[] = [
     meta: 'Free · no required login · v1.37.1',
     lede: 'Contribution history is scattered across four platforms and none of them will show you the others. GitAll merges them into a single heatmap. See your contributions side by side, or combined into one graph of everything at once.',
     shot: 'screenshot: unified heatmap',
+    embed: {
+      href: 'https://gitall.app/u/jason-shprintz?utm_source=embed&utm_medium=referral&utm_campaign=heatmap',
+      src: 'https://gitall.app/embed/u/jason-shprintz.svg',
+      alt: 'Contribution heatmap',
+    },
     features: [
       {
         n: '01',

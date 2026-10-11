@@ -175,6 +175,41 @@ const ShotFrame = styled.div`
   }
 `;
 
+/** Frames a live embed in the same border as the screenshot placeholder. */
+const EmbedFrame = styled.a`
+  display: block;
+  margin-top: 32px;
+  border: 6px solid var(--color-surface);
+  outline: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  line-height: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    margin-top: 24px;
+    border-width: 4px;
+  }
+`;
+
+/**
+ * One theme's rendering of an embed. Both are in the page; the site's own
+ * `tb-dark` class decides which shows, so the image follows the theme toggle
+ * rather than only the operating system preference an <img> SVG can see.
+ */
+const EmbedImage = styled.img<{ $theme: 'light' | 'dark' }>`
+  display: ${({ $theme }) => ($theme === 'light' ? 'block' : 'none')};
+  width: 100%;
+  height: auto;
+
+  .tb-dark & {
+    display: ${({ $theme }) => ($theme === 'dark' ? 'block' : 'none')};
+  }
+`;
+
 const ShotCaption = styled.span`
   font-family: ui-monospace, monospace;
   font-size: 11px;
@@ -233,6 +268,8 @@ export {
   FactValue,
   ShotFrame,
   ShotCaption,
+  EmbedFrame,
+  EmbedImage,
   OtherRow,
   OtherLink,
 };

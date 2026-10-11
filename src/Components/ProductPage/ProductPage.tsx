@@ -18,6 +18,8 @@ import {
   FactValue,
   ShotFrame,
   ShotCaption,
+  EmbedFrame,
+  EmbedImage,
   OtherRow,
   OtherLink,
 } from './styles';
@@ -29,8 +31,8 @@ interface ProductPageProps {
 
 /**
  * ProductPage renders a single product: its lede and links, a numbered feature
- * list, a facts table, a screenshot placeholder, and links to the rest of the
- * portfolio.
+ * list, a facts table, a live embed or screenshot placeholder, and links to
+ * the rest of the portfolio.
  *
  * @component
  * @param {ProductPageProps} props - The product key to render.
@@ -42,6 +44,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
   const current =
     PRODUCTS.find((product) => product.key === productKey) ?? PRODUCTS[0];
   const others = PRODUCTS.filter((product) => product.key !== current.key);
+  const { embed } = current;
 
   return (
     <Main id="main">
@@ -92,9 +95,28 @@ const ProductPage: React.FC<ProductPageProps> = ({
               <FactValue>{fact.v}</FactValue>
             </FactRow>
           ))}
-          <ShotFrame aria-hidden="true">
-            <ShotCaption>{current.shot}</ShotCaption>
-          </ShotFrame>
+          {embed ? (
+            <EmbedFrame
+              href={embed.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {(['light', 'dark'] as const).map((theme) => (
+                <EmbedImage
+                  key={theme}
+                  $theme={theme}
+                  src={`${embed.src}?theme=${theme}`}
+                  alt={embed.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </EmbedFrame>
+          ) : (
+            <ShotFrame aria-hidden="true">
+              <ShotCaption>{current.shot}</ShotCaption>
+            </ShotFrame>
+          )}
         </div>
       </Columns>
 
