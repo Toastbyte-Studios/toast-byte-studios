@@ -12,6 +12,9 @@ interface ProductFact {
   v: string;
 }
 
+/** How the changelog discovers a product's versions. */
+type ReleaseSourceKind = 'releases' | 'tags';
+
 /** A product in the studio catalog. */
 interface Product {
   /** URL-safe identifier used in the product route, e.g. 'gitall'. */
@@ -25,6 +28,16 @@ interface Product {
   domain: string;
   site: string;
   repo: string;
+  /**
+   * Where the changelog reads this product's version history from.
+   *
+   * - 'releases' (default): GitHub releases. Suits web products, which ship
+   *   a release on every deploy.
+   * - 'tags': pushed version tags. Suits native apps, whose release pipeline
+   *   pushes a tag per store build and may not create a GitHub release for
+   *   it. A matching release's notes are still used when one exists.
+   */
+  releaseSource?: ReleaseSourceKind;
   /** One-paragraph summary used on the home index. */
   blurb: string;
   /** Short meta line, e.g. 'Free · no login · v1.37.1'. */
@@ -56,4 +69,11 @@ interface Contact {
   href: string;
 }
 
-export type { Product, ProductFeature, ProductFact, Principle, Contact };
+export type {
+  Product,
+  ProductFeature,
+  ProductFact,
+  Principle,
+  Contact,
+  ReleaseSourceKind,
+};
