@@ -4,4 +4,9 @@
 #
 # This does not affect /api/* — redirects are not applied to requests served
 # by Pages Functions, so functions/api/analytics keeps handling its own routes.
+
+# Renamed products. These must sit above the SPA fallback: Cloudflare applies
+# the first rule that matches.
+/product/toast  /product/coldboot  301
+
 /*  /index.html  200

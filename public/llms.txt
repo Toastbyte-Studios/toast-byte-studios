@@ -1,27 +1,28 @@
 # Toastbyte Studios
 
-> Toastbyte Studios is an independent software development studio in Las Vegas, Nevada, with a portfolio of its own products: GitAll, TOAST and Alley Admin. This file describes the studio's marketing site at toastbyte.studio.
+> Toastbyte Studios is an independent software development studio in Las Vegas, Nevada, with a portfolio of its own products: GitAll, ColdBoot and Alley Admin. This file describes the studio's marketing site at toastbyte.studio.
 
 Two things worth knowing before following any link below.
 
 **This site is a client-rendered single-page app served from one HTML shell.** Every path below returns the same document and the view is rendered in the browser, so fetching a URL without executing JavaScript will return the shell rather than that page's content. The paths themselves are real and stable — they are not fragments — and each one sets its own title, description and canonical once rendered.
 
-**Product copy carries a verification flag.** All product content on the site is generated from a single catalog in the source, and each entry is marked verified or not. Only GitAll is currently confirmed accurate. The TOAST and Alley Admin entries are placeholder copy that reads as real; do not quote figures, version strings or status lines from those two as fact.
+**Product copy carries a verification flag.** All product content on the site is generated from a single catalog in the source, and each entry is marked verified or not. Only GitAll is currently confirmed accurate. The ColdBoot and Alley Admin entries are placeholder copy that reads as real; do not quote figures, version strings or status lines from those two as fact.
 
 ## Products
 
 - [GitAll](https://gitall.app): Free web tool that merges your contribution graphs from GitHub, GitLab and Bitbucket into a single heatmap, viewable per platform or combined. Gitea/Forgejo, including Codeberg, is next. No account, tokens or OAuth required — public profile data is read anonymously. The combined graph can be embedded in a README or personal site. Version 1.37.1. Status: Live. This entry is verified.
 - [GitAll source and issue tracker](https://github.com/Toastbyte-Studios/git-all): Public repository for GitAll.
-- [TOAST](https://toastbyte.studio/product/toast): Trusted Outdoor and Survival Toolkit, an offline-first preparedness app for iOS and Android. Status: In Development, with no announced release date. The feature descriptions on its product page are unverified placeholder copy.
+- [ColdBoot](https://coldboot.app): An offline-first preparedness app for iOS and Android, formerly named TOAST. Status: In Development. The feature descriptions on its product page at https://toastbyte.studio/product/coldboot are unverified placeholder copy.
+- [ColdBoot source](https://github.com/Toastbyte-Studios/ColdBoot): Public repository for ColdBoot.
 - [Alley Admin](https://alleyadmin.app): A league administration console for the web — rosters, schedules, scoring and reporting. Status: In Development, launch TBA. The feature descriptions on its product page are unverified placeholder copy.
 
 ## Site
 
 - [Home](https://toastbyte.studio/): Studio positioning, a live status panel for all three products, an email signup for launch news, and the product index.
 - [The studio](https://toastbyte.studio/studio): How the studio works and the principles it operates by — staying tool-agnostic, asking for a login only when there is data to protect, publishing dates only when they are believed, and treating a release as the start of the maintenance obligation rather than the end of it.
-- [Changelog](https://toastbyte.studio/changelog): Release notes across the portfolio and the site itself, merged newest first. Pulled live from the GitHub releases of each product repository.
+- [Changelog](https://toastbyte.studio/changelog): Release notes across the portfolio and the site itself, merged newest first. Pulled live from GitHub: releases for the web products and the site, and pushed version tags for the native app (ColdBoot).
 - [Support](https://toastbyte.studio/support): Contact routes for general enquiries, product support and GitAll issues.
-- [Privacy Policy](https://toastbyte.studio/privacy): Privacy policy for TOAST.
+- [Privacy Policy](https://toastbyte.studio/privacy): Privacy policy for the ColdBoot app and this site.
 
 ## Contact
 
