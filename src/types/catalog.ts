@@ -12,6 +12,17 @@ interface ProductFact {
   v: string;
 }
 
+/**
+ * A live image shown in place of a product's screenshot placeholder, wrapped
+ * in a link. `src` must accept a `theme=light|dark` query parameter: the page
+ * requests both and shows whichever matches the site's own theme toggle.
+ */
+interface ProductEmbed {
+  href: string;
+  src: string;
+  alt: string;
+}
+
 /** A product in the studio catalog. */
 interface Product {
   /** URL-safe identifier used in the product route, e.g. 'gitall'. */
@@ -33,6 +44,8 @@ interface Product {
   lede: string;
   /** Caption for the screenshot placeholder. */
   shot: string;
+  /** Live image that replaces the screenshot placeholder when present. */
+  embed?: ProductEmbed;
   features: ProductFeature[];
   facts: ProductFact[];
   /**
@@ -56,4 +69,11 @@ interface Contact {
   href: string;
 }
 
-export type { Product, ProductFeature, ProductFact, Principle, Contact };
+export type {
+  Product,
+  ProductEmbed,
+  ProductFeature,
+  ProductFact,
+  Principle,
+  Contact,
+};
