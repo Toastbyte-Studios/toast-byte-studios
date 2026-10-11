@@ -113,7 +113,7 @@ const trackRouteView = (route: Route) => {
 
   trackClientEvent(ANALYTICS_EVENTS.pageView, {
     page_location: window.location.href,
-    page_title: `${document.title} — ${label}`,
+    page_title: `${document.title} \\u2014 ${label}`,
     view: route.view,
     ...(route.view === 'product' ? { product: route.product } : {}),
   });
