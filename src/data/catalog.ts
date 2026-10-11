@@ -4,8 +4,8 @@ import type { Product, Principle, Contact } from '../types/catalog';
  * The studio product catalog.
  *
  * NOTE ON ACCURACY: entries carry a `verified` flag. Only GitAll has been
- * confirmed accurate. ColdBoot and Alley Admin are placeholder copy carried over
- * from the design comp — the prose reads as real, so check every figure,
+ * confirmed accurate. Cold Boot and Alley Admin are placeholder copy carried
+ * over from the design comp — the prose reads as real, so check every figure,
  * version string and status line before launch.
  *
  * Each product's `status` is the single source of truth for that product's
@@ -63,16 +63,13 @@ const RAW_PRODUCTS: Product[] = [
     // Formerly TOAST. The old /product/toast URL is aliased to this key in
     // LEGACY_PRODUCT_KEYS below, and 301-redirected in public/_redirects.
     key: 'coldboot',
-    name: 'ColdBoot',
+    name: 'Cold Boot',
     dot: '#C4622D',
     status: 'In Development',
     kind: 'Preparedness · iOS & Android',
     domain: 'coldboot.app',
     site: 'https://coldboot.app',
     repo: 'https://github.com/Toastbyte-Studios/ColdBoot',
-    // Native app: its changelog entries come from pushed version tags, not
-    // from GitHub releases. See `releaseSource` on the Product type.
-    releaseSource: 'tags',
     blurb:
       'An offline-first preparedness app with maps, guides, references and field utilities that keep working with no signal.',
     meta: '{status} · offline-first',

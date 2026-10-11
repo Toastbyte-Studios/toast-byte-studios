@@ -26,7 +26,7 @@ interface RouteMeta extends PageMeta {
 const DEFAULT_META: PageMeta = {
   title: 'Toastbyte Studios — independent software development',
   description:
-    'Toastbyte Studios is an independent development studio in Las Vegas building GitAll, ColdBoot and Alley Admin — software that works offline, loads fast, and is maintained after launch.',
+    'Toastbyte Studios is an independent development studio in Las Vegas building GitAll, Cold Boot and Alley Admin — software that works offline, loads fast, and is maintained after launch.',
 };
 
 /** Metadata for the views whose copy does not come from the catalog. */
@@ -44,7 +44,7 @@ const STATIC_META: Record<string, PageMeta> = {
   changelog: {
     title: 'Changelog | Toastbyte Studios',
     description:
-      'Release notes across the Toastbyte Studios portfolio — GitAll, ColdBoot, Alley Admin and this site — newest first.',
+      'Release notes across the Toastbyte Studios portfolio — GitAll, Cold Boot, Alley Admin and this site — newest first.',
   },
   support: {
     title: 'Support | Toastbyte Studios',
@@ -54,7 +54,7 @@ const STATIC_META: Record<string, PageMeta> = {
   privacy: {
     title: 'Privacy Policy | Toastbyte Studios',
     description:
-      'Privacy policy for the ColdBoot app and the toastbyte.studio website, by Toastbyte Studios.',
+      'Privacy policy for the Cold Boot app and the toastbyte.studio website, by Toastbyte Studios.',
   },
 };
 
