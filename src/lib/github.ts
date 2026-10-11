@@ -51,10 +51,9 @@ const PRODUCT_RELEASE_SOURCES: ReleaseSource[] = PRODUCTS.flatMap((product) => {
  * but it is not a product and should not appear on the products grid, so it
  * is deliberately kept out of the catalog rather than added as an entry.
  *
- * ColdBoot lives here too: it publishes releases the changelog should carry,
- * but it has no catalog entry of its own, so it is listed directly. If it is
- * later added to the catalog with a repo URL, `dedupeSources` keeps it from
- * being fetched twice — remove it from this list at that point.
+ * Cold Boot's marketing landing page (coldboot.app) lives here for the same
+ * reason: its releases belong in the changelog, but it is a site for a
+ * product, not a product of its own.
  */
 const EXTRA_RELEASE_SOURCES: ReleaseSource[] = [
   {
@@ -64,8 +63,8 @@ const EXTRA_RELEASE_SOURCES: ReleaseSource[] = [
   },
   {
     owner: 'Toastbyte-Studios',
-    repo: 'ColdBoot',
-    product: 'ColdBoot',
+    repo: 'coldboot-web',
+    product: 'coldboot.app',
   },
 ];
 
@@ -80,7 +79,7 @@ const dedupeSources = (sources: ReleaseSource[]): ReleaseSource[] => {
   });
 };
 
-/** Every repo the changelog pulls from: the products, then the site. */
+/** Every repo the changelog pulls from: the products, then the sites. */
 const RELEASE_SOURCES: ReleaseSource[] = dedupeSources([
   ...PRODUCT_RELEASE_SOURCES,
   ...EXTRA_RELEASE_SOURCES,

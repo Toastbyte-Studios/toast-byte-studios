@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
-import { PRODUCTS } from '../data/catalog';
+import { PRODUCTS, LEGACY_PRODUCT_KEYS } from '../data/catalog';
 import { ANALYTICS_EVENTS, trackClientEvent } from '../lib/analytics-client';
 
 type View =
@@ -33,8 +33,10 @@ const parseSegments = (path: string): Route => {
 
   switch (head) {
     case 'product': {
-      const known = !remaining.length && PRODUCTS.some((p) => p.key === tail);
-      return known ? { view: 'product', product: tail } : notFound;
+      // Retired keys from a rename resolve to the product's current key.
+      const key = LEGACY_PRODUCT_KEYS[tail] ?? tail;
+      const known = !remaining.length && PRODUCTS.some((p) => p.key === key);
+      return known ? { view: 'product', product: key } : notFound;
     }
     case 'studio':
       return !tail ? { view: 'studio', product: PRODUCTS[0].key } : notFound;

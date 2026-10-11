@@ -30,7 +30,11 @@ import { Shell, Wrap } from './styles/primitives';
  * page as its canonical — which asks Google to drop the very URLs this
  * migration exists to get indexed.
  */
-const applyMeta = (title: string, description: string) => {
+const applyMeta = (
+  title: string,
+  description: string,
+  canonicalPathOverride?: string,
+) => {
   document.title = title;
 
   const hashPath = window.location.hash
@@ -44,7 +48,8 @@ const applyMeta = (title: string, description: string) => {
       hashPath === 'privacy' ||
       hashPath.startsWith('product/'));
   const canonicalPath =
-    isHashRoute && hashPath ? `/${hashPath}` : window.location.pathname;
+    canonicalPathOverride ??
+    (isHashRoute && hashPath ? `/${hashPath}` : window.location.pathname);
   const canonical = `${SITE_ORIGIN}${canonicalPath}`;
 
   const set = (selector: string, attribute: string, value: string) =>
@@ -103,7 +108,11 @@ function App({ initialPath }: AppProps = {}): JSX.Element {
 
   useEffect(() => {
     const meta = metaForView(view, product);
-    applyMeta(meta.title, meta.description);
+    applyMeta(
+      meta.title,
+      meta.description,
+      view === 'product' ? `/product/${product}` : undefined,
+    );
   }, [view, product]);
 
   const renderView = () => {

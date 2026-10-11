@@ -4,8 +4,8 @@ import type { Product, Principle, Contact } from '../types/catalog';
  * The studio product catalog.
  *
  * NOTE ON ACCURACY: entries carry a `verified` flag. Only GitAll has been
- * confirmed accurate. TOAST and Alley Admin are placeholder copy carried over
- * from the design comp — the prose reads as real, so check every figure,
+ * confirmed accurate. Cold Boot and Alley Admin are placeholder copy carried
+ * over from the design comp — the prose reads as real, so check every figure,
  * version string and status line before launch.
  *
  * Each product's `status` is the single source of truth for that product's
@@ -60,16 +60,18 @@ const RAW_PRODUCTS: Product[] = [
     verified: true,
   },
   {
-    key: 'toast',
-    name: 'TOAST',
+    // Formerly TOAST. The old /product/toast URL is aliased to this key in
+    // LEGACY_PRODUCT_KEYS below, and 301-redirected in public/_redirects.
+    key: 'coldboot',
+    name: 'Cold Boot',
     dot: '#C4622D',
     status: 'In Development',
     kind: 'Preparedness · iOS & Android',
-    domain: 'toastbyte.studio',
-    site: 'https://toastbyte.studio',
-    repo: 'https://github.com/Toastbyte-Studios',
+    domain: 'coldboot.app',
+    site: 'https://coldboot.app',
+    repo: 'https://github.com/Toastbyte-Studios/ColdBoot',
     blurb:
-      'Trusted Outdoor and Survival Toolkit: an offline-first preparedness app with maps, guides, references and field utilities that keep working with no signal.',
+      'An offline-first preparedness app with maps, guides, references and field utilities that keep working with no signal.',
     meta: '{status} · offline-first',
     lede: 'An offline-first emergency preparedness toolkit for hikers, preppers and anyone who would rather be ready. Maps, guides, references and utilities that keep working when the network does not.',
     shot: 'screenshot: offline map view',
@@ -148,6 +150,14 @@ const RAW_PRODUCTS: Product[] = [
   },
 ];
 
+/**
+ * Retired product keys mapped to their current key, so URLs from before a
+ * rename (e.g. /product/toast, #/product/toast) keep resolving.
+ */
+const LEGACY_PRODUCT_KEYS: Record<string, string> = {
+  toast: 'coldboot',
+};
+
 const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => ({
   ...product,
   meta: product.meta.replace(/\{status\}/g, () => product.status),
@@ -201,4 +211,4 @@ const CONTACTS: Contact[] = [
   },
 ];
 
-export { PRODUCTS, PRINCIPLES, CONTACTS };
+export { PRODUCTS, PRINCIPLES, CONTACTS, LEGACY_PRODUCT_KEYS };

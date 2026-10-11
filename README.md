@@ -38,17 +38,19 @@ The catalog lives in `src/data/catalog.ts` and is the single source of truth: th
 
 Each entry carries a `verified` flag indicating whether its copy and figures have been confirmed.
 
-| Product     | Key      | Status         | `verified` |
-| ----------- | -------- | -------------- | ---------- |
-| GitAll      | `gitall` | Live           | ✅ yes     |
-| TOAST       | `toast`  | In Development | ❌ no      |
-| Alley Admin | `alley`  | In Development | ❌ no      |
+| Product     | Key        | Status         | `verified` |
+| ----------- | ---------- | -------------- | ---------- |
+| GitAll      | `gitall`   | Live           | ✅ yes     |
+| Cold Boot   | `coldboot` | In Development | ❌ no      |
+| Alley Admin | `alley`    | In Development | ❌ no      |
 
 **GitAll** ([gitall.app](https://gitall.app) · [repo](https://github.com/Toastbyte-Studios/git-all)) is the one confirmed entry: a free, no-login web tool that merges contribution graphs from GitHub, GitLab, Bitbucket and Gitea/Forgejo into a single heatmap.
 
-**TOAST** and **Alley Admin** are described in the catalog, but their entries are placeholder copy carried over from the design comp and are flagged `verified: false`. Their prose reads as real, so treat every figure, version string and status line in those two entries as unconfirmed until the flag is flipped. This README deliberately does not repeat those claims.
+**Cold Boot** ([coldboot.app](https://coldboot.app) · [repo](https://github.com/Toastbyte-Studios/ColdBoot)), formerly TOAST, and **Alley Admin** are described in the catalog, but their entries are placeholder copy carried over from the design comp and are flagged `verified: false`. Their prose reads as real, so treat every figure, version string and status line in those two entries as unconfirmed until the flag is flipped. This README deliberately does not repeat those claims.
 
-A product whose `repo` points at the organisation root rather than a specific repository is skipped by the changelog, which is how TOAST is currently handled.
+A product whose `repo` points at the organisation root rather than a specific repository is skipped by the changelog.
+
+The old `/product/toast` URL 301-redirects to `/product/coldboot` (see `public/_redirects`), and `#/product/toast` resolves through `LEGACY_PRODUCT_KEYS` in the catalog.
 
 ## Tech Stack
 
@@ -106,7 +108,7 @@ Light and dark are driven entirely by CSS custom properties in `src/styles/token
 
 ## Changelog
 
-The changelog reads GitHub releases live from each source repo, merges them newest first, and reveals them a page at a time. Sources come from two places in `src/lib/github.ts`: the product repos derived from the catalog, plus a short list of repos without a catalog entry — currently this site and ColdBoot.
+The changelog reads GitHub releases live from each source repo, merges them newest first, and reveals them a page at a time. Sources come from two places in `src/lib/github.ts`: the product repos derived from the catalog, plus a short list of repos without a catalog entry — currently this site and the Cold Boot landing page (coldboot.app). A repo that fails to load is skipped rather than blanking the whole feed, and since releases are fetched anonymously from the browser, every source repo must be public.
 
 Draft releases are filtered out, and the unauthenticated GitHub API does not return them in any case — releases have to be published to appear here.
 

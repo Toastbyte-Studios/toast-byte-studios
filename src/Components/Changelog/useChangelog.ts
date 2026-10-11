@@ -38,7 +38,10 @@ const useChangelog = () => {
       (i) => cursors.current[i].hasMore,
     );
 
-    const results = await Promise.all(
+    // Settled rather than all-or-nothing: one repo that fails (rate limited,
+    // renamed, or private) drops out of the feed instead of taking every
+    // other repo's releases down with it.
+    const results = await Promise.allSettled(
       activeIndices.map((i) =>
         fetchReleasePage(
           RELEASE_SOURCES[i],
@@ -51,12 +54,23 @@ const useChangelog = () => {
     const fetched: GithubRelease[] = [];
     results.forEach((result, resultIndex) => {
       const sourceIndex = activeIndices[resultIndex];
+      if (result.status === 'rejected') {
+        cursors.current[sourceIndex] = {
+          ...cursors.current[sourceIndex],
+          hasMore: false,
+        };
+        return;
+      }
       cursors.current[sourceIndex] = {
         page: cursors.current[sourceIndex].page + 1,
-        hasMore: result.hasMore,
+        hasMore: result.value.hasMore,
       };
-      fetched.push(...result.releases);
+      fetched.push(...result.value.releases);
     });
+
+    if (results.length > 0 && results.every((r) => r.status === 'rejected')) {
+      throw new Error('Every release source failed to load');
+    }
 
     if (fetched.length > 0) {
       setReleases((prev) => sortByDateDesc([...prev, ...fetched]));
