@@ -50,12 +50,21 @@ const PRODUCT_RELEASE_SOURCES: ReleaseSource[] = PRODUCTS.flatMap((product) => {
  * The site itself lives here: its updates belong in the changelog it renders,
  * but it is not a product and should not appear on the products grid, so it
  * is deliberately kept out of the catalog rather than added as an entry.
+ *
+ * Cold Boot's marketing landing page (coldboot.app) lives here for the same
+ * reason: its releases belong in the changelog, but it is a site for a
+ * product, not a product of its own.
  */
 const EXTRA_RELEASE_SOURCES: ReleaseSource[] = [
   {
     owner: 'Toastbyte-Studios',
     repo: 'toast-byte-studios',
     product: 'Toastbyte.Studio',
+  },
+  {
+    owner: 'Toastbyte-Studios',
+    repo: 'coldboot-web',
+    product: 'coldboot.app',
   },
 ];
 
@@ -70,7 +79,7 @@ const dedupeSources = (sources: ReleaseSource[]): ReleaseSource[] => {
   });
 };
 
-/** Every repo the changelog pulls from: the products, then the site. */
+/** Every repo the changelog pulls from: the products, then the sites. */
 const RELEASE_SOURCES: ReleaseSource[] = dedupeSources([
   ...PRODUCT_RELEASE_SOURCES,
   ...EXTRA_RELEASE_SOURCES,

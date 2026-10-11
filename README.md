@@ -108,7 +108,7 @@ Light and dark are driven entirely by CSS custom properties in `src/styles/token
 
 ## Changelog
 
-The changelog reads GitHub releases live from each source repo, merges them newest first, and reveals them a page at a time. Sources come from two places in `src/lib/github.ts`: the product repos derived from the catalog, plus a short list of repos without a catalog entry — currently just this site.
+The changelog reads GitHub releases live from each source repo, merges them newest first, and reveals them a page at a time. Sources come from two places in `src/lib/github.ts`: the product repos derived from the catalog, plus a short list of repos without a catalog entry — currently this site and the Cold Boot landing page (coldboot.app). A repo that fails to load is skipped rather than blanking the whole feed, and since releases are fetched anonymously from the browser, every source repo must be public.
 
 Draft releases are filtered out, and the unauthenticated GitHub API does not return them in any case — releases have to be published to appear here.
 
