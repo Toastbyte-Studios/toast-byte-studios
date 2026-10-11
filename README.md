@@ -11,7 +11,7 @@ Live at [toastbyte.studio](https://toastbyte.studio/)
 | Home      | `/`              | Positioning hero, live product status panel, email signup, product index |
 | Product   | `/product/<key>` | Per-product page: lede, numbered features, facts table, related products |
 | Studio    | `/studio`        | How the studio works, its principles, and press details                  |
-| Changelog | `/changelog`     | Releases and version tags across the portfolio, merged newest first      |
+| Changelog | `/changelog`     | GitHub releases across the portfolio and this site, merged newest first  |
 | Support   | `/support`       | Contact routes for enquiries, product support and issue trackers         |
 | Privacy   | `/privacy`       | Privacy policy                                                           |
 
@@ -41,21 +41,14 @@ Each entry carries a `verified` flag indicating whether its copy and figures hav
 | Product     | Key        | Status         | `verified` |
 | ----------- | ---------- | -------------- | ---------- |
 | GitAll      | `gitall`   | Live           | ✅ yes     |
-| ColdBoot    | `coldboot` | In Development | ❌ no      |
+| Cold Boot   | `coldboot` | In Development | ❌ no      |
 | Alley Admin | `alley`    | In Development | ❌ no      |
 
 **GitAll** ([gitall.app](https://gitall.app) · [repo](https://github.com/Toastbyte-Studios/git-all)) is the one confirmed entry: a free, no-login web tool that merges contribution graphs from GitHub, GitLab, Bitbucket and Gitea/Forgejo into a single heatmap.
 
-**ColdBoot** ([coldboot.app](https://coldboot.app) · [repo](https://github.com/Toastbyte-Studios/ColdBoot)), formerly TOAST, and **Alley Admin** are described in the catalog, but their entries are placeholder copy carried over from the design comp and are flagged `verified: false`. Their prose reads as real, so treat every figure, version string and status line in those two entries as unconfirmed until the flag is flipped. This README deliberately does not repeat those claims.
+**Cold Boot** ([coldboot.app](https://coldboot.app) · [repo](https://github.com/Toastbyte-Studios/ColdBoot)), formerly TOAST, and **Alley Admin** are described in the catalog, but their entries are placeholder copy carried over from the design comp and are flagged `verified: false`. Their prose reads as real, so treat every figure, version string and status line in those two entries as unconfirmed until the flag is flipped. This README deliberately does not repeat those claims.
 
 A product whose `repo` points at the organisation root rather than a specific repository is skipped by the changelog.
-
-### Changelog sources
-
-The changelog reads each product's history from GitHub in one of two ways, set by the catalog entry's `releaseSource`:
-
-- **`releases`** (the default) — GitHub releases. Used for the web products and this site, which publish a release on every deploy.
-- **`tags`** — pushed version tags. Used for native apps (ColdBoot), whose weekly pipeline pushes a `vX.Y.Z` tag per store build and does not always create a GitHub release. Each tag becomes one entry; when a release exists for that tag its notes are shown, otherwise the entry lists the commits since the previous tag.
 
 The old `/product/toast` URL 301-redirects to `/product/coldboot` (see `public/_redirects`), and `#/product/toast` resolves through `LEGACY_PRODUCT_KEYS` in the catalog.
 
@@ -91,7 +84,7 @@ src/
   data/
     catalog.ts      — Products, principles and contacts (source of truth)
   lib/
-    github.ts       — Release sources and the GitHub release/tag fetchers
+    github.ts       — Release sources and the GitHub releases fetcher
   routing/
     useHashRoute.ts     — Route parsing from pathname, with hash fallback
     navigate.ts         — pushState navigation helper
@@ -115,9 +108,9 @@ Light and dark are driven entirely by CSS custom properties in `src/styles/token
 
 ## Changelog
 
-The changelog reads history live from each source repo, merges it newest first, and reveals it a page at a time. Sources come from two places in `src/lib/github.ts`: the product repos derived from the catalog, plus a short list of repos without a catalog entry — currently just this site. Each source reads either GitHub releases or pushed version tags (see [Changelog sources](#changelog-sources)).
+The changelog reads GitHub releases live from each source repo, merges them newest first, and reveals them a page at a time. Sources come from two places in `src/lib/github.ts`: the product repos derived from the catalog, plus a short list of repos without a catalog entry — currently just this site.
 
-Draft releases are filtered out, and the unauthenticated GitHub API does not return them in any case — releases have to be published to appear here. Tag-sourced history is fetched once per page load and cached, since the anonymous API allows 60 requests an hour.
+Draft releases are filtered out, and the unauthenticated GitHub API does not return them in any case — releases have to be published to appear here.
 
 ## Email signup
 
