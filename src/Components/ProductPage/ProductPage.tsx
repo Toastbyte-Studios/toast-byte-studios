@@ -19,7 +19,8 @@ import {
   ShotFrame,
   ShotCaption,
   EmbedFrame,
-  EmbedImage,
+  ScreenshotFrame,
+  ThemedImage,
   OtherRow,
   OtherLink,
 } from './styles';
@@ -31,8 +32,8 @@ interface ProductPageProps {
 
 /**
  * ProductPage renders a single product: its lede and links, a numbered feature
- * list, a facts table, a live embed or screenshot placeholder, and links to
- * the rest of the portfolio.
+ * list, a facts table, a live embed, screenshot or screenshot placeholder, and
+ * links to the rest of the portfolio.
  *
  * @component
  * @param {ProductPageProps} props - The product key to render.
@@ -44,7 +45,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
   const current =
     PRODUCTS.find((product) => product.key === productKey) ?? PRODUCTS[0];
   const others = PRODUCTS.filter((product) => product.key !== current.key);
-  const { embed } = current;
+  const { embed, screenshot } = current;
+  const themes = ['light', 'dark'] as const;
 
   return (
     <Main id="main">
@@ -101,8 +103,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              {(['light', 'dark'] as const).map((theme) => (
-                <EmbedImage
+              {themes.map((theme) => (
+                <ThemedImage
                   key={theme}
                   $theme={theme}
                   src={`${embed.src}?theme=${theme}`}
@@ -112,6 +114,21 @@ const ProductPage: React.FC<ProductPageProps> = ({
                 />
               ))}
             </EmbedFrame>
+          ) : screenshot ? (
+            <ScreenshotFrame>
+              {themes.map((theme) => (
+                <ThemedImage
+                  key={theme}
+                  $theme={theme}
+                  src={screenshot[theme]}
+                  alt={screenshot.alt}
+                  width={screenshot.width}
+                  height={screenshot.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </ScreenshotFrame>
           ) : (
             <ShotFrame aria-hidden="true">
               <ShotCaption>{current.shot}</ShotCaption>

@@ -196,17 +196,50 @@ const EmbedFrame = styled.a`
 `;
 
 /**
- * One theme's rendering of an embed. Both are in the page; the site's own
- * `tb-dark` class decides which shows, so the image follows the theme toggle
- * rather than only the operating system preference an <img> SVG can see.
+ * One theme's rendering of an embed or screenshot. Both are in the page; the
+ * site's own `tb-dark` class decides which shows, so the image follows the
+ * theme toggle rather than the operating system preference. The hidden one is
+ * display: none, so its lazy load never fires.
  */
-const EmbedImage = styled.img<{ $theme: 'light' | 'dark' }>`
+const ThemedImage = styled.img<{ $theme: 'light' | 'dark' }>`
   display: ${({ $theme }) => ($theme === 'light' ? 'block' : 'none')};
   width: 100%;
   height: auto;
 
   .tb-dark & {
     display: ${({ $theme }) => ($theme === 'dark' ? 'block' : 'none')};
+  }
+`;
+
+/**
+ * Holds a phone screenshot at roughly device width, centred on the same
+ * surface and border as the placeholder, so a portrait capture does not
+ * stretch to the full column.
+ */
+const ScreenshotFrame = styled.div`
+  margin-top: 32px;
+  border: 6px solid var(--color-surface);
+  outline: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  padding: 28px 16px;
+  display: flex;
+  justify-content: center;
+
+  & > img {
+    width: min(100%, 260px);
+    border-radius: 22px;
+    outline: 1px solid var(--color-divider);
+  }
+
+  @media (max-width: ${BREAKPOINTS.MOBILE}) {
+    margin-top: 24px;
+    border-width: 4px;
+    padding: 20px 12px;
+
+    & > img {
+      width: min(100%, 220px);
+      border-radius: 18px;
+    }
   }
 `;
 
@@ -269,7 +302,8 @@ export {
   ShotFrame,
   ShotCaption,
   EmbedFrame,
-  EmbedImage,
+  ScreenshotFrame,
+  ThemedImage,
   OtherRow,
   OtherLink,
 };
