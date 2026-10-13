@@ -45,24 +45,22 @@
       property="og:description"
       content="An independent development studio in Las Vegas with a portfolio of its own products: GitAll, Cold Boot and Alley Admin."
     />
-    <!-- Primary: webp supported by all modern crawlers (Facebook, Twitter/X, Discord, Slack, iMessage) -->
+    <!-- Link-preview card: a 1200x630 PNG, the size and format every
+         preview crawler (Messages, Slack, Facebook, X, Discord) handles. The
+         square logo used to sit here, declared as 1200x630, so wide cards
+         cropped it. Shared by every route; the title and description above
+         are rewritten per route by the prerender step and App.tsx. -->
     <meta
       property="og:image"
-      content="https://toastbyte.studio/assets/images/ToastByteStudios.webp"
-    />
-    <meta property="og:image:type" content="image/webp" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Toastbyte Studios logo" />
-    <!-- Fallback: PNG for older crawlers that don't support webp -->
-    <meta
-      property="og:image"
-      content="https://toastbyte.studio/assets/images/Logo.png"
+      content="https://toastbyte.studio/assets/images/ShareCard.png"
     />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Toastbyte Studios logo" />
+    <meta
+      property="og:image:alt"
+      content="Toastbyte Studios: software we build, ship and maintain. An independent software studio in Las Vegas, Nevada."
+    />
     <meta property="og:site_name" content="Toastbyte Studios" />
 
     <!-- Twitter Card -->
@@ -77,7 +75,11 @@
     />
     <meta
       name="twitter:image"
-      content="https://toastbyte.studio/assets/images/ToastByteStudios.webp"
+      content="https://toastbyte.studio/assets/images/ShareCard.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Toastbyte Studios: software we build, ship and maintain. An independent software studio in Las Vegas, Nevada."
     />
 
     <meta name="msapplication-TileColor" content="#0f0f10" />
