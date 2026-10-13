@@ -80,6 +80,13 @@ const RAW_PRODUCTS: Product[] = [
     meta: '{status} · offline-first',
     lede: 'An offline-first emergency preparedness toolkit for hikers, preppers and anyone who would rather be ready. Maps, guides, references and utilities that keep working when the network does not.',
     shot: 'screenshot: offline map view',
+    screenshot: {
+      light: '/assets/images/ColdBootHomeLight.webp',
+      dark: '/assets/images/ColdBootHomeDark.webp',
+      alt: 'Cold Boot home screen: sunset time, pressure, moon phase and GPS status above the list of modules',
+      width: 720,
+      height: 1558,
+    },
     features: [
       {
         n: '01',

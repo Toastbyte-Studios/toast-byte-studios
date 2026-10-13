@@ -23,6 +23,20 @@ interface ProductEmbed {
   alt: string;
 }
 
+/**
+ * A real screenshot shown in place of a product's screenshot placeholder,
+ * with one image per site theme. `width` and `height` are the images'
+ * intrinsic size (both must match), so the page reserves the right space
+ * before they load.
+ */
+interface ProductScreenshot {
+  light: string;
+  dark: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 /** A product in the studio catalog. */
 interface Product {
   /** URL-safe identifier used in the product route, e.g. 'gitall'. */
@@ -46,6 +60,8 @@ interface Product {
   shot: string;
   /** Live image that replaces the screenshot placeholder when present. */
   embed?: ProductEmbed;
+  /** Screenshot that replaces the placeholder when present (and no embed). */
+  screenshot?: ProductScreenshot;
   features: ProductFeature[];
   facts: ProductFact[];
   /**
@@ -72,6 +88,7 @@ interface Contact {
 export type {
   Product,
   ProductEmbed,
+  ProductScreenshot,
   ProductFeature,
   ProductFact,
   Principle,
