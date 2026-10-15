@@ -12,7 +12,7 @@ import {
 /**
  * PrivacyPolicy component renders the privacy policy page for Toastbyte Studios.
  *
- * Covers BOTH the Cold Boot mobile application and this website. The two collect
+ * Covers BOTH the ColdBoot mobile application and this website. The two collect
  * very different things, and the sections below are split accordingly — the
  * app is offline-first and stores nothing server-side, while the website runs
  * analytics and keeps email signups in a database.
@@ -47,7 +47,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <Paragraph>
           Toastbyte Studios (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;)
-          operates the Cold Boot mobile application (the &quot;App&quot;) and
+          operates the ColdBoot mobile application (the &quot;App&quot;) and
           this website at toastbyte.studio (the &quot;Site&quot;). This Privacy
           Policy explains what information we collect, how we use it, and your
           rights regarding that information.
@@ -59,10 +59,10 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
           address if you choose to give us one.
         </Paragraph>
 
-        <SectionTitle>1. The Cold Boot App</SectionTitle>
+        <SectionTitle>1. The ColdBoot App</SectionTitle>
         <Paragraph>
           <strong>Information you provide:</strong> We do not require account
-          registration. Any data you enter into Cold Boot (such as saved
+          registration. Any data you enter into ColdBoot (such as saved
           preferences or bookmarked guides) is stored locally on your device and
           is not transmitted to our servers.
         </Paragraph>
@@ -72,13 +72,13 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
           system version) solely to improve app performance and compatibility.
         </Paragraph>
         <Paragraph>
-          <strong>Location data:</strong> Cold Boot may request access to your
+          <strong>Location data:</strong> ColdBoot may request access to your
           device&apos;s location to provide location-relevant survival and
           emergency information. This data is used only on-device and is never
           transmitted to our servers.
         </Paragraph>
         <Paragraph>
-          <strong>Device sensors:</strong> Cold Boot may access device sensors
+          <strong>Device sensors:</strong> ColdBoot may access device sensors
           (such as compass, barometer, or accelerometer) to power offline
           navigation and utility features. Sensor data is processed locally and
           is never stored or transmitted.
@@ -150,7 +150,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
         <SectionTitle>3. How We Use Your Information</SectionTitle>
         <Paragraph>We use the information described above solely to:</Paragraph>
         <Paragraph>
-          • Provide and improve the functionality of Cold Boot and the Site
+          • Provide and improve the functionality of ColdBoot and the Site
           <br />
           • Ensure compatibility across devices and operating system versions
           <br />
@@ -192,9 +192,9 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>5. Data Retention</SectionTitle>
         <Paragraph>
-          <strong>App data:</strong> because Cold Boot is designed to work
+          <strong>App data:</strong> because ColdBoot is designed to work
           offline and store data locally on your device, we do not retain App
-          data on our servers. Uninstalling Cold Boot will remove all locally
+          data on our servers. Uninstalling ColdBoot will remove all locally
           stored app data.
         </Paragraph>
         <Paragraph>
@@ -211,7 +211,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>6. Your Rights and Data Deletion</SectionTitle>
         <Paragraph>
-          There is no account to delete. Cold Boot data resides on your device
+          There is no account to delete. ColdBoot data resides on your device
           and can be removed by uninstalling the App.
         </Paragraph>
         <Paragraph>
@@ -232,7 +232,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
 
         <SectionTitle>7. Children&apos;s Privacy</SectionTitle>
         <Paragraph>
-          Neither Cold Boot nor this Site is directed at children under the age
+          Neither ColdBoot nor this Site is directed at children under the age
           of 13. We do not knowingly collect personal information from children.
           If you are a parent or guardian and believe your child has provided us
           with personal information, please contact us and we will promptly
@@ -243,7 +243,7 @@ const PrivacyPolicy: React.FC = (): JSX.Element => {
         <Paragraph>
           We may update this Privacy Policy from time to time. Changes will be
           posted on this page with an updated &quot;Last updated&quot; date.
-          Continued use of Cold Boot or the Site after changes are posted
+          Continued use of ColdBoot or the Site after changes are posted
           constitutes your acceptance of the revised policy.
         </Paragraph>
 

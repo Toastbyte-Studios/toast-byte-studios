@@ -51,7 +51,7 @@ const PRODUCT_RELEASE_SOURCES: ReleaseSource[] = PRODUCTS.flatMap((product) => {
  * but it is not a product and should not appear on the products grid, so it
  * is deliberately kept out of the catalog rather than added as an entry.
  *
- * Cold Boot's marketing landing page (coldboot.app) lives here for the same
+ * ColdBoot's marketing landing page (coldboot.app) lives here for the same
  * reason: its releases belong in the changelog, but it is a site for a
  * product, not a product of its own.
  */
