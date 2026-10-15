@@ -4,7 +4,7 @@ import type { Product, Principle, Contact } from '../types/catalog';
  * The studio product catalog.
  *
  * NOTE ON ACCURACY: entries carry a `verified` flag. Only GitAll has been
- * confirmed accurate. Cold Boot and Alley Admin are placeholder copy carried
+ * confirmed accurate. ColdBoot and Alley Admin are placeholder copy carried
  * over from the design comp — the prose reads as real, so check every figure,
  * version string and status line before launch.
  *
@@ -68,7 +68,10 @@ const RAW_PRODUCTS: Product[] = [
     // Formerly TOAST. The old /product/toast URL is aliased to this key in
     // LEGACY_PRODUCT_KEYS below, and 301-redirected in public/_redirects.
     key: 'coldboot',
-    name: 'Cold Boot',
+    // One word, as on coldboot.app and in the app itself. "Cold boot" is a
+    // computing term that owns its search results; the one-word name is the
+    // only spelling that stands out.
+    name: 'ColdBoot',
     dot: '#C4622D',
     status: 'In Development',
     kind: 'Preparedness · iOS & Android',
@@ -83,7 +86,7 @@ const RAW_PRODUCTS: Product[] = [
     screenshot: {
       light: '/assets/images/ColdBootHomeLight.webp',
       dark: '/assets/images/ColdBootHomeDark.webp',
-      alt: 'Cold Boot home screen: sunset time, pressure, moon phase and GPS status above the list of modules',
+      alt: 'ColdBoot home screen: sunset time, pressure, moon phase and GPS status above the list of modules',
       width: 720,
       height: 1558,
     },
