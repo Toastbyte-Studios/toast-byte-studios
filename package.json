@@ -1,7 +1,7 @@
 {
   "name": "toast-byte-studios",
   "private": true,
-  "version": "1.25.3",
+  "version": "1.25.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -41,6 +41,6 @@
     "sharp": "^0.35.4",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.3",
-    "vite": "^7.2.2"
+    "vite": "^7.3.7"
   }
 }
